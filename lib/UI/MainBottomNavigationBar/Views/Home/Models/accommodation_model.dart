@@ -45,7 +45,7 @@ List<Categories> categories = [
   ),
 ];
 
-class Accommodation {
+class AccommodationModel {
   final String? image;
   final String? location;
   final String? price;
@@ -56,7 +56,7 @@ class Accommodation {
   final bool isFemale;
   final bool isUnix;
 
-  Accommodation({
+  AccommodationModel({
     this.image,
     this.location,
     this.price,
@@ -69,8 +69,8 @@ class Accommodation {
   });
 }
 
-List<Accommodation> accomodationList = [
-  Accommodation(
+List<AccommodationModel> accomodationList = [
+  AccommodationModel(
       image: hostelimage1,
       location: "Westdene, Johannesburg",
       price: "R5000",
@@ -78,7 +78,7 @@ List<Accommodation> accomodationList = [
       status: true,
       gender: "Female only",
       isFemale: true),
-  Accommodation(
+  AccommodationModel(
     image: hostelimage2,
     location: "Brixton, Johannesburg",
     price: "R2600",
@@ -87,7 +87,7 @@ List<Accommodation> accomodationList = [
     gender: "unix",
     isUnix: true,
   ),
-  Accommodation(
+  AccommodationModel(
       image: hostelimage3,
       location: "Westdene, Johannesburg",
       price: "R5000",

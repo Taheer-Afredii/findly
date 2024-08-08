@@ -89,3 +89,7 @@ String homesvg = '$iconpath/home.svg';
 String sendsvg = '$iconpath/message.svg';
 String notificationssvg = '$iconpath/notifications.svg';
 String maplocation = '$iconpath/maplocation.png';
+String layoutgrid = '$iconpath/layoutgrid.png';
+String share = '$iconpath/share.png';
+String send = '$iconpath/send.png';
+String pointlocation = '$iconpath/pointlocation.png';

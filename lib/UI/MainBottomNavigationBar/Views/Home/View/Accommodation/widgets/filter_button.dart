@@ -8,8 +8,10 @@ class FilterButton extends StatelessWidget {
   const FilterButton({
     super.key,
     required this.onTap,
+    this.image,
   });
   final VoidCallback onTap;
+  final String? image;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,7 +32,7 @@ class FilterButton extends StatelessWidget {
             ),
           ],
         ),
-        child: Image.asset(menu),
+        child: Image.asset(image ?? menu),
       ),
     );
   }

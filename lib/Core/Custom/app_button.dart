@@ -126,35 +126,57 @@ class MapButton extends StatelessWidget {
   const MapButton({
     super.key,
     required this.onTap,
+    this.height,
+    this.width,
+    this.radius,
+    this.buttonColor,
+    this.fontSize,
+    this.fontWeight,
+    this.iconHeight,
+    this.iconWidth,
+    this.icon,
+    this.text,
+    this.fontColor,
   });
 
   final VoidCallback onTap;
+  final double? height;
+  final double? width;
+  final double? radius;
+  final Color? buttonColor;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  final double? iconHeight;
+  final double? iconWidth;
+  final String? icon;
+  final String? text;
+  final Color? fontColor;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-          height: 43.h,
-          width: 93.w,
+          height: height ?? 43.h,
+          width: width ?? 93.w,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100.r),
-            color: secondaryColor,
+            borderRadius: BorderRadius.circular(radius ?? 100.r),
+            color: buttonColor ?? secondaryColor,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               workSansText(
-                text: "Map",
-                color: whiteColor,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
+                text: text ?? "Map",
+                color: fontColor ?? whiteColor,
+                fontSize: fontSize ?? 16.sp,
+                fontWeight: fontWeight ?? FontWeight.w500,
               ),
               SizedBox(width: 7.w),
               Image.asset(
-                maplocation,
-                height: 18.h,
-                width: 20.w,
+                icon ?? maplocation,
+                height: iconHeight ?? 18.h,
+                width: iconWidth ?? 20.w,
               ),
             ],
           )),

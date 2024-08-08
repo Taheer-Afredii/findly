@@ -8,6 +8,7 @@ import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Home/View/AccommoadtionFilter/accommodation_filter_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Home/View/Accommodation/accomodation_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Home/View/Accommodation/widgets/accommodation_listview.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Home/View/MapScreen/map_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Home/widgets/home_category_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,6 +16,7 @@ import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../../Models/accommodation_model.dart';
+import '../OpenAccomodationListing/open_accommodation_listing_screen.dart';
 import 'widgets/accommodation_searchfield.dart';
 import 'widgets/filter_button.dart';
 
@@ -90,7 +92,7 @@ class AccomodationScreen extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 28.w),
                           child: workSansText(
-                              text: searchController.text.isNotEmpty
+                              text: model.searchText.isNotEmpty
                                   ? "240 Results"
                                   : "Top Rated Accommodations",
                               fontSize: 16.sp,
@@ -104,10 +106,15 @@ class AccomodationScreen extends StatelessWidget {
                             shrinkWrap: true,
                             itemCount: accomodationList.length,
                             itemBuilder: (context, index) {
-                              Accommodation d = accomodationList[index];
+                              AccommodationModel d = accomodationList[index];
                               return Padding(
                                 padding: EdgeInsets.only(bottom: 18.h),
                                 child: AccommodationListview(
+                                    onTap: () {
+                                      Get.to(() =>
+                                          OpenAccommodationListingScreen(
+                                              accommodationModel: d));
+                                    },
                                     image: d.image!,
                                     location: d.location!,
                                     price: d.price!,
@@ -150,7 +157,9 @@ class AccomodationScreen extends StatelessWidget {
           );
         }),
       ),
-      floatingActionButton: MapButton(onTap: () {}),
+      floatingActionButton: MapButton(onTap: () {
+        Get.to(const MapScreen());
+      }),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
