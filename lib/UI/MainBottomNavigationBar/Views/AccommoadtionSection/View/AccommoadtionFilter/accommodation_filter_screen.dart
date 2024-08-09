@@ -1,5 +1,5 @@
 import 'package:findly/Core/Custom/container_widget.dart';
-import 'package:findly/UI/MainBottomNavigationBar/Views/Home/View/AccommoadtionFilter/widget/filter_all_containers.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommoadtionFilter/widget/filter_all_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

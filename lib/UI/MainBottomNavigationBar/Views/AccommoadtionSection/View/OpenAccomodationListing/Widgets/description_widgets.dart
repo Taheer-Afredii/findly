@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../Core/Constant/colors.dart';
 import '../../../../../../../Core/Constant/text_constant.dart';
 import '../../../../../../../Core/Custom/app_button.dart';
-import '../../../Models/accommodation_model.dart';
+import '../../../../../../../Models/accommodation_model.dart';
 
 class DescriptionContainer extends StatelessWidget {
   const DescriptionContainer({

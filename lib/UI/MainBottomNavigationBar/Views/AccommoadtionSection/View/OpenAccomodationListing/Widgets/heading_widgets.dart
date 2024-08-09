@@ -5,7 +5,7 @@ import '../../../../../../../Core/Constant/assets_constant.dart';
 import '../../../../../../../Core/Constant/colors.dart';
 import '../../../../../../../Core/Constant/text_constant.dart';
 import '../../../../../../Auth/Widgets/custom_auth_appbar.dart';
-import '../../../Models/accommodation_model.dart';
+import '../../../../../../../Models/accommodation_model.dart';
 
 class LocationWidget extends StatelessWidget {
   const LocationWidget({

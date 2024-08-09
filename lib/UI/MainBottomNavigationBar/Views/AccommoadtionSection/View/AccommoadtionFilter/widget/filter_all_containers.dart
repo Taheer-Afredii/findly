@@ -1,4 +1,4 @@
-import 'package:findly/UI/MainBottomNavigationBar/Views/Home/View/AccommoadtionFilter/widget/distance_slider.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommoadtionFilter/widget/distance_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

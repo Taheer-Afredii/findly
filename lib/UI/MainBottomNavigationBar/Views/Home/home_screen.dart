@@ -4,14 +4,14 @@ import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
-import 'package:findly/UI/MainBottomNavigationBar/Views/Home/View/Accommodation/accomodation_screen.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommodationHome/accomodation_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Home/home_screen_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
-import 'widgets/accommodation_listview.dart';
+import '../AccommoadtionSection/widgets/accommodation_listview.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/home_category_heading.dart';
 import 'widgets/home_search_field.dart';

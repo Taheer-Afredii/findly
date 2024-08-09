@@ -21,6 +21,11 @@ String banner = '$imagepath/banner.png';
 String banner2 = '$imagepath/banner2.png';
 String banner3 = '$imagepath/banner3.png';
 String container = '$imagepath/container.png';
+String friendContainer = '$imagepath/friendcontainer.png';
+String marketplacecontainer = '$imagepath/marketplacecontainer.png';
+String photographcontainer = '$imagepath/photographcontainer.png';
+String completedpana = '$imagepath/completedpana.png';
+String campuswelcome = '$imagepath/campus_welcome.png';
 
 //*************Icons ************/
 
@@ -41,7 +46,7 @@ String friends = '$iconpath/friends.png';
 String google = '$iconpath/google.png';
 String gym = '$iconpath/gym.png';
 String heart = '$iconpath/heart.png';
-String whiteheart = '$iconpath/whiteheart.png'; 
+String whiteheart = '$iconpath/whiteheart.png';
 String home = "$iconpath/home.png";
 String instagram = '$iconpath/instagram.png';
 String laptop = '$iconpath/laptop.png';
@@ -94,3 +99,4 @@ String layoutgrid = '$iconpath/layoutgrid.png';
 String share = '$iconpath/share.png';
 String send = '$iconpath/send.png';
 String pointlocation = '$iconpath/pointlocation.png';
+String sell = '$iconpath/sell.png';

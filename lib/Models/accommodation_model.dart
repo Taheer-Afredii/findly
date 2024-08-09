@@ -1,6 +1,6 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../Core/Constant/assets_constant.dart';
+import '../Core/Constant/assets_constant.dart';
 
 class Categories {
   final String? text;

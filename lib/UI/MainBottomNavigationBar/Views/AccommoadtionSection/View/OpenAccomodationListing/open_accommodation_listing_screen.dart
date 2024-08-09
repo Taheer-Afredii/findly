@@ -6,7 +6,7 @@ import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../Models/accommodation_model.dart';
+import '../../../../../../Models/accommodation_model.dart';
 import 'Widgets/ammenities_footer_widget.dart';
 import 'Widgets/description_widgets.dart';
 import 'Widgets/heading_widgets.dart';
