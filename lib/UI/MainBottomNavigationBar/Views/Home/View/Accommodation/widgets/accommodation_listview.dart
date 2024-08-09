@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../../Core/Constant/assets_constant.dart';
 import '../../../../../../../Core/Constant/colors.dart';
 import '../../../../../../../Core/Constant/text_constant.dart';
 
@@ -44,39 +45,52 @@ class AccommodationListview extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                Container(
-                  height: 200.h,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(image),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(14.r),
-                  ),
-                  // child: Image.asset(
-                  //   image,
-                  //   height: 159.h,
-                  //   fit: BoxFit.cover,
-
-                  //   // width: 135.w,
-                  // ),
+            Container(
+              height: 200.h,
+              width: 1.sw,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(image),
+                  fit: BoxFit.cover,
                 ),
-                Padding(
-                    padding: EdgeInsets.only(left: 13.w, bottom: 13.h),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 5.9.h,
-                          width: 109.w,
-                          color:
-                              status ? const Color(0xFF12B347) : secondaryColor,
+                borderRadius: BorderRadius.circular(14.r),
+              ),
+              child: SizedBox(
+                height: 200.h,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 12.h, right: 21.w),
+                        child: Image.asset(
+                          whiteheart,
+                          color: whiteColor,
+                          height: 24.h,
+                          width: 24.w,
+
+                          // width: 135.w,
                         ),
-                      ],
-                    )),
-              ],
+                      ),
+                    ),
+                    const Spacer(),
+                    Padding(
+                        padding: EdgeInsets.only(left: 13.w, bottom: 13.h),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 5.9.h,
+                              width: 109.w,
+                              color: status
+                                  ? const Color(0xFF12B347)
+                                  : secondaryColor,
+                            ),
+                          ],
+                        )),
+                  ],
+                ),
+              ),
             ),
             SizedBox(height: 15.h),
             Padding(

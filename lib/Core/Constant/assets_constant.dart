@@ -41,6 +41,7 @@ String friends = '$iconpath/friends.png';
 String google = '$iconpath/google.png';
 String gym = '$iconpath/gym.png';
 String heart = '$iconpath/heart.png';
+String whiteheart = '$iconpath/whiteheart.png'; 
 String home = "$iconpath/home.png";
 String instagram = '$iconpath/instagram.png';
 String laptop = '$iconpath/laptop.png';
