@@ -43,7 +43,7 @@ class OpenAccommodationListingScreen extends StatelessWidget {
                       LocationWidget(accommodationModel: accommodationModel),
                       SizedBox(height: 10.h),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30.w),
+                        padding: EdgeInsets.only(left: 25.w),
                         child: workSansText(
                           text: "From: ${accommodationModel.price!}/Month",
                           fontWeight: FontWeight.normal,
@@ -68,7 +68,7 @@ class OpenAccommodationListingScreen extends StatelessWidget {
                               height: 44.h,
                               text: "Ammenities",
                               textColor: whiteColor,
-                              buttonColor: secondaryColor,
+                              buttonColor: const Color(0xFFFF0066),
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,
                               borderRadius: 6.34.r,

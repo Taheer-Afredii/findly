@@ -5,6 +5,7 @@ import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommodationHome/accomodation_screen.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/CampusFriendSection/View/CampusFrienWelcomeScreen/campusfirend_welcome_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Home/home_screen_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -60,7 +61,10 @@ class HomeScreen extends StatelessWidget {
                                   image: friends,
                                   height: 25.29.h,
                                   width: 39.w,
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.to(() =>
+                                        const CampusfirendWelcomeScreen());
+                                  },
                                 ),
                                 SizedBox(width: 8.w),
                                 HomeCategoryHeadings(

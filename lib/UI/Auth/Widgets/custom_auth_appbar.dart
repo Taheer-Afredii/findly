@@ -87,6 +87,56 @@ class CustomAuthAppBar2 extends StatelessWidget {
   }
 }
 
+class CampusFriendHomeAppBar extends StatelessWidget {
+  const CampusFriendHomeAppBar({
+    super.key,
+    required this.text,
+    // this.width,
+    this.leftpadding,
+    this.topPadding,
+    required this.profile,
+    this.onTap,
+  });
+  final String text;
+  // final double? width;
+  final double? leftpadding;
+  final double? topPadding;
+  final String profile;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: leftpadding ?? 25.w) +
+          EdgeInsets.only(top: topPadding ?? 62.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back,
+              color: whiteColor,
+              size: 23.sp,
+            ),
+          ),
+          // SizedBox(width: width ?? 80.w),
+          workSansText(
+            text: text,
+            fontSize: 24.sp,
+            fontWeight: FontWeight.w500,
+            color: whiteColor,
+          ),
+          // SizedBox(width: 38.w),
+          ImageCircleContainer(profile: profile, onTap: onTap),
+        ],
+      ),
+    );
+  }
+}
+
 class ChatAppBar extends StatelessWidget {
   const ChatAppBar({
     super.key,
@@ -149,21 +199,26 @@ class ImageCircleContainer extends StatelessWidget {
     required this.profile,
     this.height,
     this.width,
+    this.onTap,
   });
 
   final String profile;
   final double? height;
   final double? width;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height ?? 43.h,
-      width: width ?? 43.w,
-      decoration: BoxDecoration(
-        color: whiteColor,
-        shape: BoxShape.circle,
-        image: DecorationImage(image: AssetImage(profile)),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: height ?? 43.h,
+        width: width ?? 43.w,
+        decoration: BoxDecoration(
+          color: whiteColor,
+          shape: BoxShape.circle,
+          image: DecorationImage(image: AssetImage(profile)),
+        ),
       ),
     );
   }

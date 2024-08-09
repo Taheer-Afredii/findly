@@ -28,6 +28,31 @@ Text workSansText(
   );
 }
 
+Text workSans16Text(
+    {required String text,
+    Color? color,
+    double? fontSize,
+    FontWeight? fontWeight,
+    TextAlign? textAlign,
+    TextDecoration? textDecoration,
+    TextOverflow? overflow,
+    double? height,
+    int? maxLines}) {
+  return Text(
+    text,
+    maxLines: maxLines,
+    textAlign: textAlign ?? TextAlign.start,
+    overflow: overflow ?? TextOverflow.ellipsis,
+    style: GoogleFonts.workSans(
+      height: height,
+      color: color ?? textColor,
+      fontSize: fontSize ?? 16.sp,
+      fontWeight: fontWeight ?? FontWeight.w500,
+      decoration: textDecoration ?? TextDecoration.none,
+    ),
+  );
+}
+
 Text workSansText2(
     {required String text,
     Color? color,

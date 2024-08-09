@@ -172,6 +172,7 @@ class _AccommodationFilterScreenState extends State<AccommodationFilterScreen> {
               }),
             ),
           ),
+        
         ],
       )),
     );

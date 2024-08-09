@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../Core/Constant/assets_constant.dart';
 import '../../../../../../../Core/Constant/colors.dart';
 import '../../../../../../../Core/Constant/text_constant.dart';
-import '../../../../../../Auth/Widgets/custom_auth_appbar.dart';
 import '../../../../../../../Models/accommodation_model.dart';
+import '../../../../../../Auth/Widgets/custom_auth_appbar.dart';
 
 class LocationWidget extends StatelessWidget {
   const LocationWidget({
@@ -18,15 +18,18 @@ class LocationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 25.w),
+      padding: EdgeInsets.only(left: 25.w),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Icon(
-            Icons.location_on_outlined,
+          Image.asset(
+            location,
+            height: 14.h,
+            width: 10.27.w,
+            fit: BoxFit.cover,
             color: const Color(0xFF80B3FF),
-            size: 20.sp,
           ),
-          // SizedBox(width: 4.w),
+          SizedBox(width: 4.w),
           workSansText(
             text: accommodationModel.location!,
             fontWeight: FontWeight.normal,
@@ -47,7 +50,7 @@ class ShareWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 25.w),
+      padding: EdgeInsets.only(left: 25.w, right: 28.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -77,18 +80,20 @@ class HeaderWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: 25.w, top: 12.h, right: 18.w),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           workSansText(
               text: "Commune",
               fontSize: 18.sp,
               fontWeight: FontWeight.w500,
               color: blackColor),
+          SizedBox(width: 53.w),
           workSansText(
               text: "WE0001",
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,
               color: blackColor.withOpacity(0.5)),
+          const Spacer(),
           CircleContainer(
             height: 35.h,
             width: 35.w,

@@ -56,6 +56,69 @@ class BlueContainer extends StatelessWidget {
   }
 }
 
+class CampusFriendContainer extends StatelessWidget {
+  const CampusFriendContainer({
+    super.key,
+    required this.child,
+  });
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 1.sh,
+      width: 1.sw,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage(friendContainer), fit: BoxFit.fill),
+      ),
+      child: child,
+    );
+  }
+}
+
+class MarketPlaceContainer extends StatelessWidget {
+  const MarketPlaceContainer({
+    super.key,
+    required this.child,
+  });
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 1.sh,
+      width: 1.sw,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage(marketplacecontainer), fit: BoxFit.fill),
+      ),
+      child: child,
+    );
+  }
+}
+
+class PhotoGraphyContainer extends StatelessWidget {
+  const PhotoGraphyContainer({
+    super.key,
+    required this.child,
+  });
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 1.sh,
+      width: 1.sw,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage(photographcontainer), fit: BoxFit.fill),
+      ),
+      child: child,
+    );
+  }
+}
+
 class DeepBlueContainer extends StatelessWidget {
   const DeepBlueContainer({
     super.key,

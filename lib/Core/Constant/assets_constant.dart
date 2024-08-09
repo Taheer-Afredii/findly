@@ -26,6 +26,8 @@ String marketplacecontainer = '$imagepath/marketplacecontainer.png';
 String photographcontainer = '$imagepath/photographcontainer.png';
 String completedpana = '$imagepath/completedpana.png';
 String campuswelcome = '$imagepath/campus_welcome.png';
+String friend = '$imagepath/friend.png';
+String friend2 = '$imagepath/friend2.png';
 
 //*************Icons ************/
 
@@ -100,3 +102,7 @@ String share = '$iconpath/share.png';
 String send = '$iconpath/send.png';
 String pointlocation = '$iconpath/pointlocation.png';
 String sell = '$iconpath/sell.png';
+String location = '$iconpath/location.png';
+String faculty = '$iconpath/faculty.png';
+String academicyear = '$iconpath/academicyear.png';
+String save = '$iconpath/save.png';

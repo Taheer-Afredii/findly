@@ -19,10 +19,6 @@ class DescriptionContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFFCFCFCF).withOpacity(0.1),
         borderRadius: BorderRadius.circular(8.48.r),
-        border: Border.all(
-          width: 0.7.w,
-          color: blackColor.withOpacity(0.2),
-        ),
       ),
       child: workSansText2(
         text: text,
