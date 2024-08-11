@@ -55,6 +55,7 @@ class AccommodationModel {
   final bool isMale;
   final bool isFemale;
   final bool isUnix;
+  final bool? isBookmarked;
 
   AccommodationModel({
     this.image,
@@ -66,18 +67,21 @@ class AccommodationModel {
     this.isMale = false,
     this.isFemale = false,
     this.isUnix = false,
+    this.isBookmarked = false,
   });
 }
 
 List<AccommodationModel> accomodationList = [
   AccommodationModel(
-      image: hostelimage1,
-      location: "Westdene, Johannesburg",
-      price: "R5000",
-      rating: "4.5",
-      status: true,
-      gender: "Female only",
-      isFemale: true),
+    image: hostelimage1,
+    location: "Westdene, Johannesburg",
+    price: "R5000",
+    rating: "4.5",
+    status: true,
+    gender: "Female only",
+    isFemale: true,
+    isBookmarked: false,
+  ),
   AccommodationModel(
     image: hostelimage2,
     location: "Brixton, Johannesburg",
@@ -86,13 +90,16 @@ List<AccommodationModel> accomodationList = [
     status: false,
     gender: "unix",
     isUnix: true,
+    isBookmarked: false,
   ),
   AccommodationModel(
-      image: hostelimage3,
-      location: "Westdene, Johannesburg",
-      price: "R5000",
-      rating: "4.9",
-      status: true,
-      gender: "Male only",
-      isMale: true),
+    image: hostelimage3,
+    location: "Westdene, Johannesburg",
+    price: "R5000",
+    rating: "4.9",
+    status: true,
+    gender: "Male only",
+    isMale: true,
+    isBookmarked: false,
+  ),
 ];

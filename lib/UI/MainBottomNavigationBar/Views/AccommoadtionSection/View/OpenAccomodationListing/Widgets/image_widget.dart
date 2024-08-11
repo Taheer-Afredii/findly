@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../../Core/Constant/assets_constant.dart';
 import '../../../../../../../Core/Constant/colors.dart';
-import '../../../../../../Auth/Widgets/custom_auth_appbar.dart';
 import '../../../../../../../Models/accommodation_model.dart';
+import '../../../../../../Auth/Widgets/custom_auth_appbar.dart';
 
 class ImageContainerWidget extends StatelessWidget {
   const ImageContainerWidget({
@@ -12,11 +11,13 @@ class ImageContainerWidget extends StatelessWidget {
     required this.accommodationModel,
     required this.onBookMarkTap,
     required this.onNextTap,
+    required this.isBookMarked,
   });
 
   final AccommodationModel accommodationModel;
   final VoidCallback onBookMarkTap;
   final VoidCallback onNextTap;
+  final bool isBookMarked;
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +46,12 @@ class ImageContainerWidget extends StatelessWidget {
                     child: const Icon(Icons.arrow_back, color: whiteColor)),
                 GestureDetector(
                   onTap: onBookMarkTap,
-                  child: Image.asset(
-                    heart,
-                    height: 18.h,
-                    width: 22.w,
-                    color: whiteColor,
+                  child: Icon(
+                    isBookMarked == false
+                        ? Icons.favorite_border_outlined
+                        : Icons.favorite,
+                    size: 25.sp,
+                    color: isBookMarked == false ? whiteColor : redColor,
                   ),
                 ),
               ],

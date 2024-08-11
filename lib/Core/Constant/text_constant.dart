@@ -66,6 +66,7 @@ Text workSansText2(
     text,
     maxLines: maxLines,
     textAlign: textAlign ?? TextAlign.start,
+    overflow: TextOverflow.ellipsis,
     style: GoogleFonts.workSans(
       height: height,
       color: color ?? blackColor,

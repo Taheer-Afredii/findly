@@ -58,8 +58,8 @@ class ChooseRoleScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 15.h),
                           AppButton(
-                            buttonColor: const Color(0xFFF2F1F1),
-                            textColor: const Color(0xFF7E7D7D),
+                            buttonColor: secondaryColor,
+                            textColor: whiteColor,
                             onTap: () {
                               Navigator.pushNamed(context, AppRoutes.agent);
                             },
@@ -72,8 +72,8 @@ class ChooseRoleScreen extends StatelessWidget {
                               Navigator.pushNamed(
                                   context, AppRoutes.photographer);
                             },
-                            buttonColor: const Color(0xFFF2F1F1),
-                            textColor: const Color(0xFF7E7D7D),
+                            buttonColor: primaryColor,
+                            textColor: whiteColor,
                             text: "Photographer",
                             height: 62.h,
                           ),

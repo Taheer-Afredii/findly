@@ -9,7 +9,9 @@ import '../../../../Core/Custom/app_button.dart';
 class BackNextButton extends StatelessWidget {
   const BackNextButton({
     super.key,
+    required this.onNextTap,
   });
+  final VoidCallback onNextTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,7 @@ class BackNextButton extends StatelessWidget {
         SizedBox(width: 12.w),
         Expanded(
           child: AppButton(
-            onTap: () {
-              Get.to(() => const MainBottomNavigationbar());
-            },
+            onTap: onNextTap,
             text: "Next",
             buttonColor: primaryColor,
             borderRadius: 8.r,

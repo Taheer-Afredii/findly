@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../Core/Custom/pick_image.dart';
+
 class ProfileViewmodel extends ChangeNotifier {
   bool isCurrentPasswordVisible = false;
   bool isPasswordVisible = false;
@@ -35,5 +37,22 @@ class ProfileViewmodel extends ChangeNotifier {
   void setRating(double value) {
     rating = value;
     notifyListeners();
+  }
+
+  String? myProfilePic;
+  void setMyProfilePic() {
+    ImagePickerUtil.pickImage().then((String? value) {
+      myProfilePic = value;
+      notifyListeners();
+    });
+  }
+
+  String? addPhotoGraphyGigPic;
+
+  void setAddPhotoGraphyGigPic() {
+    ImagePickerUtil.pickImage().then((String? value) {
+      addPhotoGraphyGigPic = value;
+      notifyListeners();
+    });
   }
 }

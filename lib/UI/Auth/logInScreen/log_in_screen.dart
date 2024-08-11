@@ -53,7 +53,7 @@ class LogInScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 10.h),
                       CustomTextField(
-                          hintText: "Enter UserName",
+                          hintText: "Enter Username",
                           controller: usernamecontroller),
                       SizedBox(height: 28.h),
                       workSansText(
@@ -79,15 +79,24 @@ class LogInScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 43.h),
                       AppButton(
-                          buttonColor: const Color(0xFFF2F1F1),
-                          textColor: const Color(0xFF7E7D7D),
+                          buttonColor: secondaryColor,
+                          textColor: whiteColor,
                           onTap: () {
-                            Navigator.pushNamed(
-                                context, AppRoutes.mainBottomNavigationbar);
+                            Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                AppRoutes.mainBottomNavigationbar,
+                                (route) => false);
                           },
-                          text: "Sign in with Email"),
+                          text: "Sign in"),
                       SizedBox(height: 17.h),
-                      AppButton(onTap: () {}, text: "Continue as Guest"),
+                      AppButton(
+                          onTap: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                AppRoutes.mainBottomNavigationbar,
+                                (route) => false);
+                          },
+                          text: "Continue as Guest"),
                       SizedBox(height: 26.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -127,7 +136,7 @@ class LogInScreen extends StatelessWidget {
                           SizedBox(width: 12.w),
                           SocialButton(
                             onTap: () {},
-                            image: phone,
+                            image: facebook,
                           ),
                           SizedBox(width: 12.w),
                           SocialButton(
@@ -154,7 +163,7 @@ class LogInScreen extends StatelessWidget {
                             },
                             child: workSansText(
                               text: "Sign Up",
-                              color: const Color(0xFF0055D4),
+                              color: const Color(0xFFFE6404),
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,
                             ),

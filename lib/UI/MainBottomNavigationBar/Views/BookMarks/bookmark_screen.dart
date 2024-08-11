@@ -7,7 +7,6 @@ import '../../../../Core/Constant/text_constant.dart';
 import '../../../../Core/Custom/container_widget.dart';
 import '../../../../Core/Custom/image_container.dart';
 import '../../../Auth/Widgets/custom_auth_appbar.dart';
-import '../Messages/messages_screen.dart';
 
 class BookMarkScreen extends StatelessWidget {
   const BookMarkScreen({super.key});
@@ -40,16 +39,15 @@ class BookMarkScreen extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(height: 24.h),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: MessagesTopContainer(
-                        padding: 23.w,
-                        text: "All",
-                        color: primaryColor,
-                      ),
-                    ),
-                    SizedBox(height: 15.h),
+                    SizedBox(height: 38.h),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    //   child: MessagesTopContainer(
+                    //     padding: 23.w,
+                    //     text: "All",
+                    //     color: primaryColor,
+                    //   ),
+                    // ),
                     const Divider(
                       color: Color(0XFFEFEFEF),
                       thickness: 1,
@@ -59,9 +57,9 @@ class BookMarkScreen extends StatelessWidget {
                         width: 1.sw,
                         child: ListView.builder(
                           padding: EdgeInsets.symmetric(
-                                  horizontal: 32.w, vertical: 18.h) +
+                                  horizontal: 32.w, vertical: 24.h) +
                               EdgeInsets.only(bottom: 50.h),
-                          itemCount: 2,
+                          itemCount: 10,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
                             return Padding(

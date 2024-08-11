@@ -110,19 +110,27 @@ class AccomodationScreen extends StatelessWidget {
                               return Padding(
                                 padding: EdgeInsets.only(bottom: 18.h),
                                 child: AccommodationListview(
-                                    onTap: () {
-                                      Get.to(() =>
-                                          OpenAccommodationListingScreen(
-                                              accommodationModel: d));
-                                    },
-                                    image: d.image!,
-                                    location: d.location!,
-                                    price: d.price!,
-                                    rating: d.rating!,
-                                    status: d.status!,
-                                    isFemale: d.isFemale,
-                                    isMale: d.isMale,
-                                    isUnix: d.isUnix),
+                                  onTap: () {
+                                    Get.to(() => OpenAccommodationListingScreen(
+                                          accommodationModel: d,
+                                          isBookmarked:
+                                              model.isBookmarkedList[index],
+                                        ));
+                                  },
+                                  image: d.image!,
+                                  location: d.location!,
+                                  price: d.price!,
+                                  rating: d.rating!,
+                                  status: d.status!,
+                                  isFemale: d.isFemale,
+                                  isMale: d.isMale,
+                                  isUnix: d.isUnix,
+                                  isBookmarked: model.isBookmarkedList[index],
+                                  onBookMarkTap: () {
+                                    // model.setBookMarked(index);
+                                    model.toggleBookmark(index);
+                                  },
+                                ),
                               );
                             })
                       ],

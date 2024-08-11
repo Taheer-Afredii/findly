@@ -61,7 +61,7 @@ class CustomTextField extends StatelessWidget {
         hintStyle: workSansTextStyle(
           color: hintColor ?? textFieldHintColor,
           fontSize: 14.sp,
-          fontWeight: hintWeight ?? FontWeight.w400,
+          fontWeight: hintWeight ?? FontWeight.w500,
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(
@@ -190,6 +190,8 @@ class SearchTextField extends StatelessWidget {
     this.hintSize,
     this.suffixIconColor,
     this.onChanged,
+    this.onprefixIconTap,
+    this.onSuffixIconTap,
   });
 
   final String hintText;
@@ -208,6 +210,8 @@ class SearchTextField extends StatelessWidget {
   final IconData? prefixicon;
   final Color? suffixIconColor;
   final void Function(String)? onChanged;
+  final VoidCallback? onprefixIconTap;
+  final VoidCallback? onSuffixIconTap;
 
   @override
   Widget build(BuildContext context) {
@@ -223,16 +227,22 @@ class SearchTextField extends StatelessWidget {
       ),
       decoration: InputDecoration(
         prefixIcon: isShowPrefixIcon ?? false
-            ? Padding(
-                padding: EdgeInsets.all(8.sp),
-                child: Icon(prefixicon ?? Icons.keyboard_arrow_down_rounded),
+            ? GestureDetector(
+                onTap: onprefixIconTap,
+                child: Padding(
+                  padding: EdgeInsets.all(8.sp),
+                  child: Icon(prefixicon ?? Icons.keyboard_arrow_down_rounded),
+                ),
               )
             : null,
         suffixIcon: isShowSuffixIcon ?? false
-            ? Padding(
-                padding: EdgeInsets.all(15.sp),
-                child: Icon(suffixIcon ?? Icons.keyboard_arrow_down_rounded,
-                    color: suffixIconColor),
+            ? GestureDetector(
+                onTap: onSuffixIconTap,
+                child: Padding(
+                  padding: EdgeInsets.all(15.sp),
+                  child: Icon(suffixIcon ?? Icons.keyboard_arrow_down_rounded,
+                      color: suffixIconColor),
+                ),
               )
             : null,
         hintText: hintText,

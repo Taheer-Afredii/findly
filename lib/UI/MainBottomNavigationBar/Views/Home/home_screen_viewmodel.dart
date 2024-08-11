@@ -6,4 +6,17 @@ class HomeScreenViewmodel extends ChangeNotifier {
     currentIndex = index;
     notifyListeners();
   }
+
+  bool isBookmarked = false;
+  void changeBookmark() {
+    isBookmarked = !isBookmarked;
+    notifyListeners();
+  }
+
+  List<bool> isBookmarkedList = List.generate(5, (index) => false);
+
+  void toggleBookmark(int index) {
+    isBookmarkedList[index] = !isBookmarkedList[index];
+    notifyListeners();
+  }
 }

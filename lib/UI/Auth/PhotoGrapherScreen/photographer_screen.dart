@@ -1,11 +1,16 @@
 import 'package:findly/UI/Auth/Widgets/custom_dotted_border.dart';
+import 'package:findly/UI/Auth/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Core/Constant/colors.dart';
 import '../../../Core/Constant/text_constant.dart';
 import '../../../Core/Custom/container_widget.dart';
 import '../../../Core/Custom/custom_textfield.dart';
+import '../../MainBottomNavigationBar/main_bottom_navigationbar.dart';
+import '../StudentScreen/widgets/back_next_button.dart';
 import '../Widgets/custom_auth_appbar.dart';
 
 class PhotoGrapherScreen extends StatelessWidget {
@@ -47,17 +52,17 @@ class PhotoGrapherScreen extends StatelessWidget {
                           controller: usernamecontroller,
                         ),
                         SizedBox(height: 18.h),
-                        workSansText(
-                            text: "Business Number (Request Business No.)",
-                            color: const Color(0xFF1E1E1E),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500),
-                        SizedBox(height: 10.h),
-                        CustomTextField2(
-                          hintText: "Enter Business Name",
-                          controller: numberController,
-                        ),
-                        SizedBox(height: 18.h),
+                        // workSansText(
+                        //     text: "Business Number (Request Business No.)",
+                        //     color: const Color(0xFF1E1E1E),
+                        //     fontSize: 14.sp,
+                        //     fontWeight: FontWeight.w500),
+                        // SizedBox(height: 10.h),
+                        // CustomTextField2(
+                        //   hintText: "Enter Business Name",
+                        //   controller: numberController,
+                        // ),
+                        // SizedBox(height: 18.h),
                         workSansText(
                           text: "Upload Profile Photo",
                           fontSize: 14.sp,
@@ -71,7 +76,19 @@ class PhotoGrapherScreen extends StatelessWidget {
                           buttonColor: secondaryColor,
                           text: "Upload Profile Photoo",
                           textColor: secondaryColor,
-                          onTap: () {},
+                          imagePath:
+                              context.watch<AuthProvider>().photographerProfile,
+                          onTap: () {
+                            context
+                                .read<AuthProvider>()
+                                .setPhotographerProfile();
+                          },
+                        ),
+                        SizedBox(height: 280.w),
+                        BackNextButton(
+                          onNextTap: () {
+                            Get.offAll(() => const MainBottomNavigationbar());
+                          },
                         ),
                       ],
                     ),

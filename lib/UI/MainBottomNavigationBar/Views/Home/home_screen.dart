@@ -5,14 +5,15 @@ import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommodationHome/accomodation_screen.dart';
-import 'package:findly/UI/MainBottomNavigationBar/Views/CampusFriendSection/View/CampusFrienWelcomeScreen/campusfirend_welcome_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Home/home_screen_viewmodel.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/MarketPlaceHome/market_place_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../AccommoadtionSection/widgets/accommodation_listview.dart';
+import '../GraduationPhtographySection/GraduationPhotoGraphyHome/graduationphotography_home.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/home_category_heading.dart';
 import 'widgets/home_search_field.dart';
@@ -56,25 +57,28 @@ class HomeScreen extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                HomeCategoryHeadings(
-                                  text: "Campus Friends",
-                                  image: friends,
-                                  height: 25.29.h,
-                                  width: 39.w,
-                                  onTap: () {
-                                    Get.to(() =>
-                                        const CampusfirendWelcomeScreen());
-                                  },
-                                ),
-                                SizedBox(width: 8.w),
+                                // HomeCategoryHeadings(
+                                //   text: "Campus Friends",
+                                //   image: friends,
+                                //   height: 25.29.h,
+                                //   width: 39.w,
+                                //   onTap: () {
+                                //     Get.to(() =>
+                                //         const CampusfirendWelcomeScreen());
+                                //   },
+                                // ),
+                                // SizedBox(width: 8.w),
                                 HomeCategoryHeadings(
                                   text: "Campus Marketplace",
                                   image: marketplace,
                                   height: 33.h,
                                   width: 34.w,
                                   textWidth: 75.w,
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.to(() => MarketPlaceHome());
+                                  },
                                 ),
+
                                 HomeCategoryHeadings(
                                   text: "Student Accommodations",
                                   image: accomodation,
@@ -91,7 +95,12 @@ class HomeScreen extends StatelessWidget {
                                   height: 32.h,
                                   width: 36.w,
                                   textWidth: 75.w,
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.to(() => GraduationphotographyHome());
+                                  },
+                                ),
+                                SizedBox(
+                                  width: 68.87.w,
                                 ),
                               ],
                             ),
@@ -108,36 +117,49 @@ class HomeScreen extends StatelessWidget {
                                   fontSize: 16.sp,
                                   color: textColor,
                                 ),
-                                workSansText(
-                                  text: "See All",
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 12.sp,
-                                  color: const Color(0xFFFF2A7F),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => AccomodationScreen());
+                                  },
+                                  child: workSansText(
+                                    text: "See All",
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12.sp,
+                                    color: const Color(0xFFFF2A7F),
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           SizedBox(height: 16.h),
-                          Padding(
-                            padding: EdgeInsets.only(left: 25.w),
-                            child: SizedBox(
-                              height: 185.h,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                shrinkWrap: true,
-                                itemCount: 5,
-                                itemBuilder: (context, index) {
-                                  return AccomondationListview(
-                                    image: hostelimage2,
-                                    location: "Westdene, Johannesburg",
-                                    price: "From R5000",
-                                    rating: "4.5",
-                                    status: "Available",
-                                  );
-                                },
+                          Consumer<HomeScreenViewmodel>(
+                              builder: (context, model, index) {
+                            return Padding(
+                              padding: EdgeInsets.only(left: 25.w),
+                              child: SizedBox(
+                                height: 185.h,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: 5,
+                                  itemBuilder: (context, index) {
+                                    return AccomondationListview(
+                                      image: hostelimage2,
+                                      location: "Westdene, Johannesburg",
+                                      price: "From R5000",
+                                      rating: "4.5",
+                                      status: "Available",
+                                      isBookmarked:
+                                          model.isBookmarkedList[index],
+                                      onBookMarkTap: () {
+                                        model.toggleBookmark(index);
+                                      },
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                          ),
+                            );
+                          }),
                           SizedBox(height: 35.h),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 25.w),

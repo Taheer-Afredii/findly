@@ -1,7 +1,9 @@
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/profileviewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../Core/Constant/colors.dart';
@@ -10,6 +12,7 @@ import '../../../../../../Core/Custom/app_button.dart';
 import '../../../../../../Core/Custom/custom_textfield.dart';
 import '../../../../../Auth/Widgets/custom_auth_appbar.dart';
 import '../../../../../Auth/Widgets/custom_dotted_border.dart';
+import '../../../MarketPlaceSection/MarketPlaceSubmitListing/marketplace_submitlisting.dart';
 
 class AddPhotgraphygigScreen extends StatelessWidget {
   AddPhotgraphygigScreen({super.key});
@@ -32,7 +35,7 @@ class AddPhotgraphygigScreen extends StatelessWidget {
               child: const CustomAuthAppBar(text: "Add Photography Gig"),
             ),
           ),
-          Consumer(builder: (context, model, child) {
+          Consumer<ProfileViewmodel>(builder: (context, model, child) {
             return WhiteContainer(
                 topPadding: 117.h,
                 child: Padding(
@@ -79,7 +82,10 @@ class AddPhotgraphygigScreen extends StatelessWidget {
                             buttonColor: primaryColor,
                             text: "Add Photos",
                             textColor: primaryColor,
-                            onTap: () {},
+                            imagePath: model.addPhotoGraphyGigPic,
+                            onTap: () {
+                              model.setAddPhotoGraphyGigPic();
+                            },
                           ),
                           SizedBox(height: 18.h),
                           workSansText2(
@@ -102,11 +108,23 @@ class AddPhotgraphygigScreen extends StatelessWidget {
                           CustomDropDown(
                               hinttext: "Pretoria", onChanged: (val) {}),
                           SizedBox(height: 18.h),
-                          workSansText2(
-                              text: "Business Number",
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: textColor),
+                          Row(
+                            children: [
+                              workSansText2(
+                                  text: "Business Number",
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: textColor),
+                              GestureDetector(
+                                onTap: () {},
+                                child: workSansText2(
+                                    text: " Request Business Number",
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: textHighLight),
+                              ),
+                            ],
+                          ),
                           SizedBox(height: 10.h),
                           CustomTextField2(
                             hintText: "P228",
@@ -114,7 +132,9 @@ class AddPhotgraphygigScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 65.h),
                           AppButton(
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(() => const MarketplaceSubmitlisting());
+                            },
                             text: "Publish",
                           ),
                           SizedBox(height: 60.h),

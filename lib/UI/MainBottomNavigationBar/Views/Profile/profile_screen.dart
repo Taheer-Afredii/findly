@@ -14,7 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../Auth/Widgets/custom_auth_appbar.dart';
-import 'View/Notificatons/notifications.dart';
+import '../Notificatons/notifications.dart';
 import 'widgets/profilescreen_imagewidget.dart';
 
 class ProfileScreen extends StatelessWidget {

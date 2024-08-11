@@ -4,7 +4,8 @@ const Color primaryColor = Color(0xFF00CCFF);
 const Color secondaryColor = Color(0xFFFF2A7F);
 const Color blackColor = Color(0xFF000000);
 const Color whiteColor = Color(0xFFFFFFFF);
-const Color textFieldHintColor = Color(0xFF151624);
+const Color textHighLight = Color(0xFFFE6404);
+const Color textFieldHintColor = Color.fromARGB(255, 160, 161, 165);
 const Color textColor = Color(0Xff1E1E1E);
 
 const Color blueColor = Color(0xFF4667C0);

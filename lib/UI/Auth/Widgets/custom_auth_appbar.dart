@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../Core/Constant/colors.dart';
 import '../../../Core/Constant/text_constant.dart';
@@ -80,6 +81,60 @@ class CustomAuthAppBar2 extends StatelessWidget {
             fontSize: 24.sp,
             fontWeight: FontWeight.w500,
             color: whiteColor,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PhotoGraphyAppBar extends StatelessWidget {
+  const PhotoGraphyAppBar({
+    super.key,
+    required this.text,
+    this.width,
+    this.leftpadding,
+    this.topPadding,
+    this.onTap,
+  });
+  final String text;
+  final double? width;
+  final double? leftpadding;
+  final double? topPadding;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: leftpadding ?? 25.w) +
+          EdgeInsets.only(top: topPadding ?? 62.h),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          GestureDetector(
+            onTap: onTap ??
+                () {
+                  Navigator.pop(context);
+                },
+            child: Icon(
+              Icons.arrow_back,
+              color: whiteColor,
+              size: 23.sp,
+            ),
+          ),
+          SizedBox(width: width ?? 80.w),
+          SizedBox(
+            width: 226.w,
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.workSans(
+                height: 1.2,
+                color: whiteColor,
+                fontSize: 24.sp,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ),
         ],
       ),

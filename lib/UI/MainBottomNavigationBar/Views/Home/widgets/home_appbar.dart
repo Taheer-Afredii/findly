@@ -5,7 +5,7 @@ import 'package:get/route_manager.dart';
 import '../../../../../Core/Constant/assets_constant.dart';
 import '../../../../../Core/Constant/colors.dart';
 import '../../../../../Core/Constant/text_constant.dart';
-import '../../Profile/View/Notificatons/notifications.dart';
+import '../../Notificatons/notifications.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({

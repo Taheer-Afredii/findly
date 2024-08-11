@@ -11,7 +11,7 @@ class HomeCategoryHeadings extends StatelessWidget {
     required this.height,
     required this.width,
     this.textWidth,
-  required  this.onTap,
+    required this.onTap,
   });
   final String image;
   final String text;
@@ -22,7 +22,7 @@ class HomeCategoryHeadings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:onTap ,
+      onTap: onTap,
       child: Column(
         children: [
           Container(

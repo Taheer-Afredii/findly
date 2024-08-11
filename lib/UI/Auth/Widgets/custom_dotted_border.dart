@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,6 +18,7 @@ class CustomDottedBorder extends StatelessWidget {
     required this.textColor,
     required this.borderColor,
     required this.onTap,
+    this.imagePath,
   });
   final Color containercolor;
   final Color buttonColor;
@@ -25,6 +28,7 @@ class CustomDottedBorder extends StatelessWidget {
   final Color textColor;
   final Color borderColor;
   final VoidCallback onTap;
+  final String? imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -40,31 +44,51 @@ class CustomDottedBorder extends StatelessWidget {
         child: Container(
           height: height ?? 158.h,
           width: width ?? 332.w,
+          padding:
+              EdgeInsets.symmetric(horizontal: imagePath != null ? 1.w : 0),
           decoration: BoxDecoration(
             color: containercolor,
             borderRadius: BorderRadius.circular(20.r),
+            image: imagePath != null
+                ? DecorationImage(
+                    image: FileImage(File(imagePath!)),
+                    fit: BoxFit.contain,
+                  )
+                : null,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 57.h,
-                width: 57.w,
-                decoration: BoxDecoration(
-                  color: buttonColor,
-                  shape: BoxShape.circle,
+          child: imagePath != null
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(20.r),
+                  child: Image.file(
+                    File(imagePath!),
+                    fit: BoxFit.cover,
+                    height: height ?? 158.h,
+                    width: width ?? 332.w,
+                  ),
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 57.h,
+                      width: 57.w,
+                      decoration: BoxDecoration(
+                        color: buttonColor,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.add,
+                        color: whiteColor,
+                        size: 25.sp,
+                      ),
+                    ),
+                    SizedBox(height: 16.h),
+                    workSansText(
+                        text: text,
+                        color: textColor,
+                        fontWeight: FontWeight.w500)
+                  ],
                 ),
-                child: Icon(
-                  Icons.add,
-                  color: whiteColor,
-                  size: 25.sp,
-                ),
-              ),
-              SizedBox(height: 16.h),
-              workSansText(
-                  text: text, color: textColor, fontWeight: FontWeight.w500)
-            ],
-          ),
         ),
       ),
     );

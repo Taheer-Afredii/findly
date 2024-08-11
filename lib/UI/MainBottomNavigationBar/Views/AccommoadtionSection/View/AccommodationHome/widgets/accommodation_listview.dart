@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../../Core/Constant/assets_constant.dart';
 import '../../../../../../../Core/Constant/colors.dart';
 import '../../../../../../../Core/Constant/text_constant.dart';
 
@@ -17,6 +16,8 @@ class AccommodationListview extends StatelessWidget {
     required this.isFemale,
     required this.isUnix,
     required this.onTap,
+    required this.isBookmarked,
+    required this.onBookMarkTap,
   });
   final String image;
   final String location;
@@ -27,6 +28,8 @@ class AccommodationListview extends StatelessWidget {
   final bool isFemale;
   final bool isUnix;
   final VoidCallback onTap;
+  final bool isBookmarked;
+  final VoidCallback onBookMarkTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -64,13 +67,16 @@ class AccommodationListview extends StatelessWidget {
                       alignment: Alignment.topRight,
                       child: Padding(
                         padding: EdgeInsets.only(top: 12.h, right: 21.w),
-                        child: Image.asset(
-                          whiteheart,
-                          color: whiteColor,
-                          height: 24.h,
-                          width: 24.w,
-
-                          // width: 135.w,
+                        child: GestureDetector(
+                          onTap: onBookMarkTap,
+                          child: Icon(
+                            isBookmarked == false
+                                ? Icons.favorite_border_outlined
+                                : Icons.favorite,
+                            size: 25.sp,
+                            color:
+                                isBookmarked == false ? whiteColor : redColor,
+                          ),
                         ),
                       ),
                     ),

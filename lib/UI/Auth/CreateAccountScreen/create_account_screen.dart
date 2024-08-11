@@ -121,7 +121,7 @@ class CreateAccountScreen extends StatelessWidget {
                                 GestureDetector(
                                   onTap: () {},
                                   child: workSansText(
-                                    text: "Privacy and Term",
+                                    text: "Privacy and Terms",
                                     color: const Color(0xFFFE6404),
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500,
@@ -145,7 +145,7 @@ class CreateAccountScreen extends StatelessWidget {
                                 },
                                 child: workSansText(
                                   text: "Login to your account",
-                                  color: const Color(0xFF0055D4),
+                                  color: const Color(0xFFFE6404),
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w500,
                                 ),

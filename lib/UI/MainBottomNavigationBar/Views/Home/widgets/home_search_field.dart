@@ -9,10 +9,16 @@ class HomeSearchField extends StatelessWidget {
     super.key,
     required this.searchController,
     this.hintText,
+    this.onChanged,
+    this.onprefixIconTap,
+    this.onSuffixIconTap,
   });
 
   final TextEditingController searchController;
   final String? hintText;
+  final void Function(String)? onChanged;
+  final VoidCallback? onprefixIconTap;
+  final VoidCallback? onSuffixIconTap;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +43,9 @@ class HomeSearchField extends StatelessWidget {
           hintColor: const Color(0xFFA0A0A0),
           isShowSuffixIcon: true,
           suffixIcon: Icons.search,
+          onChanged: onChanged,
+          onprefixIconTap: onprefixIconTap,
+          onSuffixIconTap: onSuffixIconTap,
         ),
       ),
     );

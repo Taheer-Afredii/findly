@@ -1,4 +1,3 @@
-import 'package:findly/UI/Auth/PhotoGrapherScreen/photo_grapher_screen.dart';
 import 'package:findly/UI/Auth/StudentScreen/student_screen.dart';
 import 'package:findly/UI/Auth/logInScreen/log_in_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/main_bottom_navigationbar.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../UI/Auth/AgentScreen/agent_screen.dart';
 import '../UI/Auth/ChooseRoleScreen/choose_role_screen.dart';
 import '../UI/Auth/CreateAccountScreen/create_account_screen.dart';
+import '../UI/Auth/PhotoGrapherScreen/photographer_screen.dart';
 import '../UI/MainBottomNavigationBar/Views/Chats/chat_screen.dart';
 
 class AppRoutes {
