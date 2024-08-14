@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../../../../Core/Constant/assets_constant.dart';
 import '../../../../../../../Core/Constant/colors.dart';
@@ -59,10 +60,15 @@ class ShareWidget extends StatelessWidget {
               fontSize: 18.sp,
               fontWeight: FontWeight.w500,
               color: blackColor),
-          Image.asset(
-            share,
-            height: 24.h,
-            width: 24.w,
+          GestureDetector(
+            onTap: () {
+              Share.share("Accommodation");
+            },
+            child: Image.asset(
+              share,
+              height: 24.h,
+              width: 24.w,
+            ),
           ),
         ],
       ),

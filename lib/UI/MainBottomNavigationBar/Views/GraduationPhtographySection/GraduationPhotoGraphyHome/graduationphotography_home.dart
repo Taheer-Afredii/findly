@@ -53,6 +53,7 @@ class GraduationphotographyHome extends StatelessWidget {
                               return GestureDetector(
                                 onTap: () {
                                   Get.to(() => PhotographerDetails(
+                                        index: index,
                                         isBookMarked:
                                             model.isBookmarkedList[index],
                                       ));

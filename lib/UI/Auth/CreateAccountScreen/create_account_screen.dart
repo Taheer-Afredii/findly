@@ -1,7 +1,9 @@
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/app_routes.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/PrivacyAndTerms/privacy_and_terms.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
 
 import '../../../Core/Constant/colors.dart';
 import '../../../Core/Constant/text_constant.dart';
@@ -119,7 +121,9 @@ class CreateAccountScreen extends StatelessWidget {
                                 ),
                                 SizedBox(width: 5.w),
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.to(() => const PrivacyAndTerms());
+                                  },
                                   child: workSansText(
                                     text: "Privacy and Terms",
                                     color: const Color(0xFFFE6404),

@@ -1,3 +1,4 @@
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/Reviews/reviews_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../Core/Custom/pick_image.dart';
@@ -24,16 +25,6 @@ class ProfileViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void toggleWifiChecked() {
-    isWifiChecked = !isWifiChecked;
-    notifyListeners();
-  }
-
-  void toggleTransportChecked() {
-    isTranportChecked = !isTranportChecked;
-    notifyListeners();
-  }
-
   void setRating(double value) {
     rating = value;
     notifyListeners();
@@ -54,5 +45,27 @@ class ProfileViewmodel extends ChangeNotifier {
       addPhotoGraphyGigPic = value;
       notifyListeners();
     });
+  }
+
+  String? accomodationPic;
+
+  void setAccomodationPic() {
+    ImagePickerUtil.pickImage().then((String? value) {
+      accomodationPic = value;
+      notifyListeners();
+    });
+  }
+
+  String myReviewSelectedButton = "New";
+  void setMyReviewSelectedButton(String value) {
+    myReviewSelectedButton = value;
+    notifyListeners();
+  }
+
+  //is review expended
+
+  void toggleMyReviewExpend(int index) {
+    myReviewList[index].isExpanded = !myReviewList[index].isExpanded;
+    notifyListeners();
   }
 }

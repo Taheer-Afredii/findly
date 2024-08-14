@@ -2,6 +2,7 @@ import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommoadtionFilter/widget/filter_all_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:stepper_list_view/stepper_list_view.dart';
 
@@ -161,7 +162,9 @@ class _AccommodationFilterScreenState extends State<AccommodationFilterScreen> {
                       SizedBox(height: 27.h),
                       AppButton(
                         width: 300.w,
-                        onTap: () {},
+                        onTap: () {
+                          Get.back();
+                        },
                         text: "Apply",
                         buttonColor: secondaryColor,
                       ),
@@ -172,7 +175,6 @@ class _AccommodationFilterScreenState extends State<AccommodationFilterScreen> {
               }),
             ),
           ),
-        
         ],
       )),
     );

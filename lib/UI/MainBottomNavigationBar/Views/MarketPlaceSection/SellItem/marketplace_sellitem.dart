@@ -26,125 +26,175 @@ class MarketplaceSellitem extends StatelessWidget {
         child: Stack(
           children: [
             CustomAuthAppBar2(text: "Sell Item", width: 102.42.w),
-            WhiteContainer(
-                topPadding: 117.h,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 34.w,
-                  ),
+            Consumer<MarketplaceSellitemViewmodel>(
+                builder: (context, model, child) {
+              return WhiteContainer(
+                  topPadding: 117.h,
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(height: 20.h),
-                        Row(
-                          children: [
-                            workSansText(
-                              text: "Photos: 0/10",
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xFF112022),
-                            ),
-                            SizedBox(width: 4.w),
-                            workSansText(
-                              text: "Choose the cover photo first",
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xFF999B9B),
-                            ),
-                          ],
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 34.w),
+                          child: Row(
+                            children: [
+                              workSansText(
+                                text:
+                                    "Photos: ${model.sellItemPics.isEmpty ? 0 : model.sellItemPics.length}/3",
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF112022),
+                              ),
+                              SizedBox(width: 4.w),
+                              workSansText(
+                                text: "Choose the cover photo first",
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF999B9B),
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(height: 12.26.h),
-                        CustomDottedBorder(
-                          width: 1.sw,
-                          height: 158.74.w,
-                          borderColor: primaryColor,
-                          containercolor: primaryColor.withOpacity(0.18),
-                          buttonColor: primaryColor,
-                          text: "Add Photos",
-                          textColor: primaryColor,
-                          imagePath: context
-                              .watch<MarketplaceSellitemViewmodel>()
-                              .sellItemPic,
-                          onTap: () {
-                            context
-                                .read<MarketplaceSellitemViewmodel>()
-                                .setSellItemPic();
-                          },
-                        ),
+                        model.sellItemPics.isEmpty
+                            ? Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 34.w),
+                                child: CustomDottedBorder2(
+                                  height: 158.74.w,
+                                  borderColor: primaryColor,
+                                  containercolor:
+                                      primaryColor.withOpacity(0.18),
+                                  buttonColor: primaryColor,
+                                  text: "Add Photos",
+                                  textColor: primaryColor,
+                                  onTap: () {
+                                    context
+                                        .read<MarketplaceSellitemViewmodel>()
+                                        .setSellItemPic();
+                                  },
+                                ),
+                              )
+                            : Flexible(
+                                fit: FlexFit.loose,
+                                child: SizedBox(
+                                  height: 158.74.w,
+                                  child: ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: model.sellItemPics.length,
+                                      scrollDirection: Axis.horizontal,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 34.w),
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: EdgeInsets.only(right: 8.w),
+                                          child: CustomDottedBorder2(
+                                            height: 158.74.w,
+                                            borderColor: primaryColor,
+                                            containercolor:
+                                                primaryColor.withOpacity(0.18),
+                                            buttonColor: primaryColor,
+                                            text: "Add Photos",
+                                            textColor: primaryColor,
+                                            imagePath:
+                                                model.sellItemPics[index],
+                                            onEdit: () {
+                                              model.editImage(index);
+                                            },
+                                            onRemove: () {
+                                              model.removeImage(index);
+                                            },
+                                          ),
+                                        );
+                                      }),
+                                ),
+                              ),
                         SizedBox(height: 18.h),
-                        workSansText(
-                            text: "Title",
-                            color: const Color(0xFF1E1E1E),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500),
-                        SizedBox(height: 10.h),
-                        CustomTextField2(
-                          hintText: "Enter",
-                          controller: titleController,
-                        ),
-                        SizedBox(height: 18.h),
-                        workSansText(
-                            text: "Price",
-                            color: const Color(0xFF1E1E1E),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500),
-                        SizedBox(height: 10.h),
-                        CustomTextField2(
-                          hintText: "Enter Price",
-                          controller: priceController,
-                        ),
-                        SizedBox(height: 18.h),
-                        workSansText(
-                            text: "Category",
-                            color: const Color(0xFF1E1E1E),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500),
-                        SizedBox(height: 10.h),
-                        CustomDropDown(
-                            hinttext: "Choose Category", onChanged: (val) {}),
-                        SizedBox(height: 18.h),
-                        workSansText(
-                            text: "Condition",
-                            color: const Color(0xFF1E1E1E),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500),
-                        SizedBox(height: 10.h),
-                        CustomDropDown(
-                            hinttext: "Select Condition", onChanged: (val) {}),
-                        SizedBox(height: 18.h),
-                        workSansText(
-                            text: "Description",
-                            color: const Color(0xFF1E1E1E),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500),
-                        SizedBox(height: 10.h),
-                        CustomTextField2(
-                          maxLines: 5,
-                          hintText: descriptionHint,
-                          controller: titleController,
-                        ),
-                        SizedBox(height: 18.h),
-                        workSansText(
-                            text: "Where are you selling this item?",
-                            color: const Color(0xFF1E1E1E),
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500),
-                        SizedBox(height: 10.h),
-                        CustomDropDown(hinttext: "UJ APK", onChanged: (val) {}),
-                        SizedBox(height: 62.h),
-                        AppButton(
-                          onTap: () {
-                            Get.to(() => const MarketplaceSubmitlisting());
-                          },
-                          text: "Publish",
-                          buttonColor: secondaryColor,
-                        ),
-                        SizedBox(height: 21.h),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 34.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              workSansText(
+                                  text: "Title",
+                                  color: const Color(0xFF1E1E1E),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500),
+                              SizedBox(height: 10.h),
+                              CustomTextField2(
+                                hintText: "Enter",
+                                controller: titleController,
+                              ),
+                              SizedBox(height: 18.h),
+                              workSansText(
+                                  text: "Price",
+                                  color: const Color(0xFF1E1E1E),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500),
+                              SizedBox(height: 10.h),
+                              CustomTextField2(
+                                hintText: "Enter Price",
+                                controller: priceController,
+                              ),
+                              SizedBox(height: 18.h),
+                              workSansText(
+                                  text: "Category",
+                                  color: const Color(0xFF1E1E1E),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500),
+                              SizedBox(height: 10.h),
+                              CustomDropDown(
+                                  hinttext: "Choose Category",
+                                  onChanged: (val) {}),
+                              SizedBox(height: 18.h),
+                              workSansText(
+                                  text: "Condition",
+                                  color: const Color(0xFF1E1E1E),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500),
+                              SizedBox(height: 10.h),
+                              CustomDropDown(
+                                  hinttext: "Select Condition",
+                                  onChanged: (val) {}),
+                              SizedBox(height: 18.h),
+                              workSansText(
+                                  text: "Description",
+                                  color: const Color(0xFF1E1E1E),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500),
+                              SizedBox(height: 10.h),
+                              CustomTextField2(
+                                maxLines: 5,
+                                hintText: descriptionHint,
+                                controller: titleController,
+                              ),
+                              SizedBox(height: 18.h),
+                              workSansText(
+                                  text: "Where are you selling this item?",
+                                  color: const Color(0xFF1E1E1E),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500),
+                              SizedBox(height: 10.h),
+                              CustomDropDown(
+                                  hinttext: "UJ APK", onChanged: (val) {}),
+                              SizedBox(height: 62.h),
+                              AppButton(
+                                onTap: () {
+                                  Get.to(
+                                      () => const MarketplaceSubmitlisting());
+                                },
+                                text: "Publish",
+                                buttonColor: secondaryColor,
+                              ),
+                              SizedBox(height: 21.h),
+                            ],
+                          ),
+                        )
                       ],
                     ),
-                  ),
-                ))
+                  ));
+            })
           ],
         ),
       ),

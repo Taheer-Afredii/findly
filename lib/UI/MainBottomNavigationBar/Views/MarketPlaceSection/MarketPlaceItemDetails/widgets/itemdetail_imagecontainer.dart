@@ -1,6 +1,10 @@
-import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
+import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Gallery/gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import '../../../../../../Core/Constant/colors.dart';
 
 class ItemdetailImagecontainer extends StatelessWidget {
   const ItemdetailImagecontainer(
@@ -30,20 +34,26 @@ class ItemdetailImagecontainer extends StatelessWidget {
                       color: Colors.white),
                 ),
               ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 310.w, top: 120.h),
-                  child: CircleContainer(
-                    height: 27.h,
-                    width: 27.w,
-                    color: Colors.white.withOpacity(0.5),
-                    child: Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: Colors.white,
-                      size: 15.sp,
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => const Gallery());
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 155.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 6.h, horizontal: 10.w),
+                  decoration: BoxDecoration(
+                    color: whiteColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(10.r),
+                      bottomRight: Radius.circular(10.r),
                     ),
                   ),
+                  child: workSansText(
+                      text: "View Gallery",
+                      color: whiteColor,
+                      fontSize: 17.9.sp,
+                      fontWeight: FontWeight.w500),
                 ),
               ),
             ],

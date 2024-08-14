@@ -1,7 +1,5 @@
-import 'package:findly/UI/MainBottomNavigationBar/main_bottom_navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/route_manager.dart';
 
 import '../../../../Core/Constant/colors.dart';
 import '../../../../Core/Custom/app_button.dart';

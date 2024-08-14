@@ -1,12 +1,17 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
 import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
+import 'package:findly/Models/ammenities_model.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Chats/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../Models/accommodation_model.dart';
+import '../../../GraduationPhtographySection/PhotoGraphyReviewScreen/photography_reviewscreen.dart';
+import '../AccommodationHome/accomodation_viewmodel.dart';
 import 'Widgets/ammenities_footer_widget.dart';
 import 'Widgets/description_widgets.dart';
 import 'Widgets/heading_widgets.dart';
@@ -16,9 +21,11 @@ class OpenAccommodationListingScreen extends StatelessWidget {
   const OpenAccommodationListingScreen(
       {super.key,
       required this.accommodationModel,
+      required this.index,
       required this.isBookmarked});
   final AccommodationModel accommodationModel;
   final bool isBookmarked;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +33,16 @@ class OpenAccommodationListingScreen extends StatelessWidget {
         backgroundColor: whiteColor,
         body: Stack(
           children: [
-            ImageContainerWidget(
-              accommodationModel: accommodationModel,
-              onBookMarkTap: () {},
-              onNextTap: () {},
-              isBookMarked: isBookmarked,
-            ),
+            Consumer<AccomodationViewmodel>(builder: (context, model, child) {
+              return ImageContainerWidget(
+                accommodationModel: accommodationModel,
+                onBookMarkTap: () {
+                  model.toggleBookmark(index);
+                },
+                onNextTap: () {},
+                isBookMarked: model.isBookmarkedList[index],
+              );
+            }),
             WhiteContainer(
                 topPadding: 218.h,
                 child: Column(
@@ -71,76 +82,86 @@ class OpenAccommodationListingScreen extends StatelessWidget {
                             const SizedBox(height: 28),
                             const Divider(color: Color(0XFFE9E8E8)),
                             const SizedBox(height: 13),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 25.w),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                      child: AppButton(
-                                    height: 44.h,
-                                    text: "Ammenities",
-                                    textColor: whiteColor,
-                                    buttonColor: const Color(0xFFFF0066),
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    borderRadius: 6.34.r,
-                                    onTap: () {},
-                                  )),
-                                  SizedBox(width: 9.w),
-                                  Expanded(
-                                      child: AppButton(
-                                    height: 44.h,
-                                    text: "Reviews",
-                                    textColor: blackColor,
-                                    buttonColor: const Color(0xFF666666)
-                                        .withOpacity(0.1),
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    borderRadius: 6.34.r,
-                                    onTap: () {},
-                                  )),
-                                  SizedBox(width: 9.w),
-                                  Expanded(
-                                      child: AppButton(
-                                    height: 44.h,
-                                    text: "Ratings",
-                                    textColor: blackColor,
-                                    buttonColor: const Color(0xFF666666)
-                                        .withOpacity(0.1),
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    borderRadius: 6.34.r,
-                                    onTap: () {},
-                                  )),
-                                ],
-                              ),
-                            ),
+                            Consumer<AccomodationViewmodel>(
+                                builder: (context, model, child) {
+                              return Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 25.w),
+                                child: Row(
+                                  children: [
+                                    ...List.generate(
+                                      model.ammenitiesLabels.length,
+                                      (index) {
+                                        return Expanded(
+                                            child: Padding(
+                                          padding: EdgeInsets.only(right: 9.w),
+                                          child: AppButton(
+                                            height: 44.h,
+                                            text: model.ammenitiesLabels[index],
+                                            textColor:
+                                                model.ammenitiesvalues[index]
+                                                    ? whiteColor
+                                                    : blackColor,
+                                            buttonColor:
+                                                model.ammenitiesvalues[index]
+                                                    ? const Color(0xFFFF0066)
+                                                    : const Color(0xFF666666)
+                                                        .withOpacity(0.1),
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w500,
+                                            borderRadius: 6.34.r,
+                                            onTap: () {
+                                              if (model.ammenitiesLabels[
+                                                      index] ==
+                                                  "Reviews") {
+                                                Get.to(() =>
+                                                    const PhotographyReviewscreen());
+                                              }
+                                            },
+                                          ),
+                                        ));
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }),
                             SizedBox(height: 13.h),
                             const Divider(color: Color(0XFFE9E8E8)),
-                            SizedBox(height: 17.h),
-                            AmmenitiesWidget(
-                              image: wifi,
-                              imageHeight: 13.h,
-                              imageWidth: 13.w,
-                              text: "Wifi",
-                            ),
-                            SizedBox(height: 15.h),
-                            AmmenitiesWidget(
-                              image: transport,
-                              imageHeight: 10.11.h,
-                              imageWidth: 13.w,
-                              text: "Transport",
-                            ),
-                            SizedBox(height: 15.h),
-                            AmmenitiesWidget(
-                              image: gym,
-                              imageHeight: 10.11.h,
-                              imageWidth: 13.w,
-                              text: "Gym",
-                              isSeeAll: true,
-                              onSeeAllTap: () {},
-                            ),
-                            SizedBox(height: 17.h),
+                            // SizedBox(height: 17.h),
+                            Builder(builder: (context) {
+                              return Consumer<AccomodationViewmodel>(
+                                  builder: (context, model, child) {
+                                return ListView.builder(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: model.showAllAmmenities
+                                        ? ammenitiesList.length
+                                        : 3,
+                                    padding: EdgeInsets.only(top: 17.h),
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding: EdgeInsets.only(bottom: 15.h),
+                                        child: AmmenitiesWidget(
+                                          image: ammenitiesList[index].image,
+                                          imageHeight:
+                                              ammenitiesList[index].imageHeight,
+                                          imageWidth:
+                                              ammenitiesList[index].imageWidth,
+                                          text: ammenitiesList[index].text,
+                                          seeAllText: model
+                                              .seeAllAndSeeLessString(index),
+                                          isSeeAll:
+                                              model.isSellAndSeeLessShow(index),
+                                          onSeeAllTap: () {
+                                            model.toggleShowAllAmmenities();
+                                          },
+                                        ),
+                                      );
+                                    });
+                              });
+                            }),
+
                             const Divider(color: Color(0XFFE9E8E8)),
                             SizedBox(height: 18.h),
                             Padding(
@@ -165,23 +186,16 @@ class OpenAccommodationListingScreen extends StatelessWidget {
                             SizedBox(height: 20.h),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 25.w),
-                              child: MapButton(
-                                width: 1.sw,
+                              child: AppButton(
                                 height: 53.h,
-                                radius: 10.r,
-                                icon: send,
+                                onTap: () {
+                                  Get.to(ChatScreen());
+                                },
                                 text: "Send Message",
-                                fontColor: whiteColor,
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w500,
-                                iconHeight: 25.h,
-                                iconWidth: 25.w,
                                 buttonColor: const Color(0xFF8D5FD3),
-                                onTap: () {},
                               ),
                             ),
-                            SizedBox(height: 25.h),
-                            const FooterWidget(),
+
                             SizedBox(height: 25.h),
                           ],
                         ),

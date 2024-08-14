@@ -1,16 +1,17 @@
-import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/GraduationPhtographySection/PhotoGraphyReviewScreen/Widget/allreview_listview.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/MarketPlaceSubmitListing/marketplace_submitlisting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../Core/Constant/assets_constant.dart';
-import '../../../../../Core/Constant/text_constant.dart';
 import '../PhotoGrapherDetails/photographer_details.dart';
+import 'Widget/add_review_button.dart';
 import 'Widget/heading_rating_row.dart';
+import 'Widget/review_widget.dart';
 import 'photography_reviewscreen_viewmodel.dart';
 
 class PhotographyReviewscreen extends StatelessWidget {
@@ -37,7 +38,13 @@ class PhotographyReviewscreen extends StatelessWidget {
                       SizedBox(height: 24.w),
                       const Divider(color: Color(0xFFEFEFEF)),
                       SizedBox(height: 12.h),
-                      const AddReviewButton(),
+                      AddReviewButton(
+                        onTap: () {
+                          Get.dialog(
+                            AddReviewWidget(),
+                          );
+                        },
+                      ),
                       SizedBox(height: 35.h),
                       Flexible(
                         fit: FlexFit.loose,
@@ -65,30 +72,6 @@ class PhotographyReviewscreen extends StatelessWidget {
           })
         ],
       )),
-    );
-  }
-}
-
-class AddReviewButton extends StatelessWidget {
-  const AddReviewButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 42.h,
-      width: 131.w,
-      margin: EdgeInsets.only(left: 36.w),
-      decoration: BoxDecoration(
-          color: secondaryColor, borderRadius: BorderRadius.circular(5.14.r)),
-      child: Center(
-        child: workSansText(
-            text: "+ Add Review",
-            fontSize: 14.06.sp,
-            color: whiteColor,
-            fontWeight: FontWeight.w600),
-      ),
     );
   }
 }

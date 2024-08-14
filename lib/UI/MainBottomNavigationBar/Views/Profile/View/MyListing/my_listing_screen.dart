@@ -1,10 +1,20 @@
 import 'package:findly/Core/Constant/assets_constant.dart';
+import 'package:findly/Core/Constant/enum.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
+import 'package:findly/Models/listing_model.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/SellItem/marketplace_sellitem.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/AddAccommodation/add_accomodation_screen.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/AddPhotoGraphyGig/add_photgraphygig_screen.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/widgets/listing_accommodation_widget.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/widgets/listing_delete_popup.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/widgets/listing_marketplace_widget.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/widgets/listing_photographer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../Core/Constant/colors.dart';
 import '../../../Home/widgets/home_search_field.dart';
@@ -49,21 +59,57 @@ class MyListingScreen extends StatelessWidget {
                       Flexible(
                         fit: FlexFit.loose,
                         child: ListView.builder(
-                            padding: EdgeInsets.only(bottom: 20.h),
-                            itemCount: 5,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.only(bottom: 20.h),
-                                child: ListingListview(
-                                  image: hostelimage2,
-                                  location: "Westdene, Johannesburg",
-                                  price: "From R5000",
-                                  rating: "4.5",
-                                  status: "Available",
-                                ),
-                              );
-                            }),
+                          padding: EdgeInsets.symmetric(vertical: 24.h) +
+                              EdgeInsets.only(bottom: 50.h),
+                          itemCount: listingList.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            ListingModel data = listingList[index];
+                            return Padding(
+                              padding: EdgeInsets.only(bottom: 20.h),
+                              child: data.serviceType ==
+                                      ServiceType.accommodation
+                                  ? ListingAccommodationWidget(
+                                      index: index,
+                                      onDelete: () {
+                                        Get.dialog(ListingDeletePopup(
+                                          onDelete: () => Get.back(),
+                                        ));
+                                      },
+                                      onEdit: () {
+                                        Get.to(AddAccomodationScreen());
+                                      },
+                                    )
+                                  : data.serviceType == ServiceType.marketplace
+                                      ? ListingMarketplaceWidget(
+                                          index: index,
+                                          onDelete: () {
+                                            Get.dialog(ListingDeletePopup(
+                                              onDelete: () => Get.back(),
+                                            ));
+                                          },
+                                          onEdit: () {
+                                            Get.to(MarketplaceSellitem());
+                                          },
+                                        )
+                                      : data.serviceType ==
+                                              ServiceType.photography
+                                          ? ListingPhotographerWidget(
+                                              index: index,
+                                              onDelete: () {
+                                                Get.dialog(ListingDeletePopup(
+                                                  onDelete: () => Get.back(),
+                                                ));
+                                              },
+                                              onEdit: () {
+                                                Get.to(
+                                                    AddPhotgraphygigScreen());
+                                              },
+                                            )
+                                          : const SizedBox(),
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),

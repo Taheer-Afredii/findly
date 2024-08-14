@@ -25,10 +25,9 @@ class MarketPlaceTopItemGridView extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 159.h,
-        width: 158.w,
+        width: 160.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9.38.r),
-          border: Border.all(color: const Color(0xFFC6C5C5)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,6 +35,49 @@ class MarketPlaceTopItemGridView extends StatelessWidget {
             Stack(
               alignment: Alignment.topRight,
               children: [
+                Container(
+                  height: 159.h,
+                  width: 160.w,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9.38.r),
+                      border: const Border(
+                        right: BorderSide(
+                          color: Color(0xFFE9E9E9),
+                        ),
+                        left: BorderSide(
+                          color: Color(0xFFE9E9E9),
+                        ),
+                        bottom: BorderSide(
+                          color: Color(0xFFE9E9E9),
+                        ),
+                      )),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(height: 15.h),
+                      Padding(
+                        padding: EdgeInsets.only(left: 11.w),
+                        child: workSansText(
+                          text: model.text!,
+                          color: textColor,
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 11.w),
+                        child: workSansText(
+                          text: "Price R${model.price}",
+                          color: textColor,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 5.h)
+                    ],
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 0.h),
                   child: ClipRRect(
@@ -55,31 +97,56 @@ class MarketPlaceTopItemGridView extends StatelessWidget {
                     child: Icon(
                       isBookmarked ? Icons.favorite : Icons.favorite_border,
                       color: isBookmarked ? redColor : whiteColor,
-                      size: 17.sp,
+                      size: 20.sp,
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 10.h),
-            Padding(
-              padding: EdgeInsets.only(left: 11.w),
-              child: workSansText(
-                text: model.text!,
-                color: textColor,
-                fontSize: 10.sp,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 11.w),
-              child: workSansText(
-                text: "Price R${model.price}",
-                color: textColor,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+            // Container(
+            //   width: 160.w,
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.only(
+            //         bottomLeft: Radius.circular(9.38.r),
+            //         bottomRight: Radius.circular(9.38.r),
+            //       ),
+            //       border: const Border(
+            //         bottom: BorderSide(
+            //           color: Color(0xFFE9E9E9),
+            //         ),
+            //         left: BorderSide(
+            //           color: Color(0xFFE9E9E9),
+            //         ),
+            //         right: BorderSide(
+            //           color: Color(0xFFE9E9E9),
+            //         ),
+            //       )),
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       SizedBox(height: 10.h),
+            //       Padding(
+            //         padding: EdgeInsets.only(left: 11.w),
+            //         child: workSansText(
+            //           text: model.text!,
+            //           color: textColor,
+            //           fontSize: 10.sp,
+            //           fontWeight: FontWeight.w600,
+            //         ),
+            //       ),
+            //       Padding(
+            //         padding: EdgeInsets.only(left: 11.w),
+            //         child: workSansText(
+            //           text: "Price R${model.price}",
+            //           color: textColor,
+            //           fontSize: 14.sp,
+            //           fontWeight: FontWeight.w600,
+            //         ),
+            //       ),
+            //       SizedBox(height: 10.h)
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

@@ -1,9 +1,11 @@
+import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Gallery/gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
 
 import '../../../../../../../Core/Constant/colors.dart';
 import '../../../../../../../Models/accommodation_model.dart';
-import '../../../../../../Auth/Widgets/custom_auth_appbar.dart';
 
 class ImageContainerWidget extends StatelessWidget {
   const ImageContainerWidget({
@@ -31,53 +33,76 @@ class ImageContainerWidget extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding:
-            EdgeInsets.only(top: 62.h) + EdgeInsets.symmetric(horizontal: 25.w),
+        padding: EdgeInsets.only(top: 62.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(Icons.arrow_back, color: whiteColor)),
-                GestureDetector(
-                  onTap: onBookMarkTap,
-                  child: Icon(
-                    isBookMarked == false
-                        ? Icons.favorite_border_outlined
-                        : Icons.favorite,
-                    size: 25.sp,
-                    color: isBookMarked == false ? whiteColor : redColor,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(Icons.arrow_back, color: whiteColor)),
+                  GestureDetector(
+                    onTap: onBookMarkTap,
+                    child: Icon(
+                      isBookMarked == false
+                          ? Icons.favorite_border_outlined
+                          : Icons.favorite,
+                      size: 25.sp,
+                      color: isBookMarked == false ? whiteColor : redColor,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 36.h),
-            Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: onNextTap,
-                child: CircleContainer(
-                  height: 27.h,
-                  width: 27.w,
-                  color: const Color(0xFFFFFFFF).withOpacity(0.3),
-                  child: Center(
-                      child: Icon(
-                    Icons.arrow_forward_ios,
-                    color: whiteColor,
-                    size: 15.sp,
-                  )),
-                ),
+                ],
               ),
             ),
-            SizedBox(height: 50.h),
+            SizedBox(height: 58.h),
+            // Align(
+            //   alignment: Alignment.centerRight,
+            //   child: GestureDetector(
+            //     onTap: onNextTap,
+            //     child: CircleContainer(
+            //       height: 27.h,
+            //       width: 27.w,
+            //       color: const Color(0xFFFFFFFF).withOpacity(0.3),
+            //       child: Center(
+            //           child: Icon(
+            //         Icons.arrow_forward_ios,
+            //         color: whiteColor,
+            //         size: 15.sp,
+            //       )),
+            //     ),
+            //   ),
+            // ),
+            GestureDetector(
+              onTap: () {
+                Get.to(() => const Gallery());
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 10.w),
+                decoration: BoxDecoration(
+                  color: whiteColor.withOpacity(0.2),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(10.r),
+                    bottomRight: Radius.circular(10.r),
+                  ),
+                ),
+                child: workSansText(
+                    text: "View Gallery",
+                    color: whiteColor,
+                    fontSize: 17.9.sp,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+            SizedBox(height: 10.h),
             Container(
               height: 5.9.h,
               width: 109.w,
+              margin: EdgeInsets.symmetric(horizontal: 25.w),
               color: accommodationModel.status ?? false
                   ? const Color(0xFF12B347)
                   : secondaryColor,

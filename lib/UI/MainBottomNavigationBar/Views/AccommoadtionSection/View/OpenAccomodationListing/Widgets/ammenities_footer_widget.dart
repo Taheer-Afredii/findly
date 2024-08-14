@@ -42,6 +42,7 @@ class AmmenitiesWidget extends StatelessWidget {
     required this.text,
     this.onSeeAllTap,
     this.isSeeAll = false,
+    required this.seeAllText,
   });
   final double imageHeight;
   final double imageWidth;
@@ -49,6 +50,7 @@ class AmmenitiesWidget extends StatelessWidget {
   final String text;
   final VoidCallback? onSeeAllTap;
   final bool? isSeeAll;
+  final String seeAllText;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -72,7 +74,7 @@ class AmmenitiesWidget extends StatelessWidget {
               ? GestureDetector(
                   onTap: onSeeAllTap,
                   child: workSansText(
-                      text: "See all",
+                      text: seeAllText,
                       fontSize: 14.sp,
                       fontWeight: FontWeight.normal,
                       color: secondaryColor),

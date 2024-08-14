@@ -6,6 +6,7 @@ import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/profileviewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../Core/Custom/custom_textfield.dart';
@@ -162,7 +163,9 @@ class PersonalInformationScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 57.h),
                           AppButton(
-                            onTap: () {},
+                            onTap: () {
+                              Get.back();
+                            },
                             text: "Save Changes",
                           ),
                           SizedBox(height: 55.h),

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:findly/Core/Constant/assets_constant.dart';
 import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
@@ -9,6 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../Auth/Widgets/custom_auth_appbar.dart';
+import '../../../GraduationPhtographySection/PhotoGrapherDetails/photographer_details.dart';
+import '../../../GraduationPhtographySection/PhotoGraphyReviewScreen/photography_reviewscreen.dart';
 import '../../profileviewmodel.dart';
 
 class ReviewsScreen extends StatelessWidget {
@@ -17,149 +21,178 @@ class ReviewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlueContainer(
-        child: Stack(
-          children: [
-            CustomAuthAppBar2(
-              text: "My Reviews",
-              topPadding: 62.h,
-            ),
-            Consumer<ProfileViewmodel>(builder: (context, model, child) {
-              return WhiteContainer(
-                  topPadding: 117.h,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(height: 18.h),
-                      workSansText(
-                          height: 1.4.h,
-                          text: "${model.rating}",
-                          fontSize: 35.sp,
-                          fontWeight: FontWeight.w500,
-                          color: textColor),
-                      RatingBar.builder(
-                        initialRating: model.rating,
-                        minRating: 1,
-                        direction: Axis.horizontal,
-                        allowHalfRating: true,
-                        itemCount: 5,
-                        itemSize: 22.sp,
-                        itemPadding:
-                            const EdgeInsets.symmetric(horizontal: 0.0),
-                        itemBuilder: (context, _) => Icon(
-                          Icons.star_rate_rounded,
-                          color: const Color(0xFFF7B10D),
-                          size: 20.sp,
-                        ),
-                        onRatingUpdate: (rating) {
-                          print(rating);
-                          model.setRating(rating);
-                        },
-                      ),
-                      SizedBox(height: 6.h),
-                      workSansText(
-                        text: "based on 29 reviews",
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w500,
-                        color: textColor.withOpacity(0.6),
-                      ),
-                      SizedBox(height: 16.h),
-                      const Divider(
-                        color: Color(0XFFEFEFEF),
-                      ),
-                      SizedBox(height: 16.h),
-                      Container(
-                        height: 59.h,
-                        padding: EdgeInsets.all(7.r),
-                        margin: EdgeInsets.symmetric(horizontal: 26.w),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: primaryColor,
+      body: Consumer<ProfileViewmodel>(builder: (context, model, child) {
+        return BlueContainer(
+          child: Stack(
+            children: [
+              CustomAuthAppBar2(
+                text: "My Reviews",
+                topPadding: 62.h,
+              ),
+              Consumer<ProfileViewmodel>(builder: (context, model, child) {
+                return WhiteContainer(
+                    topPadding: 117.h,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(height: 18.h),
+                        workSansText(
+                            height: 1.4.h,
+                            text: "${model.rating}",
+                            fontSize: 35.sp,
+                            fontWeight: FontWeight.w500,
+                            color: textColor),
+                        RatingBar.builder(
+                          initialRating: model.rating,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemSize: 22.sp,
+                          itemPadding:
+                              const EdgeInsets.symmetric(horizontal: 0.0),
+                          itemBuilder: (context, _) => Icon(
+                            Icons.star_rate_rounded,
+                            color: const Color(0xFFF7B10D),
+                            size: 20.sp,
                           ),
-                          borderRadius: BorderRadius.circular(10.56.r),
+                          onRatingUpdate: (rating) {
+                            print(rating);
+                            model.setRating(rating);
+                          },
                         ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: AppButton(
-                                borderRadius: 6.34.r,
-                                buttonColor: primaryColor,
-                                onTap: () {},
-                                text: "New",
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
+                        SizedBox(height: 6.h),
+                        workSansText(
+                          text: "based on 29 reviews",
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                          color: textColor.withOpacity(0.6),
+                        ),
+                        SizedBox(height: 16.h),
+                        const Divider(
+                          color: Color(0XFFEFEFEF),
+                        ),
+                        SizedBox(height: 16.h),
+                        Container(
+                          height: 59.h,
+                          padding: EdgeInsets.all(7.r),
+                          margin: EdgeInsets.symmetric(horizontal: 26.w),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: primaryColor,
                             ),
-                            SizedBox(width: 11.w),
-                            Expanded(
-                              child: AppButton(
-                                borderRadius: 6.34.r,
-                                buttonColor: primaryColor.withOpacity(0.1),
-                                onTap: () {},
-                                text: "All",
-                                fontSize: 14.sp,
-                                textColor: blackColor,
-                                fontWeight: FontWeight.w500,
+                            borderRadius: BorderRadius.circular(10.56.r),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: AppButton(
+                                  borderRadius: 6.34.r,
+                                  buttonColor:
+                                      model.myReviewSelectedButton == "New"
+                                          ? primaryColor
+                                          : primaryColor.withOpacity(0.1),
+                                  onTap: () {
+                                    model.setMyReviewSelectedButton("New");
+                                  },
+                                  text: "New",
+                                  textColor:
+                                      model.myReviewSelectedButton == "New"
+                                          ? whiteColor
+                                          : blackColor,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            )
-                          ],
+                              SizedBox(width: 11.w),
+                              Expanded(
+                                child: AppButton(
+                                  borderRadius: 6.34.r,
+                                  buttonColor:
+                                      model.myReviewSelectedButton == "All"
+                                          ? primaryColor
+                                          : primaryColor.withOpacity(0.1),
+                                  onTap: () {
+                                    model.setMyReviewSelectedButton("All");
+                                  },
+                                  text: "All",
+                                  fontSize: 14.sp,
+                                  textColor:
+                                      model.myReviewSelectedButton == "All"
+                                          ? whiteColor
+                                          : blackColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      Flexible(
-                        fit: FlexFit.loose,
-                        child: ListView.builder(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 26.w, vertical: 30.h),
-                            shrinkWrap: true,
-                            itemCount: 5,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.only(bottom: 14.h),
-                                child: ReviewListview(
-                                    image: profile1,
-                                    name: "Chris Brown",
-                                    message:
-                                        "Excellent Photographer and very professional",
-                                    time: "8:00 AM",
-                                    messageNumber: "4.9",
-                                    onTap: () {}),
-                              );
-                            }),
-                      )
-                    ],
-                  ));
-            })
-          ],
-        ),
-      ),
+                        Flexible(
+                          fit: FlexFit.loose,
+                          child: ListView.builder(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 26.w, vertical: 30.h),
+                              shrinkWrap: true,
+                              itemCount: myReviewList.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.only(bottom: 14.h),
+                                  child: ReviewListview(
+                                      image: profile1,
+                                      name: myReviewList[index].name!,
+                                      message: myReviewList[index].review!,
+                                      time: myReviewList[index].time!,
+                                      rating: myReviewList[index].rating!,
+                                      isExpanded:
+                                          myReviewList[index].isExpanded,
+                                      onSeeMoreSeeLessTap: () {
+                                        model.toggleMyReviewExpend(index);
+                                      },
+                                      onTap: () {}),
+                                );
+                              }),
+                        )
+                      ],
+                    ));
+              })
+            ],
+          ),
+        );
+      }),
     );
   }
 }
 
 class ReviewListview extends StatelessWidget {
-  const ReviewListview({
+  ReviewListview({
     super.key,
     required this.image,
     required this.name,
     required this.message,
     required this.time,
-    required this.messageNumber,
+    required this.rating,
     required this.onTap,
+    required this.isExpanded,
+    required this.onSeeMoreSeeLessTap,
   });
   final String image;
   final String name;
   final String message;
   final String time;
-  final String messageNumber;
+  final String rating;
   final VoidCallback onTap;
+  final VoidCallback onSeeMoreSeeLessTap;
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 height: 48.h,
@@ -168,27 +201,42 @@ class ReviewListview extends StatelessWidget {
                     image: DecorationImage(image: AssetImage(image))),
               ),
               SizedBox(width: 16.w),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  workSansText(
-                    text: name,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(0XFF0F1828),
-                  ),
-                  SizedBox(height: 3.h),
-                  SizedBox(
-                    width: 200.w,
-                    child: workSansText(
+              Expanded(
+                flex: 18,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    workSansText(
+                      text: name,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0XFF0F1828),
+                    ),
+                    SizedBox(height: 3.h),
+                    workSansText2(
                       text: message,
+                      maxLines: isExpanded ? 100 : 1,
                       fontSize: 14.sp,
                       fontWeight: FontWeight.normal,
                       color: const Color(0XFFADB5BD),
                     ),
-                  ),
-                ],
+                    // SizedBox(height: 3.h),
+                    Align(
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: onSeeMoreSeeLessTap,
+                        child: workSansText2(
+                          text: isExpanded ? "See Less" : "See More",
+                          maxLines: 1,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.normal,
+                          color: const Color(0XFFFE6404),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const Spacer(),
               Column(
@@ -211,7 +259,7 @@ class ReviewListview extends StatelessWidget {
                       ),
                       SizedBox(width: 2.w),
                       workSansText(
-                        text: messageNumber,
+                        text: rating,
                         fontSize: 10.15.sp,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF363030),
@@ -222,7 +270,7 @@ class ReviewListview extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 16.h),
+          // SizedBox(height: 0.h),
           Divider(
             indent: 65.w,
             color: const Color(0XFFEFEFEF),
@@ -232,3 +280,14 @@ class ReviewListview extends StatelessWidget {
     );
   }
 }
+
+List<PhotoGraphyReviewModel> myReviewList = [
+  review1,
+  review2,
+  review3,
+  review4,
+  review5,
+  review6,
+  review7,
+  review8,
+];

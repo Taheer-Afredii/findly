@@ -51,11 +51,13 @@ class CustomAuthAppBar2 extends StatelessWidget {
     this.width,
     this.leftpadding,
     this.topPadding,
+    this.onTap,
   });
   final String text;
   final double? width;
   final double? leftpadding;
   final double? topPadding;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +68,10 @@ class CustomAuthAppBar2 extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
+            onTap: onTap ??
+                () {
+                  Navigator.pop(context);
+                },
             child: Icon(
               Icons.arrow_back,
               color: whiteColor,

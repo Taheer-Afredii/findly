@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../../../Core/Constant/assets_constant.dart';
 import '../../../../../../Core/Constant/colors.dart';
@@ -85,11 +86,16 @@ class ShareAndPriceRow extends StatelessWidget {
             fontSize: 16.sp,
             fontWeight: FontWeight.w500),
         const Spacer(),
-        Image.asset(
-          share2,
-          height: 20.h,
-          width: 18.w,
-          color: const Color(0XFFFF6600),
+        GestureDetector(
+          onTap: () {
+            Share.share("Check out this photographer on the TDE app");
+          },
+          child: Image.asset(
+            share2,
+            height: 20.h,
+            width: 18.w,
+            color: const Color(0XFFFF6600),
+          ),
         )
       ],
     );

@@ -70,6 +70,8 @@ class AccomodationScreen extends StatelessWidget {
                                       EdgeInsets.symmetric(horizontal: 28.h),
                                   child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
                                       padding: EdgeInsets.zero,
                                       itemCount: categories.length,
                                       itemBuilder: (context, index) {
@@ -77,11 +79,16 @@ class AccomodationScreen extends StatelessWidget {
                                           padding:
                                               EdgeInsets.only(right: 19.3.w),
                                           child: HomeCategoryHeadings(
+                                              isSelected: categories[index]
+                                                      .isSelected ??
+                                                  false,
                                               image: categories[index].image!,
                                               text: categories[index].text!,
                                               height: categories[index].height!,
                                               width: categories[index].width!,
-                                              onTap: () {}),
+                                              onTap: () {
+                                                model.onCategoryChanged(index);
+                                              }),
                                         );
                                       }),
                                 ),
@@ -109,9 +116,10 @@ class AccomodationScreen extends StatelessWidget {
                               AccommodationModel d = accomodationList[index];
                               return Padding(
                                 padding: EdgeInsets.only(bottom: 18.h),
-                                child: AccommodationListview(
+                                child: AccommodationListing(
                                   onTap: () {
                                     Get.to(() => OpenAccommodationListingScreen(
+                                          index: index,
                                           accommodationModel: d,
                                           isBookmarked:
                                               model.isBookmarkedList[index],

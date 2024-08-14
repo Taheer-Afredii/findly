@@ -11,7 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
+import '../../../../Models/accommodation_model.dart';
+import '../AccommoadtionSection/View/OpenAccomodationListing/open_accommodation_listing_screen.dart';
 import '../AccommoadtionSection/widgets/accommodation_listview.dart';
 import '../GraduationPhtographySection/GraduationPhotoGraphyHome/graduationphotography_home.dart';
 import 'widgets/home_appbar.dart';
@@ -141,19 +144,31 @@ class HomeScreen extends StatelessWidget {
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   shrinkWrap: true,
-                                  itemCount: 5,
+                                  itemCount: accomodationList.length,
                                   itemBuilder: (context, index) {
-                                    return AccomondationListview(
-                                      image: hostelimage2,
-                                      location: "Westdene, Johannesburg",
-                                      price: "From R5000",
-                                      rating: "4.5",
-                                      status: "Available",
-                                      isBookmarked:
-                                          model.isBookmarkedList[index],
-                                      onBookMarkTap: () {
-                                        model.toggleBookmark(index);
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Get.to(() =>
+                                            OpenAccommodationListingScreen(
+                                              index: index,
+                                              accommodationModel:
+                                                  accomodationList[index],
+                                              isBookmarked:
+                                                  model.isBookmarkedList[index],
+                                            ));
                                       },
+                                      child: AccomondationListview(
+                                        image: hostelimage2,
+                                        location: "Westdene, Johannesburg",
+                                        price: "From R5000",
+                                        rating: "4.5",
+                                        status: "Available",
+                                        isBookmarked:
+                                            model.isBookmarkedList[index],
+                                        onBookMarkTap: () {
+                                          model.toggleBookmark(index);
+                                        },
+                                      ),
                                     );
                                   },
                                 ),
@@ -198,7 +213,9 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(height: 15.h),
                                   HomeButton(
                                     height: 62.h,
-                                    onTap: () {},
+                                    onTap: () {
+                                      Share.share("Invite friend");
+                                    },
                                     buttonColor: const Color(0xFF00AA88)
                                         .withOpacity(0.15),
                                     textColor: const Color(0XFF00AA88),
@@ -208,7 +225,9 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(height: 15.h),
                                   HomeButton(
                                     height: 62.h,
-                                    onTap: () {},
+                                    onTap: () {
+                                      Share.share("Refer a LandLord");
+                                    },
                                     buttonColor: const Color(0xFFFF2A7F)
                                         .withOpacity(0.15),
                                     textColor: const Color(0XFFFF2A7F),

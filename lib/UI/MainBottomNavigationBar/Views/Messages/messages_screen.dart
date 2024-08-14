@@ -2,11 +2,15 @@ import 'package:findly/Core/Constant/assets_constant.dart';
 import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Chats/chat_screen.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Messages/messages_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
-import '../../../../Core/app_routes.dart';
 import '../../../Auth/Widgets/custom_auth_appbar.dart';
+import '../../bottomshett_viewmodel.dart';
 
 class MessagesScreen extends StatelessWidget {
   const MessagesScreen({super.key});
@@ -17,21 +21,26 @@ class MessagesScreen extends StatelessWidget {
       body: BlueContainer(
         child: Stack(
           fit: StackFit.loose,
+          alignment: Alignment.topCenter,
           children: [
+            // Padding(
+            //   padding: EdgeInsets.only(top: 62.h),
+            //   child: workSansText(
+            //     text: "Messages",
+            //     fontSize: 24.sp,
+            //     fontWeight: FontWeight.w500,
+            //     color: whiteColor,
+            //   ),
+            // ),
             CustomAuthAppBar2(
+              onTap: () {
+                context.read<BottomshettViewmodel>().onItemTapped(0);
+              },
               text: "Messages",
               leftpadding: 22.w,
               width: 90.w,
             ),
-            // Positioned(
-            //   top: 62.h,
-            //   child: SizedBox(
-            //     width: 357.w,
-            //     child: const CustomAuthAppBar(
-            //       text: "Messages",
-            //     ),
-            //   ),
-            // ),
+
             Positioned(
               top: 117.h,
               child: WhiteContainer(
@@ -43,11 +52,7 @@ class MessagesScreen extends StatelessWidget {
                     SizedBox(height: 24.h),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: MessagesTopContainer(
-                        padding: 23.w,
-                        text: "All",
-                        color: primaryColor,
-                      ),
+                      child: const MessagesTopContainer(),
                     ),
                     SizedBox(height: 15.h),
                     const Divider(
@@ -67,8 +72,9 @@ class MessagesScreen extends StatelessWidget {
                               padding: EdgeInsets.only(bottom: 20.h),
                               child: InboxMessageContainer(
                                 onTap: () {
-                                  Navigator.pushNamed(
-                                      context, AppRoutes.chatScreen);
+                                  // Navigator.pushNamed(
+                                  //     context, AppRoutes.chatScreen);
+                                  Get.to(() => ChatScreen());
                                 },
                                 image: profile1,
                                 name: "Bella",
@@ -211,43 +217,63 @@ class InboxMessageContainer extends StatelessWidget {
 }
 
 class MessagesTopContainer extends StatelessWidget {
-  const MessagesTopContainer(
-      {super.key, this.padding, required this.text, required this.color});
-  final double? padding;
-  final String text;
-  final Color color;
+  const MessagesTopContainer({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60.h,
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.56.r),
-        border: Border.all(color: primaryColor),
-      ),
-      child: Row(
-        children: [
-          Suggestioncontainer(
-            padding: 23.w,
-            text: "All",
-            color: primaryColor,
-            textColor: whiteColor,
-          ),
-          SizedBox(width: 6.w),
-          Suggestioncontainer(
-            text: "Campus Marketplace",
-            color: primaryColor.withOpacity(0.15),
-            textColor: blackColor,
-          ),
-          SizedBox(width: 6.w),
-          Suggestioncontainer(
-            text: "Accommodations",
-            color: primaryColor.withOpacity(0.15),
-            textColor: blackColor,
-          ),
-        ],
-      ),
-    );
+    return Consumer<MessagesViewmodel>(builder: (context, model, child) {
+      return Container(
+        height: 60.h,
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.56.r),
+          border: Border.all(color: primaryColor),
+        ),
+        child: Row(
+          children: [
+            ...List.generate(model.messagesLable.length, (index) {
+              return GestureDetector(
+                onTap: () {
+                  model.updateSelectedIndex(index);
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(right: 6.w),
+                  child: Suggestioncontainer(
+                    padding: index == 0 ? 23.w : null,
+                    text: model.messagesLable[index],
+                    color: model.messageValue[index]
+                        ? primaryColor
+                        : primaryColor.withOpacity(0.15),
+                    textColor:
+                        model.messageValue[index] ? whiteColor : blackColor,
+                  ),
+                ),
+              );
+            }),
+            // Suggestioncontainer(
+            //   padding: 23.w,
+            //   text: "All",
+            //   color: primaryColor.withOpacity(0.15),
+            //   textColor: blackColor,
+            // ),
+            // SizedBox(width: 6.w),
+            // Suggestioncontainer(
+            //   text: "Campus Marketplace",
+            //    color: primaryColor.withOpacity(0.15),
+            //   textColor: blackColor,
+            // ),
+            // SizedBox(width: 6.w),
+            // Suggestioncontainer(
+            //   text: "Accommodations",
+            //   color: primaryColor.withOpacity(0.15),
+            //   textColor: blackColor,
+            // ),
+          ],
+        ),
+      );
+    });
   }
 }
 

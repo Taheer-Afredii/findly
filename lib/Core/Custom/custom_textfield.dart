@@ -192,6 +192,7 @@ class SearchTextField extends StatelessWidget {
     this.onChanged,
     this.onprefixIconTap,
     this.onSuffixIconTap,
+    this.prefixIconColor,
   });
 
   final String hintText;
@@ -212,6 +213,7 @@ class SearchTextField extends StatelessWidget {
   final void Function(String)? onChanged;
   final VoidCallback? onprefixIconTap;
   final VoidCallback? onSuffixIconTap;
+  final Color? prefixIconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -231,7 +233,10 @@ class SearchTextField extends StatelessWidget {
                 onTap: onprefixIconTap,
                 child: Padding(
                   padding: EdgeInsets.all(8.sp),
-                  child: Icon(prefixicon ?? Icons.keyboard_arrow_down_rounded),
+                  child: Icon(
+                    prefixicon ?? Icons.keyboard_arrow_down_rounded,
+                    color: prefixIconColor,
+                  ),
                 ),
               )
             : null,

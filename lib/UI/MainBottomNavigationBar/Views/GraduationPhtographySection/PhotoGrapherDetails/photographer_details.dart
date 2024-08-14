@@ -5,19 +5,25 @@ import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Chats/chat_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/GraduationPhtographySection/PhotoGrapherDetails/widgets/topimage_container.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/GraduationPhtographySection/PhotoGraphyReviewScreen/photography_reviewscreen.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/widgets/report_listing_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
+import 'package:provider/provider.dart';
 
+import '../GraduationPhotoGraphyHome/photography_homeviewmodel.dart';
 import 'widgets/region_widgets.dart';
 import 'widgets/review_lastview.dart';
 import 'widgets/rows_and_container.dart';
 
 class PhotographerDetails extends StatefulWidget {
-  const PhotographerDetails({super.key, required this.isBookMarked});
+  const PhotographerDetails(
+      {super.key, required this.isBookMarked, required this.index});
   final bool isBookMarked;
+  final int index;
 
   @override
   State<PhotographerDetails> createState() => _PhotographerDetailsState();
@@ -58,11 +64,16 @@ class _PhotographerDetailsState extends State<PhotographerDetails> {
       body: PhotoGraphyContainer(
           child: Stack(
         children: [
-          PhotoGraphyTopImageContainer(
-            imageHeight: _imageHeight,
-            image: photography3,
-            isBookmarked: widget.isBookMarked,
-          ),
+          Consumer<PhotographyHomeviewmodel>(builder: (context, model, child) {
+            return PhotoGraphyTopImageContainer(
+              imageHeight: _imageHeight,
+              image: photography3,
+              isBookmarked: model.isBookmarkedList[widget.index],
+              onBookMarkTap: () {
+                model.toggleBookmark(widget.index);
+              },
+            );
+          }),
           WhiteContainer(
               topPadding: 218.h,
               child: Padding(
@@ -129,10 +140,20 @@ class _PhotographerDetailsState extends State<PhotographerDetails> {
                         },
                       ),
                       SizedBox(height: 25.h),
-                      AppButton(onTap: () {}, text: "Send Message"),
+                      AppButton(
+                          onTap: () {
+                            Get.to(() => ChatScreen());
+                          },
+                          text: "Send Message"),
                       SizedBox(height: 14.h),
                       AppButton(
-                          onTap: () {},
+                          onTap: () {
+                            Get.dialog(ReportListingPopup(
+                              onSubmit: () {
+                                Get.back();
+                              },
+                            ));
+                          },
                           text: "Report this Gig",
                           buttonColor: secondaryColor),
                     ],

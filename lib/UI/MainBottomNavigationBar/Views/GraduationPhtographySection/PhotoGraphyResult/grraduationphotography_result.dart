@@ -11,7 +11,7 @@ import '../../../../../Core/Custom/custom_drop_down.dart';
 import '../../../../Auth/Widgets/custom_auth_appbar.dart';
 import '../GraduationPhotoGraphyHome/graduationphotography_home.dart';
 import '../GraduationPhotoGraphyHome/photography_homeviewmodel.dart';
-import '../PhotoGrapherDetails/photographer_details.dart';
+import 'widget/photographer_resultdetail.dart';
 
 class GrraduationphotographyResult extends StatelessWidget {
   const GrraduationphotographyResult({super.key});
@@ -54,7 +54,8 @@ class GrraduationphotographyResult extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () {
-                                  Get.to(() => PhotographerDetails(
+                                  Get.to(() => PhotographerResultDetails(
+                                        index: index,
                                         isBookMarked:
                                             model.isBookmarkedResultList[index],
                                       ));

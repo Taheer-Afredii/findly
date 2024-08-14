@@ -1,5 +1,7 @@
+import 'package:findly/UI/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../Core/Constant/assets_constant.dart';
 import '../../../Core/Constant/colors.dart';
@@ -18,7 +20,8 @@ class AuthLogoWidget extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.pop(context);
+              // Navigator.pop(context);
+              Get.offAll(const SplashScreen(), transition: Transition.fadeIn);
             },
             child: Icon(
               Icons.arrow_back,

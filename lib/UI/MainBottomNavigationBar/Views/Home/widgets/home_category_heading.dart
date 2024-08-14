@@ -12,6 +12,7 @@ class HomeCategoryHeadings extends StatelessWidget {
     required this.width,
     this.textWidth,
     required this.onTap,
+    this.isSelected = false,
   });
   final String image;
   final String text;
@@ -19,6 +20,7 @@ class HomeCategoryHeadings extends StatelessWidget {
   final double width;
   final double? textWidth;
   final VoidCallback onTap;
+  final bool isSelected;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -31,6 +33,9 @@ class HomeCategoryHeadings extends StatelessWidget {
             decoration: BoxDecoration(
               color: const Color(0xFF00CCFF).withOpacity(0.12),
               borderRadius: BorderRadius.circular(12.r),
+              border: isSelected
+                  ? Border.all(color: const Color(0XFFFFFF00), width: 4.w)
+                  : null,
             ),
             child: Center(
               child: Image.asset(

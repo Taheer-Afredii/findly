@@ -4,8 +4,10 @@ import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/custom_textfield.dart';
 import 'package:findly/Core/app_routes.dart';
+import 'package:findly/UI/Auth/logInScreen/reset_password_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../Core/Custom/container_widget.dart';
 import '../Widgets/auth_logo_widget.dart';
@@ -70,11 +72,16 @@ class LogInScreen extends StatelessWidget {
                       SizedBox(height: 10.h),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: workSansText(
-                          text: "Reset Password",
-                          color: const Color(0xFFFE6404),
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.dialog(ResetPasswordPopup());
+                          },
+                          child: workSansText(
+                            text: "Reset Password",
+                            color: const Color(0xFFFE6404),
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                       SizedBox(height: 43.h),

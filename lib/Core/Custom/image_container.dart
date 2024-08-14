@@ -11,12 +11,12 @@ class ImageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 76.h,
-      width: 76.w,
+      height: height ?? 76.h,
+      width: width ?? 76.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(13.r),
-        image:
-            DecorationImage(image: AssetImage(hostelimage1), fit: BoxFit.cover),
+        image: DecorationImage(
+            image: AssetImage(image ?? hostelimage1), fit: BoxFit.cover),
       ),
     );
   }

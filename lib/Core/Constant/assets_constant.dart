@@ -35,6 +35,13 @@ String textbookimage = '$imagepath/textbookImage.png';
 String accountingtextbook = '$imagepath/accountingtextbook.png';
 String photography1 = '$imagepath/photography1.png';
 String photography2 = '$imagepath/phoyography2.png';
+String g1 = '$imagepath/g1.png';
+String g2 = '$imagepath/g2.png';
+String g3 = '$imagepath/g3.png';
+String g4 = '$imagepath/g4.png';
+String p1 = '$imagepath/p1.png';
+String p2 = '$imagepath/p2.png';
+String p3 = '$imagepath/p3.png';
 
 //*************Icons ************/
 

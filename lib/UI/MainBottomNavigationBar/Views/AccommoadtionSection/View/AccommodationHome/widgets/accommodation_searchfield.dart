@@ -31,15 +31,15 @@ class AccomodationSearchField extends StatelessWidget {
         ],
       ),
       child: SearchTextField(
-        hintText: hintText ?? "Search by Campus Area or Location",
+        hintText: hintText ?? "Search by Location",
         onChanged: onChanged,
         controller: searchController,
         hintColor: const Color(0xFFA0A0A0),
         isShowSuffixIcon: true,
         isShowPrefixIcon: true,
-        prefixicon: Icons.search,
-        suffixIcon: Icons.location_on_sharp,
-        suffixIconColor: const Color(0xFFF52D56),
+        prefixicon: Icons.location_on_sharp,
+        suffixIcon: Icons.search,
+        prefixIconColor: const Color(0xFFF52D56),
       ),
     );
   }
