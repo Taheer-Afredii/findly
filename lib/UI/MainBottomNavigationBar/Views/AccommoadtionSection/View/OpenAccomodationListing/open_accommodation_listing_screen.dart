@@ -1,4 +1,5 @@
 import 'package:findly/Core/Constant/colors.dart';
+import 'package:findly/Core/Constant/enum.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
@@ -189,7 +190,9 @@ class OpenAccommodationListingScreen extends StatelessWidget {
                               child: AppButton(
                                 height: 53.h,
                                 onTap: () {
-                                  Get.to(ChatScreen());
+                                  Get.to(ChatScreen(
+                                    serviceType: ServiceType.accommodation,
+                                  ));
                                 },
                                 text: "Send Message",
                                 buttonColor: const Color(0xFF8D5FD3),

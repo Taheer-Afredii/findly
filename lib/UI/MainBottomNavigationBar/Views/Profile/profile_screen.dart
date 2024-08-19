@@ -66,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                   color: blackColor,
                 ),
-                SizedBox(height: 35.h),
+                SizedBox(height: 25.h),
                 Expanded(
                     child: SizedBox(
                   width: 1.sw,
@@ -77,14 +77,14 @@ class ProfileScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          ProfileTileContainer(
+                          ProfileTileContainer2(
                             text: "Personal Information",
                             icon: person,
                             onTap: () {
                               Get.to(() => PersonalInformationScreen());
                             },
                           ),
-                          SizedBox(height: 15.h),
+                          SizedBox(height: 5.h),
                           ProfileTileContainer(
                             text: "Add Accommodation",
                             icon: circleplus,

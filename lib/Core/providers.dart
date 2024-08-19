@@ -14,6 +14,7 @@ import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/SellI
 import 'package:findly/UI/MainBottomNavigationBar/Views/Messages/messages_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/AddAccommodation/addaccommodation_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/AddPhotoGraphyGig/add_photographygig_viewmodel.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/my_listing_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/profileviewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/bottomshett_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -38,4 +39,5 @@ List<SingleChildWidget> providerList = [
   ChangeNotifierProvider(create: (_) => ChatViewmodel()),
   ChangeNotifierProvider(create: (_) => AddaccommodationViewmodel()),
   ChangeNotifierProvider(create: (_) => AddPhotographygigViewmodel()),
+  ChangeNotifierProvider(create: (_) => MyListingViewmodel()),
 ];

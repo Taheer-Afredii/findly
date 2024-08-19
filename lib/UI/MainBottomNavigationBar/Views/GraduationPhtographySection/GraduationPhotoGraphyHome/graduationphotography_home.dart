@@ -4,6 +4,7 @@ import 'package:findly/Core/Constant/assets_constant.dart';
 import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
+import 'package:findly/Models/toprated_photographer_model.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/GraduationPhtographySection/GraduationPhotoGraphyHome/photography_homeviewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/GraduationPhtographySection/PhotoGrapherDetails/photographer_details.dart';
@@ -78,7 +79,7 @@ class GraduationphotographyHome extends StatelessWidget {
                     child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 27.w),
                         child: GraduationphotographyHomeCustomDropDown(
-                            hinttext: "select",
+                            hinttext: "Select Region",
                             val: model.search,
                             onChanged: (val) {
                               log("value is $val");
@@ -137,21 +138,27 @@ class TopRatedPhotoGraphy extends StatelessWidget {
               workSans16Text(text: model!.name!),
               SizedBox(height: 5.h),
               workSansText(text: model!.price!, color: textColor),
-              Row(
-                children: [
-                  Image.asset(
-                    starfilled,
-                    height: 12.17.h,
-                    width: 13.19.w,
-                  ),
-                  SizedBox(width: 4.w),
-                  workSansText(
-                      text: model!.rating!,
+              model!.isRated ?? false
+                  ? workSansText(
+                      text: "Not rated yet",
                       fontSize: 12.17.sp,
                       fontWeight: FontWeight.w500,
-                      color: const Color(0xFF363030)),
-                ],
-              ),
+                      color: const Color(0xFF363030))
+                  : Row(
+                      children: [
+                        Image.asset(
+                          starfilled,
+                          height: 12.17.h,
+                          width: 13.19.w,
+                        ),
+                        SizedBox(width: 4.w),
+                        workSansText(
+                            text: model!.rating!,
+                            fontSize: 12.17.sp,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFF363030)),
+                      ],
+                    ),
             ],
           ),
           const Spacer(),
@@ -181,77 +188,3 @@ class TopRatedPhotoGraphy extends StatelessWidget {
     );
   }
 }
-
-class TopRatedPhotographerModel {
-  final String? name;
-  final String? price;
-  final String? rating;
-  final String? image;
-  TopRatedPhotographerModel({this.name, this.price, this.rating, this.image});
-}
-
-List<TopRatedPhotographerModel> topRatedPhotographer = [
-  TopRatedPhotographerModel(
-      name: "TDE Photography",
-      price: "From R800",
-      rating: "4.9",
-      image: photography1),
-  TopRatedPhotographerModel(
-      name: "XY Pictures",
-      price: "From R750",
-      rating: "5.0",
-      image: photography2),
-  TopRatedPhotographerModel(
-      name: "TDE Photography",
-      price: "From R800",
-      rating: "4.9",
-      image: photography1),
-  TopRatedPhotographerModel(
-      name: "XY Pictures",
-      price: "From R750",
-      rating: "5.0",
-      image: photography2),
-  TopRatedPhotographerModel(
-      name: "TDE Photography",
-      price: "From R800",
-      rating: "4.9",
-      image: photography1),
-  TopRatedPhotographerModel(
-      name: "XY Pictures",
-      price: "From R750",
-      rating: "5.0",
-      image: photography2),
-];
-
-List<TopRatedPhotographerModel> topRatedPhotographerresult = [
-  TopRatedPhotographerModel(
-      name: "TDE Photography",
-      price: "From R800",
-      rating: "4.9",
-      image: photography1),
-  TopRatedPhotographerModel(
-      name: "XY Pictures",
-      price: "From R750",
-      rating: "5.0",
-      image: photography2),
-  TopRatedPhotographerModel(
-      name: "TDE Photography",
-      price: "From R800",
-      rating: "4.9",
-      image: photography1),
-  TopRatedPhotographerModel(
-      name: "XY Pictures",
-      price: "From R750",
-      rating: "5.0",
-      image: photography2),
-  TopRatedPhotographerModel(
-      name: "TDE Photography",
-      price: "From R800",
-      rating: "4.9",
-      image: photography1),
-  TopRatedPhotographerModel(
-      name: "XY Pictures",
-      price: "From R750",
-      rating: "5.0",
-      image: photography2),
-];

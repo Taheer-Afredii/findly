@@ -8,6 +8,7 @@ import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/SellItem/marketplace_sellitem.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/AddAccommodation/add_accomodation_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/AddPhotoGraphyGig/add_photgraphygig_screen.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/my_listing_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/widgets/listing_accommodation_widget.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/widgets/listing_delete_popup.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/widgets/listing_marketplace_widget.dart';
@@ -15,6 +16,7 @@ import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/w
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../Core/Constant/colors.dart';
 import '../../../Home/widgets/home_search_field.dart';
@@ -26,109 +28,122 @@ class MyListingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlueContainer(
-        child: Stack(
-          fit: StackFit.loose,
-          children: [
-            Positioned(
-              top: 62.h,
-              child: SizedBox(
-                width: 1.sw,
-                child: const CustomAuthAppBar(text: "My Listings"),
-              ),
-            ),
-            WhiteContainer(
-              topPadding: 140.h,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 27.w),
+      body: Consumer<MyListingViewmodel>(builder: (context, model, child) {
+        return BlueContainer(
+          child: Stack(
+            fit: StackFit.loose,
+            children: [
+              Positioned(
+                top: 62.h,
                 child: SizedBox(
                   width: 1.sw,
-                  height: 0.87.sh,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(height: 52.h),
-                      workSansText(
-                        text: "Active Listings",
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w500,
-                        color: textColor,
-                      ),
-                      SizedBox(height: 15.h),
-                      Flexible(
-                        fit: FlexFit.loose,
-                        child: ListView.builder(
-                          padding: EdgeInsets.symmetric(vertical: 24.h) +
-                              EdgeInsets.only(bottom: 50.h),
-                          itemCount: listingList.length,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            ListingModel data = listingList[index];
-                            return Padding(
-                              padding: EdgeInsets.only(bottom: 20.h),
-                              child: data.serviceType ==
-                                      ServiceType.accommodation
-                                  ? ListingAccommodationWidget(
-                                      index: index,
-                                      onDelete: () {
-                                        Get.dialog(ListingDeletePopup(
-                                          onDelete: () => Get.back(),
-                                        ));
-                                      },
-                                      onEdit: () {
-                                        Get.to(AddAccomodationScreen());
-                                      },
-                                    )
-                                  : data.serviceType == ServiceType.marketplace
-                                      ? ListingMarketplaceWidget(
-                                          index: index,
-                                          onDelete: () {
-                                            Get.dialog(ListingDeletePopup(
-                                              onDelete: () => Get.back(),
-                                            ));
-                                          },
-                                          onEdit: () {
-                                            Get.to(MarketplaceSellitem());
-                                          },
-                                        )
-                                      : data.serviceType ==
-                                              ServiceType.photography
-                                          ? ListingPhotographerWidget(
-                                              index: index,
-                                              onDelete: () {
-                                                Get.dialog(ListingDeletePopup(
-                                                  onDelete: () => Get.back(),
-                                                ));
-                                              },
-                                              onEdit: () {
-                                                Get.to(
-                                                    AddPhotgraphygigScreen());
-                                              },
-                                            )
-                                          : const SizedBox(),
-                            );
-                          },
+                  child: const CustomAuthAppBar(text: "My Listings"),
+                ),
+              ),
+              WhiteContainer(
+                topPadding: 140.h,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 27.w),
+                  child: SizedBox(
+                    width: 1.sw,
+                    height: 0.87.sh,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(height: 52.h),
+                        workSansText(
+                          text: "Active Listings",
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w500,
+                          color: textColor,
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 15.h),
+                        Flexible(
+                          fit: FlexFit.loose,
+                          child: ListView.builder(
+                            padding: EdgeInsets.symmetric(vertical: 24.h) +
+                                EdgeInsets.only(bottom: 50.h),
+                            itemCount: listingList.length,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              ListingModel data = listingList[index];
+                              return Padding(
+                                padding: EdgeInsets.only(bottom: 20.h),
+                                child: data.serviceType ==
+                                        ServiceType.accommodation
+                                    ? ListingAccommodationWidget(
+                                        index: index,
+                                        onDelete: () {
+                                          Get.dialog(ListingDeletePopup(
+                                            onDelete: () {
+                                              model.onDelete(index);
+                                              Get.back();
+                                            },
+                                          ));
+                                        },
+                                        onEdit: () {
+                                          Get.to(AddAccomodationScreen());
+                                        },
+                                      )
+                                    : data.serviceType ==
+                                            ServiceType.marketplace
+                                        ? ListingMarketplaceWidget(
+                                            index: index,
+                                            onDelete: () {
+                                              Get.dialog(ListingDeletePopup(
+                                                onDelete: () {
+                                                  model.onDelete(index);
+                                                  Get.back();
+                                                },
+                                              ));
+                                            },
+                                            onEdit: () {
+                                              Get.to(MarketplaceSellitem());
+                                            },
+                                          )
+                                        : data.serviceType ==
+                                                ServiceType.photography
+                                            ? ListingPhotographerWidget(
+                                                index: index,
+                                                onDelete: () {
+                                                  Get.dialog(ListingDeletePopup(
+                                                    onDelete: () {
+                                                      model.onDelete(index);
+                                                      Get.back();
+                                                    },
+                                                  ));
+                                                },
+                                                onEdit: () {
+                                                  Get.to(
+                                                      AddPhotgraphygigScreen());
+                                                },
+                                              )
+                                            : const SizedBox(),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Positioned(
-                top: 114.h,
-                child: SizedBox(
-                  width: 1.sw,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 27.w),
-                    child: HomeSearchField(
-                        hintText: "Search", searchController: searchController),
-                  ),
-                )),
-          ],
-        ),
-      ),
+              Positioned(
+                  top: 114.h,
+                  child: SizedBox(
+                    width: 1.sw,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 27.w),
+                      child: HomeSearchField(
+                          hintText: "Search",
+                          searchController: searchController),
+                    ),
+                  )),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

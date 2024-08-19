@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 13.h),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25.w),
+                            padding: EdgeInsets.symmetric(horizontal: 15.w),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                                   image: marketplace,
                                   height: 33.h,
                                   width: 34.w,
-                                  textWidth: 75.w,
+                                  textWidth: 91.w,
                                   onTap: () {
                                     Get.to(() => MarketPlaceHome());
                                   },
@@ -97,13 +97,13 @@ class HomeScreen extends StatelessWidget {
                                   image: camera,
                                   height: 32.h,
                                   width: 36.w,
-                                  textWidth: 75.w,
+                                  textWidth: 91.w,
                                   onTap: () {
                                     Get.to(() => GraduationphotographyHome());
                                   },
                                 ),
                                 SizedBox(
-                                  width: 68.87.w,
+                                  width: 50.w,
                                 ),
                               ],
                             ),

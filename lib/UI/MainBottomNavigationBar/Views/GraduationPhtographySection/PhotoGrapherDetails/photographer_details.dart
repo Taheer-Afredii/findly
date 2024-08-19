@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:findly/Core/Constant/assets_constant.dart';
 import 'package:findly/Core/Constant/colors.dart';
+import 'package:findly/Core/Constant/enum.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
@@ -142,7 +143,8 @@ class _PhotographerDetailsState extends State<PhotographerDetails> {
                       SizedBox(height: 25.h),
                       AppButton(
                           onTap: () {
-                            Get.to(() => ChatScreen());
+                            Get.to(() => ChatScreen(
+                                serviceType: ServiceType.photography));
                           },
                           text: "Send Message"),
                       SizedBox(height: 14.h),

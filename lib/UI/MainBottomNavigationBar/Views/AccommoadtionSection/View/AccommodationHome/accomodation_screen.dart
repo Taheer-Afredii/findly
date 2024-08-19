@@ -134,6 +134,7 @@ class AccomodationScreen extends StatelessWidget {
                                   isMale: d.isMale,
                                   isUnix: d.isUnix,
                                   isBookmarked: model.isBookmarkedList[index],
+                                  isRated: d.isRated ?? false,
                                   onBookMarkTap: () {
                                     // model.setBookMarked(index);
                                     model.toggleBookmark(index);

@@ -4,6 +4,7 @@ import 'package:findly/UI/MainBottomNavigationBar/bottomshett_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../Core/Constant/assets_constant.dart';
@@ -76,11 +77,11 @@ class _MainBottomNavigationbarState extends State<MainBottomNavigationbar> {
                 items: [
                   BottomNavigationBarItem(
                     icon: Padding(
-                      padding: EdgeInsets.only(bottom: 5.h),
-                      child: Image.asset(
-                        home,
-                        width: 22,
-                        height: 22,
+                      padding: EdgeInsets.only(bottom: 4.h),
+                      child: SvgPicture.asset(
+                        homesvg,
+                        width: 18.w,
+                        height: 18.h,
                         color:
                             model.currentIndex == 0 ? primaryColor : blackColor,
                       ),
@@ -91,9 +92,9 @@ class _MainBottomNavigationbarState extends State<MainBottomNavigationbar> {
                     icon: Padding(
                       padding: EdgeInsets.only(bottom: 5.h),
                       child: Image.asset(
-                        message,
-                        width: 22.w,
-                        height: 22.h,
+                        message2,
+                        width: 19.35.w,
+                        height: 17.5.h,
                         color: model.currentIndex == 1 ? primaryColor : null,
                       ),
                     ),
@@ -114,10 +115,10 @@ class _MainBottomNavigationbarState extends State<MainBottomNavigationbar> {
                   BottomNavigationBarItem(
                     icon: Padding(
                       padding: EdgeInsets.only(bottom: 5.h),
-                      child: Image.asset(
-                        bperson,
-                        width: 16.w,
-                        height: 16.75.h,
+                      child: SvgPicture.asset(
+                        profilesvg,
+                        width: 18.w,
+                        height: 18.h,
                         color: model.currentIndex == 3 ? primaryColor : null,
                       ),
                     ),

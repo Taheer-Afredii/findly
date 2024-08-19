@@ -18,6 +18,7 @@ class AccommodationListing extends StatelessWidget {
     required this.onTap,
     required this.isBookmarked,
     required this.onBookMarkTap,
+    this.isRated = false,
   });
   final String image;
   final String location;
@@ -29,6 +30,7 @@ class AccommodationListing extends StatelessWidget {
   final bool isUnix;
   final VoidCallback onTap;
   final bool isBookmarked;
+  final bool isRated;
   final VoidCallback onBookMarkTap;
   @override
   Widget build(BuildContext context) {
@@ -84,13 +86,23 @@ class AccommodationListing extends StatelessWidget {
                             ),
 
                             const Spacer(),
-                            Icon(Icons.star, color: yelloColor, size: 14.sp),
-                            workSansText(
-                              text: rating,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12.sp,
-                              color: textColor,
-                            ),
+                            !isRated
+                                ? workSansText(
+                                    text: "Not rated yet",
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12.sp,
+                                    color: textColor,
+                                  )
+                                : Icon(Icons.star,
+                                    color: yelloColor, size: 14.sp),
+                            !isRated
+                                ? const SizedBox.shrink()
+                                : workSansText(
+                                    text: rating,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12.sp,
+                                    color: textColor,
+                                  )
                           ],
                         ),
                       ),

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../Core/Constant/colors.dart';
 import '../../../../../Core/Constant/text_constant.dart';
 import '../../../../../Core/Custom/container_widget.dart';
 import '../../../../Auth/Widgets/custom_auth_appbar.dart';
@@ -56,17 +55,7 @@ class MarketplaceSearchresult extends StatelessWidget {
                     SizedBox(height: 15.h),
                     Padding(
                       padding: EdgeInsets.only(left: 25.w, right: 25.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          workSans16Text(text: "35 Results"),
-                          workSansText(
-                              text: "See All",
-                              color: secondaryColor,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w500)
-                        ],
-                      ),
+                      child: workSans16Text(text: "35 Results"),
                     ),
                     SizedBox(height: 15.h),
                     Flexible(

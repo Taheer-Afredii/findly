@@ -1,10 +1,16 @@
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:findly/Core/Constant/assets_constant.dart';
+import 'package:findly/Core/Constant/enum.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
+import 'package:findly/Models/accommodation_model.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/OpenAccomodationListing/open_accommodation_listing_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Chats/chat_viewmodel.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/GraduationPhtographySection/PhotoGrapherDetails/photographer_details.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/MarketPlaceItemDetails/marketplace_itemdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +19,9 @@ import 'Widgets/messages_related_container.dart';
 import 'Widgets/sendbutton_and_textfield.dart';
 
 class ChatScreen extends StatelessWidget {
-  ChatScreen({super.key});
+  ChatScreen({super.key, this.serviceType});
+
+  final ServiceType? serviceType;
   final TextEditingController messageController = TextEditingController();
 
   @override
@@ -72,7 +80,31 @@ class ChatScreen extends StatelessWidget {
                                   ),
                                 ),
                               index == 0 || index == messages.length - 1
-                                  ? const MessageRelatedContainer()
+                                  ? MessageRelatedContainer(
+                                      onTap: () {
+                                        if (serviceType ==
+                                            ServiceType.photography) {
+                                          Get.to(const PhotographerDetails(
+                                            isBookMarked: false,
+                                            index: 0,
+                                          ));
+                                        } else if (serviceType ==
+                                            ServiceType.accommodation) {
+                                          Get.to(OpenAccommodationListingScreen(
+                                            accommodationModel:
+                                                accomodationList[0],
+                                            index: 0,
+                                            isBookmarked: false,
+                                          ));
+                                        } else if (serviceType ==
+                                            ServiceType.marketplace) {
+                                          Get.to(MarketplaceItemdetails(
+                                            isBookMarked: false,
+                                            index: 0,
+                                          ));
+                                        }
+                                      },
+                                    )
                                   : ChatScreenWidget(isme: isme, index: index),
                             ],
                           );

@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:findly/Core/Constant/assets_constant.dart';
+import 'package:findly/Core/Constant/enum.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
@@ -195,7 +196,9 @@ class _MarketplaceItemdetailsState extends State<MarketplaceItemdetails> {
                             padding: EdgeInsets.symmetric(horizontal: 40.w),
                             child: AppButton(
                               onTap: () {
-                                Get.to(ChatScreen());
+                                Get.to(ChatScreen(
+                                  serviceType: ServiceType.marketplace,
+                                ));
                               },
                               text: "Message Seller",
                               buttonColor: const Color(0xFF3771C8),

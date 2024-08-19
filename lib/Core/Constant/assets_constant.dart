@@ -71,6 +71,7 @@ String lock = '$iconpath/lock.png';
 String marketplace = '$iconpath/marketplace.png';
 String menu = '$iconpath/menu.png';
 String message = '$iconpath/message.png';
+String message2 = '$iconpath/use3.png';
 String notification = '$iconpath/notification.png';
 String notificationbell = '$iconpath/notificationbell.png';
 String notificationbell2 = '$iconpath/notificationbell2.png';

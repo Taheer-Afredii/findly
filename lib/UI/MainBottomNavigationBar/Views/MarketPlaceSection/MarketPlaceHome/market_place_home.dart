@@ -66,63 +66,66 @@ class MarketPlaceHome extends StatelessWidget {
                             SizedBox(height: 12.h),
                             Padding(
                               padding: EdgeInsets.only(right: 25.w),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ...List.generate(
-                                      marketPlaceCategoryList.length, (index) {
-                                    MarketplaceCategoryModel data =
-                                        marketPlaceCategoryList[index];
-                                    return Padding(
-                                      padding: EdgeInsets.only(
-                                          right: index == 0 ? 8.w : 0),
-                                      child: MarketplaceCategories(
-                                        isSelected: data.isSelected!,
-                                        text: data.title!,
-                                        image: data.icon!,
-                                        textWidth: data.textWidth!,
-                                        height: data.height!.h,
-                                        width: data.width!.w,
-                                        onTap: () {
-                                          model.onCategoryChanged(index);
-                                        },
-                                      ),
-                                    );
-                                  }),
-                                  // MarketplaceCategories(
-                                  //   text: "Textbooks",
-                                  //   image: textbook,
-                                  //   height: 34.h,
-                                  //   width: 31.63.w,
-                                  //   onTap: () {},
-                                  // ),
-                                  // SizedBox(width: 8.w),
-                                  // MarketplaceCategories(
-                                  //   text: "Calculators",
-                                  //   image: calculator,
-                                  //   height: 34.h,
-                                  //   width: 27.19.w,
-                                  //   textWidth: 75.w,
-                                  //   onTap: () {},
-                                  // ),
-                                  // MarketplaceCategories(
-                                  //   text: "Laptops",
-                                  //   image: laptop,
-                                  //   height: 33.h,
-                                  //   width: 40.w,
-                                  //   textWidth: 91.w,
-                                  //   onTap: () {},
-                                  // ),
-                                  // MarketplaceCategories(
-                                  //   text: "Stationary",
-                                  //   image: stationary,
-                                  //   height: 40.h,
-                                  //   width: 27.68.w,
-                                  //   textWidth: 75.w,
-                                  //   onTap: () {},
-                                  // ),
-                                ],
+                              child: SingleChildScrollView(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ...List.generate(
+                                        marketPlaceCategoryList.length,
+                                        (index) {
+                                      MarketplaceCategoryModel data =
+                                          marketPlaceCategoryList[index];
+                                      return Padding(
+                                        padding: EdgeInsets.only(
+                                            right: index == 0 ? 8.w : 0),
+                                        child: MarketplaceCategories(
+                                          isSelected: data.isSelected!,
+                                          text: data.title!,
+                                          image: data.icon!,
+                                          textWidth: data.textWidth!,
+                                          height: data.height!.h,
+                                          width: data.width!.w,
+                                          onTap: () {
+                                            model.onCategoryChanged(index);
+                                          },
+                                        ),
+                                      );
+                                    }),
+                                    // MarketplaceCategories(
+                                    //   text: "Textbooks",
+                                    //   image: textbook,
+                                    //   height: 34.h,
+                                    //   width: 31.63.w,
+                                    //   onTap: () {},
+                                    // ),
+                                    // SizedBox(width: 8.w),
+                                    // MarketplaceCategories(
+                                    //   text: "Calculators",
+                                    //   image: calculator,
+                                    //   height: 34.h,
+                                    //   width: 27.19.w,
+                                    //   textWidth: 75.w,
+                                    //   onTap: () {},
+                                    // ),
+                                    // MarketplaceCategories(
+                                    //   text: "Laptops",
+                                    //   image: laptop,
+                                    //   height: 33.h,
+                                    //   width: 40.w,
+                                    //   textWidth: 91.w,
+                                    //   onTap: () {},
+                                    // ),
+                                    // MarketplaceCategories(
+                                    //   text: "Stationary",
+                                    //   image: stationary,
+                                    //   height: 40.h,
+                                    //   width: 27.68.w,
+                                    //   textWidth: 75.w,
+                                    //   onTap: () {},
+                                    // ),
+                                  ],
+                                ),
                               ),
                             ),
                             //Top item text

@@ -59,6 +59,7 @@ class AccommodationModel {
   final bool isUnix;
   final bool? isBookmarked;
   final String? title;
+  final bool? isRated;
 
   AccommodationModel({
     this.image,
@@ -73,6 +74,7 @@ class AccommodationModel {
     this.isBookmarked = false,
     this.type,
     this.title,
+    this.isRated,
   });
 }
 
@@ -87,6 +89,7 @@ List<AccommodationModel> accomodationList = [
     isFemale: true,
     isBookmarked: false,
     type: "Accommodation",
+    isRated: false,
   ),
   AccommodationModel(
     image: hostelimage2,
@@ -98,6 +101,7 @@ List<AccommodationModel> accomodationList = [
     isUnix: true,
     isBookmarked: false,
     type: "Accommodation",
+    isRated: true,
   ),
   AccommodationModel(
     image: hostelimage3,
@@ -109,6 +113,7 @@ List<AccommodationModel> accomodationList = [
     isMale: true,
     isBookmarked: false,
     type: "Accommodation",
+    isRated: false,
   ),
 ];
 
