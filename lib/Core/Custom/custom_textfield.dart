@@ -193,6 +193,8 @@ class SearchTextField extends StatelessWidget {
     this.onprefixIconTap,
     this.onSuffixIconTap,
     this.prefixIconColor,
+    this.prefixiconPadding,
+    this.suffixiconPadding,
   });
 
   final String hintText;
@@ -214,6 +216,8 @@ class SearchTextField extends StatelessWidget {
   final VoidCallback? onprefixIconTap;
   final VoidCallback? onSuffixIconTap;
   final Color? prefixIconColor;
+  final EdgeInsets? prefixiconPadding;
+  final EdgeInsets? suffixiconPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -232,7 +236,7 @@ class SearchTextField extends StatelessWidget {
             ? GestureDetector(
                 onTap: onprefixIconTap,
                 child: Padding(
-                  padding: EdgeInsets.all(8.sp),
+                  padding: prefixiconPadding ?? EdgeInsets.all(8.sp),
                   child: Icon(
                     prefixicon ?? Icons.keyboard_arrow_down_rounded,
                     color: prefixIconColor,
@@ -244,7 +248,7 @@ class SearchTextField extends StatelessWidget {
             ? GestureDetector(
                 onTap: onSuffixIconTap,
                 child: Padding(
-                  padding: EdgeInsets.all(15.sp),
+                  padding: suffixiconPadding ?? EdgeInsets.all(15.sp),
                   child: Icon(suffixIcon ?? Icons.keyboard_arrow_down_rounded,
                       color: suffixIconColor),
                 ),

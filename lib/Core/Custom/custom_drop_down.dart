@@ -162,7 +162,7 @@ class CampusFriendHomeDropDown extends StatelessWidget {
           prefixIcon: Padding(
             padding: EdgeInsets.all(15.sp),
             child: Image.asset(
-              location,
+              locationIcon,
               height: 10.h,
               width: 6.27.w,
               color: const Color(0xFFFF6600),
@@ -228,7 +228,7 @@ class MarketPlaceHomeDropDown extends StatelessWidget {
         decoration: InputDecoration(
             prefixIcon: Padding(
                 padding: EdgeInsets.only(right: 5.w),
-                child: Image.asset(location,
+                child: Image.asset(locationIcon,
                     height: 20.h, width: 15.w, color: const Color(0xFFFF6600))),
             prefixIconConstraints:
                 BoxConstraints(minWidth: 0.w, minHeight: 0.h),

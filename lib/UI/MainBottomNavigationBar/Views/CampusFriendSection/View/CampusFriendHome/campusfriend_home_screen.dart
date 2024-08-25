@@ -135,7 +135,7 @@ class _CampusfriendHomeScreenState extends State<CampusfriendHomeScreen> {
                                 text: "Academic Year: 3rd",
                               ),
                               PostDetailWidget(
-                                icon: location,
+                                icon: locationIcon,
                                 text: "UJ APK",
                                 iconColor: const Color(0xFFFF6600),
                               ),

@@ -42,6 +42,7 @@ String g4 = '$imagepath/g4.png';
 String p1 = '$imagepath/p1.png';
 String p2 = '$imagepath/p2.png';
 String p3 = '$imagepath/p3.png';
+String image5 = '$imagepath/image5.png';
 
 //*************Icons ************/
 
@@ -121,9 +122,12 @@ String share2 = '$iconpath/share2.png';
 String send = '$iconpath/send.png';
 String pointlocation = '$iconpath/pointlocation.png';
 String sell = '$iconpath/sell.png';
-String location = '$iconpath/location.png';
+String locationIcon = '$iconpath/location.png';
 String locationoutlined = '$iconpath/location_outlined.png';
 String faculty = '$iconpath/faculty.png';
 String academicyear = '$iconpath/academicyear.png';
 String save = '$iconpath/save.png';
 String dollar = '$iconpath/dollar.png';
+String pricetag = '$iconpath/pricetag.png';
+String allround = '$iconpath/allround.png';
+String star2 = '$iconpath/star2.png';

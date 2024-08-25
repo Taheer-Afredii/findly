@@ -1,3 +1,5 @@
+import 'package:findly/Core/Constant/assets_constant.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/widgets/accommodation_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -72,45 +74,52 @@ class AccommodationListing extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Icon(
-                              Icons.location_on_outlined,
-                              color: secondaryColor,
-                              size: 20.sp,
+                            Image.asset(
+                              locationIcon,
+                              height: 17.81.h,
+                              width: 15.11.w,
+                              color: const Color(0xFFFF6600),
                             ),
-                            // SizedBox(width: 4.w),
+                            SizedBox(width: 4.w),
                             workSansText(
                               text: location,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                               fontSize: 15.sp,
                               color: textColor,
                             ),
 
-                            const Spacer(),
-                            !isRated
-                                ? workSansText(
-                                    text: "Not rated yet",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12.sp,
-                                    color: textColor,
-                                  )
-                                : Icon(Icons.star,
-                                    color: yelloColor, size: 14.sp),
-                            !isRated
-                                ? const SizedBox.shrink()
-                                : workSansText(
-                                    text: rating,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12.sp,
-                                    color: textColor,
-                                  )
+                            // const Spacer(),
+                            // !isRated
+                            //     ? workSansText(
+                            //         text: "Not rated yet",
+                            //         fontWeight: FontWeight.w500,
+                            //         fontSize: 12.sp,
+                            //         color: textColor,
+                            //       )
+                            //     : Icon(Icons.star,
+                            //         color: yelloColor, size: 14.sp),
+                            // !isRated
+                            //     ? const SizedBox.shrink()
+                            //     : workSansText(
+                            //         text: rating,
+                            //         fontWeight: FontWeight.w500,
+                            //         fontSize: 12.sp,
+                            //         color: textColor,
+                            //       )
                           ],
                         ),
                       ),
                       SizedBox(height: 5.h),
                       Padding(
-                        padding: EdgeInsets.only(left: 18.w),
+                        padding: EdgeInsets.only(left: 12.w),
                         child: Row(
                           children: [
+                            Image.asset(
+                              pricetag,
+                              height: 17.81.h,
+                              width: 15.11.w,
+                            ),
+                            SizedBox(width: 4.w),
                             workSansText(
                               text: "From ",
                               fontWeight: FontWeight.w500,
@@ -120,11 +129,11 @@ class AccommodationListing extends StatelessWidget {
                             workSansText(
                               text: price,
                               fontWeight: FontWeight.w600,
-                              fontSize: 16.sp,
+                              fontSize: 18.sp,
                               color: textColor,
                             ),
                             workSansText(
-                              text: "/month",
+                              text: " /month",
                               fontWeight: FontWeight.w500,
                               fontSize: 14.sp,
                               color: textColor,
@@ -134,17 +143,33 @@ class AccommodationListing extends StatelessWidget {
                       ),
                       SizedBox(height: 5.h),
                       Padding(
-                        padding: EdgeInsets.only(left: 18.w, right: 14.w),
+                        padding: EdgeInsets.only(left: 12.w, right: 14.w),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            workSansText(
-                              text: status ? "Available" : "Unavailable",
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14.sp,
-                              color: status
-                                  ? const Color(0xFF12B347)
-                                  : secondaryColor,
+                            Row(
+                              children: [
+                                status
+                                    ? AvailabeIcon(
+                                        height: 17.h,
+                                        width: 17.w,
+                                        iconSize: 14.sp,
+                                      )
+                                    : UnAvailableIcon(
+                                        height: 17.h,
+                                        width: 17.w,
+                                        iconSize: 14.sp,
+                                      ),
+                                SizedBox(width: 3.w),
+                                workSansText(
+                                  text: status ? "Available" : "Unavailable",
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14.sp,
+                                  color: status
+                                      ? const Color(0xFF12B347)
+                                      : secondaryColor,
+                                ),
+                              ],
                             ),
                             Container(
                               padding: EdgeInsets.all(8.sp),

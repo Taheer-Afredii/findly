@@ -101,7 +101,7 @@ class AccomodationScreen extends StatelessWidget {
                           child: workSansText(
                               text: model.searchText.isNotEmpty
                                   ? "240 Results"
-                                  : "Top Rated Accommodations",
+                                  : "Popular Accommodations",
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
                               color: textColor),

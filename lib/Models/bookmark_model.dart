@@ -32,6 +32,14 @@ List<BookMarkModel> bookMarkList2 = [
     serviceType: ServiceType.accommodation,
   ),
   BookMarkModel(
+    title: "TDE Photography",
+    location: "Westdene, Johannesburg",
+    price: "From R5000",
+    rating: "4.5",
+    image: hostelimage1,
+    serviceType: ServiceType.photography,
+  ),
+  BookMarkModel(
     title: "Accounting Textbook",
     location: "Westdene, Johannesburg",
     price: "From R5000",
@@ -40,11 +48,11 @@ List<BookMarkModel> bookMarkList2 = [
     serviceType: ServiceType.marketplace,
   ),
   BookMarkModel(
-    title: "TDE Photography",
     location: "Westdene, Johannesburg",
     price: "From R5000",
     rating: "4.5",
+    status: "Unavailable",
     image: hostelimage1,
-    serviceType: ServiceType.photography,
+    serviceType: ServiceType.accommodation,
   ),
 ];

@@ -2,7 +2,6 @@ import 'package:findly/Core/Constant/assets_constant.dart';
 import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
-import 'package:findly/Core/Custom/image_container.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/BookMarks/bookmark_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/GraduationPhtographySection/PhotoGrapherDetails/photographer_details.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +26,7 @@ class BookmarkPhotographyWidget extends StatelessWidget {
             ));
       },
       child: Container(
-        // height: 120.h,
-        padding: EdgeInsets.only(top: 12.w, left: 8.w, right: 8.w, bottom: 8.h),
+        height: 115.h,
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(12.r),
@@ -39,77 +37,46 @@ class BookmarkPhotographyWidget extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ImageContainer(
-              height: 91.h,
-              width: 85.w,
-              image: hostelimage3,
+            Container(
+              // height: 110.h,
+              width: 90.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(14.r),
+                  bottomLeft: Radius.circular(14.r),
+                ),
+                image: DecorationImage(
+                  image: AssetImage(image5),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-            SizedBox(width: 4.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 5.w),
+                  padding: EdgeInsets.only(left: 12.w),
                   child: SizedBox(
-                    width: 210.w,
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 155.w,
-                          child: workSansText(
-                            text: "TDE Photography",
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12.sp,
-                            color: blackColor,
-                          ),
-                        ),
-                        const Spacer(),
-                        Row(
-                          // mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Icon(
-                              Icons.star,
-                              color: yelloColor,
-                              size: 10.sp,
-                            ),
-                            SizedBox(width: 2.w),
-                            workSansText(
-                              text: "4.5",
-                              fontWeight: FontWeight.w500,
-                              fontSize: 8.sp,
-                              color: textColor,
-                            ),
-                          ],
-                        )
-                      ],
+                    width: 200.w,
+                    child: workSansText(
+                      text: "TDE Photography",
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14.sp,
+                      color: textColor,
                     ),
                   ),
                 ),
-                SizedBox(height: 6.h),
                 Padding(
-                  padding: EdgeInsets.only(left: 5.w),
-                  child: workSansText(
-                      text: "From R900",
-                      fontWeight: FontWeight.w500,
-                      fontSize: 12.sp,
-                      color: blackColor),
-                ),
-                SizedBox(height: 3.h),
-                Padding(
-                  padding: EdgeInsets.only(left: 5.w),
+                  padding: EdgeInsets.only(left: 12.w, top: 5.h),
                   child: Row(
                     children: [
-                      Icon(
-                        Icons.location_on_outlined,
-                        color: secondaryColor,
-                        size: 15.sp,
-                      ),
-                      SizedBox(width: 0.w),
+                      Image.asset(locationIcon, height: 14.h, width: 13.w),
+                      SizedBox(width: 4.w),
                       SizedBox(
                         width: 155.w,
                         child: workSansText(
-                          text: "Johnnesburg",
+                          text: "Johannesburg",
                           fontWeight: FontWeight.w500,
                           fontSize: 12.sp,
                           color: blackColor,
@@ -119,14 +86,69 @@ class BookmarkPhotographyWidget extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 5.h),
                 SizedBox(
                   width: 216.w,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 10.w),
+                            child: Row(
+                              children: [
+                                Image.asset(star2, height: 13.h, width: 15.w),
+                                SizedBox(width: 3.w),
+                                RichText(
+                                    text: TextSpan(
+                                  text: "4.5",
+                                  style: workSansTextStyle(
+                                      color: textColor,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500),
+                                  children: [
+                                    TextSpan(
+                                      text: " (67)",
+                                      style: workSansTextStyle(
+                                          color: textColor,
+                                          fontSize: 11.sp,
+                                          fontWeight: FontWeight.w300),
+                                    )
+                                  ],
+                                ))
+                                // const Spacer(),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 5.h),
+                          Padding(
+                            padding: EdgeInsets.only(left: 14.w),
+                            child: RichText(
+                                text: TextSpan(
+                              text: "From ",
+                              style: workSansTextStyle(
+                                  color: textColor,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400),
+                              children: [
+                                TextSpan(
+                                  text: "R500",
+                                  style: workSansTextStyle(
+                                      color: textColor,
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            )),
+                          ),
+                        ],
+                      ),
                       AppButton(
                         width: 68.w,
-                        height: 30.h,
+                        height: 32.h,
                         onTap: () {
                           model.removeItem(index);
                         },

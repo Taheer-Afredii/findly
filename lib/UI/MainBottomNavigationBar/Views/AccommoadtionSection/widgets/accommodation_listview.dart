@@ -1,6 +1,8 @@
 import 'package:findly/Core/Constant/assets_constant.dart';
+import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../Core/Constant/colors.dart';
@@ -64,22 +66,22 @@ class AccomondationListview extends StatelessWidget {
                     children: [
                       SizedBox(height: 5.h),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.w),
+                        padding: EdgeInsets.only(left: 6.w),
                         child: Row(
                           children: [
                             Image.asset(
-                              locationoutlined,
-                              height: 10.7.h,
-                              width: 7.38.w,
+                              locationIcon,
+                              height: 12.91.h,
+                              width: 10.94.w,
                               // color: secondaryColor,
                             ),
                             SizedBox(width: 4.w),
                             SizedBox(
-                              width: 118.w,
+                              width: 130.w,
                               child: workSansText(
                                 text: location,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 9.sp,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 11.sp,
                                 color: textColor,
                               ),
                             )
@@ -88,33 +90,73 @@ class AccomondationListview extends StatelessWidget {
                       ),
                       SizedBox(height: 5.h),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 11.w),
-                        child: workSansText(
-                          text: price,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 8.sp,
-                          color: textColor,
+                        padding: EdgeInsets.only(left: 6.w),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              pricetag,
+                              height: 12.91.h,
+                              width: 10.94.w,
+                              // color: secondaryColor,
+                            ),
+                            SizedBox(width: 4.w),
+                            RichText(
+                                text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "From ",
+                                  style: GoogleFonts.workSans(
+                                    color: const Color(0xFF333333),
+                                    fontSize: 8.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: price,
+                                  style: GoogleFonts.workSans(
+                                    color: textColor,
+                                    fontSize: 11.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: " /month",
+                                  style: GoogleFonts.workSans(
+                                    color: const Color(0xFF333333),
+                                    fontSize: 8.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            )),
+                          ],
                         ),
                       ),
                       SizedBox(height: 5.h),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 11.w),
+                        padding: EdgeInsets.only(left: 6.w),
                         child: Row(
                           children: [
+                            status == "Available"
+                                ? const AvailabeIcon()
+                                : const UnAvailableIcon(),
+                            SizedBox(width: 4.w),
                             workSansText(
                               text: status,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 8.sp,
-                              color: const Color(0XFF12B347),
-                            ),
-                            const Spacer(),
-                            Icon(Icons.star, color: yelloColor, size: 12.sp),
-                            workSansText(
-                              text: rating,
                               fontWeight: FontWeight.w500,
                               fontSize: 8.sp,
-                              color: textColor,
+                              color: status == "Available"
+                                  ? const Color(0XFF12B347)
+                                  : secondaryColor,
                             ),
+                            // const Spacer(),
+                            // Icon(Icons.star, color: yelloColor, size: 12.sp),
+                            // workSansText(
+                            //   text: rating,
+                            //   fontWeight: FontWeight.w500,
+                            //   fontSize: 8.sp,
+                            //   color: textColor,
+                            // ),
                           ],
                         ),
                       ),
@@ -157,6 +199,59 @@ class AccomondationListview extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class UnAvailableIcon extends StatelessWidget {
+  const UnAvailableIcon({
+    super.key,
+    this.height,
+    this.width,
+    this.iconSize,
+  });
+
+  final double? height;
+  final double? width;
+  final double? iconSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleContainer(
+      height: height ?? 12.5.h,
+      width: width ?? 12.5.w,
+      color: secondaryColor,
+      child: Icon(
+        Icons.close,
+        color: whiteColor,
+        size: iconSize ?? 11.sp,
+      ),
+    );
+  }
+}
+
+class AvailabeIcon extends StatelessWidget {
+  const AvailabeIcon({
+    super.key,
+    this.height,
+    this.width,
+    this.iconSize,
+  });
+  final double? height;
+  final double? width;
+  final double? iconSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleContainer(
+      height: height ?? 12.5.h,
+      width: width ?? 12.5.w,
+      color: const Color(0XFF00D455),
+      child: Icon(
+        Icons.check,
+        color: whiteColor,
+        size: iconSize ?? 8.sp,
       ),
     );
   }

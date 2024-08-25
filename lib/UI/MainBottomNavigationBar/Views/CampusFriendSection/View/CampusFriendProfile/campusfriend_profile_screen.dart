@@ -63,7 +63,7 @@ class CampusfriendProfileScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Image.asset(
-                                  location,
+                                  locationIcon,
                                   color: const Color(0xFFF52D56),
                                   height: 14.h,
                                   width: 10.27.w,

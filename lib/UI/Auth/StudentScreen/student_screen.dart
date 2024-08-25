@@ -36,7 +36,7 @@ class StudentScreen extends StatelessWidget {
           ),
           WhiteContainer(
               topPadding: 117.h,
-              // height: 1.sh,
+              height: 1.sh,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 34.w),
                 child: SingleChildScrollView(
@@ -71,17 +71,17 @@ class StudentScreen extends StatelessWidget {
                       //   isShowSuffixIcon: true,
                       // ),
                       SizedBox(height: 18.h),
-                      workSansText(
-                          text: "Student Number",
-                          color: const Color(0xFF1E1E1E),
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500),
-                      SizedBox(height: 10.h),
-                      CustomTextField2(
-                        hintText: "Enter Student Number",
-                        controller: studentCampusController,
-                      ),
-                      SizedBox(height: 18.h),
+                      // workSansText(
+                      //     text: "Student Number",
+                      //     color: const Color(0xFF1E1E1E),
+                      //     fontSize: 14.sp,
+                      //     fontWeight: FontWeight.w500),
+                      // SizedBox(height: 10.h),
+                      // CustomTextField2(
+                      //   hintText: "Enter Student Number",
+                      //   controller: studentCampusController,
+                      // ),
+                      // SizedBox(height: 18.h),
                       // workSansText(
                       //   text: "Upload Student Card",
                       //   fontSize: 14.sp,
@@ -97,7 +97,7 @@ class StudentScreen extends StatelessWidget {
                       //   textColor: primaryColor,
                       //   onTap: () {},
                       // ),
-                      SizedBox(height: 18.h),
+                      // SizedBox(height: 18.h),
                       workSansText(
                         text: "Upload Profile Photo",
                         fontSize: 14.sp,

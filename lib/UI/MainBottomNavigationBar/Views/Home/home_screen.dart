@@ -41,247 +41,257 @@ class HomeScreen extends StatelessWidget {
                     WhiteContainer(
                       topPadding: 50.h,
                       // height: 550.h,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 52.h),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25.w),
-                            child: workSansText(
-                              text: "Categories",
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16.sp,
-                              color: const Color(0Xff1E1E1E),
-                            ),
-                          ),
-                          SizedBox(height: 13.h),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                // HomeCategoryHeadings(
-                                //   text: "Campus Friends",
-                                //   image: friends,
-                                //   height: 25.29.h,
-                                //   width: 39.w,
-                                //   onTap: () {
-                                //     Get.to(() =>
-                                //         const CampusfirendWelcomeScreen());
-                                //   },
-                                // ),
-                                // SizedBox(width: 8.w),
-                                HomeCategoryHeadings(
-                                  text: "Campus Marketplace",
-                                  image: marketplace,
-                                  height: 33.h,
-                                  width: 34.w,
-                                  textWidth: 91.w,
-                                  onTap: () {
-                                    Get.to(() => MarketPlaceHome());
-                                  },
-                                ),
-
-                                HomeCategoryHeadings(
-                                  text: "Student Accommodations",
-                                  image: accomodation,
-                                  height: 23.h,
-                                  width: 44.w,
-                                  textWidth: 91.w,
-                                  onTap: () {
-                                    Get.to(() => AccomodationScreen());
-                                  },
-                                ),
-                                HomeCategoryHeadings(
-                                  text: "Graduation Photographers",
-                                  image: camera,
-                                  height: 32.h,
-                                  width: 36.w,
-                                  textWidth: 91.w,
-                                  onTap: () {
-                                    Get.to(() => GraduationphotographyHome());
-                                  },
-                                ),
-                                SizedBox(
-                                  width: 50.w,
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 31.h),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                workSansText(
-                                  text: "Top Rated Accommodations",
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16.sp,
-                                  color: textColor,
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AccomodationScreen());
-                                  },
-                                  child: workSansText(
-                                    text: "See All",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12.sp,
-                                    color: const Color(0xFFFF2A7F),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 16.h),
-                          Consumer<HomeScreenViewmodel>(
-                              builder: (context, model, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(left: 25.w),
-                              child: SizedBox(
-                                height: 185.h,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  shrinkWrap: true,
-                                  itemCount: accomodationList.length,
-                                  itemBuilder: (context, index) {
-                                    return GestureDetector(
-                                      onTap: () {
-                                        Get.to(() =>
-                                            OpenAccommodationListingScreen(
-                                              index: index,
-                                              accommodationModel:
-                                                  accomodationList[index],
-                                              isBookmarked:
-                                                  model.isBookmarkedList[index],
-                                            ));
-                                      },
-                                      child: AccomondationListview(
-                                        image: hostelimage2,
-                                        location: "Westdene, Johannesburg",
-                                        price: "From R5000",
-                                        rating: "4.5",
-                                        status: "Available",
-                                        isBookmarked:
-                                            model.isBookmarkedList[index],
-                                        onBookMarkTap: () {
-                                          model.toggleBookmark(index);
-                                        },
-                                      ),
-                                    );
-                                  },
-                                ),
+                      child: Container(
+                        color: whiteColor,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 52.h),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 25.w),
+                              child: workSansText(
+                                text: "Categories",
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16.sp,
+                                color: const Color(0Xff1E1E1E),
                               ),
-                            );
-                          }),
-                          SizedBox(height: 35.h),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25.w),
-                            child: Container(
-                              height: 299.h,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 17.w, vertical: 20.h),
-                              decoration: BoxDecoration(
-                                color: whiteColor,
-                                borderRadius: BorderRadius.circular(18.r),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: lightGreyColor.withOpacity(0.3),
-                                    blurRadius: 18,
-                                    spreadRadius: 1,
-                                    offset: const Offset(0, 5),
+                            ),
+                            SizedBox(height: 13.h),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15.w),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  // HomeCategoryHeadings(
+                                  //   text: "Campus Friends",
+                                  //   image: friends,
+                                  //   height: 25.29.h,
+                                  //   width: 39.w,
+                                  //   onTap: () {
+                                  //     Get.to(() =>
+                                  //         const CampusfirendWelcomeScreen());
+                                  //   },
+                                  // ),
+                                  // SizedBox(width: 8.w),
+                                  HomeCategoryHeadings(
+                                    text: "Campus Marketplace",
+                                    image: marketplace,
+                                    height: 33.h,
+                                    width: 34.w,
+                                    textWidth: 91.w,
+                                    onTap: () {
+                                      Get.to(() => MarketPlaceHome());
+                                    },
+                                  ),
+
+                                  HomeCategoryHeadings(
+                                    text: "Student Accommodations",
+                                    image: accomodation,
+                                    height: 23.h,
+                                    width: 44.w,
+                                    textWidth: 91.w,
+                                    onTap: () {
+                                      Get.to(() => AccomodationScreen());
+                                    },
+                                  ),
+                                  HomeCategoryHeadings(
+                                    text: "Graduation Photographers",
+                                    image: camera,
+                                    height: 32.h,
+                                    width: 36.w,
+                                    textWidth: 91.w,
+                                    onTap: () {
+                                      Get.to(() => GraduationphotographyHome());
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 50.w,
                                   ),
                                 ],
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                            ),
+                            SizedBox(height: 31.h),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 25.w),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   workSansText(
-                                      text: "Start Earning on Findly",
-                                      color: textColor),
-                                  SizedBox(height: 15.h),
-                                  HomeButton(
-                                    height: 62.h,
-                                    onTap: () {},
-                                    buttonColor: const Color(0xFFFF5555)
-                                        .withOpacity(0.15),
-                                    textColor: const Color(0XFFFF5555),
-                                    text: "Become an Agent",
-                                    icon: premiumrights,
+                                    text: "Popular Accommodations",
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.sp,
+                                    color: textColor,
                                   ),
-                                  SizedBox(height: 15.h),
-                                  HomeButton(
-                                    height: 62.h,
+                                  GestureDetector(
                                     onTap: () {
-                                      Share.share("Invite friend");
+                                      Get.to(() => AccomodationScreen());
                                     },
-                                    buttonColor: const Color(0xFF00AA88)
-                                        .withOpacity(0.15),
-                                    textColor: const Color(0XFF00AA88),
-                                    text: "Invite a Friend",
-                                    icon: userplus,
-                                  ),
-                                  SizedBox(height: 15.h),
-                                  HomeButton(
-                                    height: 62.h,
-                                    onTap: () {
-                                      Share.share("Refer a LandLord");
-                                    },
-                                    buttonColor: const Color(0xFFFF2A7F)
-                                        .withOpacity(0.15),
-                                    textColor: const Color(0XFFFF2A7F),
-                                    text: "Refer a LandLord",
-                                    icon: briefcase,
+                                    child: workSansText(
+                                      text: "See All",
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12.sp,
+                                      color: const Color(0xFFFF2A7F),
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                          SizedBox(height: 39.h),
-                          Consumer<HomeScreenViewmodel>(
-                              builder: (context, model, child) {
-                            return CarouselSlider(
-                              items: [
-                                Image.asset('assets/images/banner.png'),
-                                Image.asset('assets/images/banner2.png'),
-                                Image.asset('assets/images/banner3.png'),
-                              ],
-                              options: CarouselOptions(
-                                height: 200.0,
-                                autoPlay: true,
-                                enlargeCenterPage: true,
-                                onPageChanged: (index, reason) {
-                                  model.changeIndex(index);
-                                },
-                              ),
-                            );
-                          }),
-                          Consumer<HomeScreenViewmodel>(
-                              builder: (context, model, child) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [0, 1, 2].map((index) {
-                                return Container(
-                                  width:
-                                      model.currentIndex == index ? 14.2 : 8.w,
-                                  height: 8.0,
-                                  margin: const EdgeInsets.symmetric(
-                                      vertical: 10.0, horizontal: 2.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: model.currentIndex == index
-                                        ? BorderRadius.circular(21.r)
-                                        : BorderRadius.circular(50.r),
-                                    color: model.currentIndex == index
-                                        ? const Color(0xFF37ABC8)
-                                        : const Color.fromRGBO(0, 0, 0, 0.4),
+                            SizedBox(height: 16.h),
+                            Consumer<HomeScreenViewmodel>(
+                                builder: (context, model, index) {
+                              return Padding(
+                                padding: EdgeInsets.only(left: 25.w),
+                                child: SizedBox(
+                                  height: 185.h,
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
+                                    itemCount: accomodationList.length,
+                                    itemBuilder: (context, index) {
+                                      // if index is even status will be available if not unavailable
+                                      String status = index.isEven
+                                          ? "Available"
+                                          : "Unavailable";
+                                      return GestureDetector(
+                                        onTap: () {
+                                          Get.to(() =>
+                                              OpenAccommodationListingScreen(
+                                                index: index,
+                                                accommodationModel:
+                                                    accomodationList[index],
+                                                isBookmarked: model
+                                                    .isBookmarkedList[index],
+                                              ));
+                                        },
+                                        child: AccomondationListview(
+                                          image: hostelimage2,
+                                          location: "Brixton, Johannesburg",
+                                          price: "R5000",
+                                          rating: "4.5",
+                                          status: status,
+                                          isBookmarked:
+                                              model.isBookmarkedList[index],
+                                          onBookMarkTap: () {
+                                            model.toggleBookmark(index);
+                                          },
+                                        ),
+                                      );
+                                    },
                                   ),
-                                );
-                              }).toList(),
-                            );
-                          }),
-                          SizedBox(height: 39.h),
-                        ],
+                                ),
+                              );
+                            }),
+                            SizedBox(height: 35.h),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 25.w),
+                              child: Container(
+                                height: 299.h,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 17.w, vertical: 20.h),
+                                decoration: BoxDecoration(
+                                  color: whiteColor,
+                                  borderRadius: BorderRadius.circular(18.r),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: lightGreyColor.withOpacity(0.3),
+                                      blurRadius: 18,
+                                      spreadRadius: 1,
+                                      offset: const Offset(0, 5),
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    workSansText(
+                                        text: "Start Earning on Findly",
+                                        color: textColor),
+                                    SizedBox(height: 15.h),
+                                    HomeButton(
+                                      height: 62.h,
+                                      onTap: () {},
+                                      buttonColor: const Color(0xFFFF5555)
+                                          .withOpacity(0.15),
+                                      textColor: const Color(0XFFFF5555),
+                                      text: "Become an Agent",
+                                      icon: premiumrights,
+                                    ),
+                                    SizedBox(height: 15.h),
+                                    HomeButton(
+                                      height: 62.h,
+                                      onTap: () {
+                                        Share.share("Invite friend");
+                                      },
+                                      buttonColor: const Color(0xFF00AA88)
+                                          .withOpacity(0.15),
+                                      textColor: const Color(0XFF00AA88),
+                                      text: "Invite a Friend",
+                                      icon: userplus,
+                                    ),
+                                    SizedBox(height: 15.h),
+                                    HomeButton(
+                                      height: 62.h,
+                                      onTap: () {
+                                        Share.share("Refer a LandLord");
+                                      },
+                                      buttonColor: const Color(0xFFFF2A7F)
+                                          .withOpacity(0.15),
+                                      textColor: const Color(0XFFFF2A7F),
+                                      text: "Refer a LandLord",
+                                      icon: briefcase,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 39.h),
+                            Consumer<HomeScreenViewmodel>(
+                                builder: (context, model, child) {
+                              return CarouselSlider(
+                                items: [
+                                  Image.asset('assets/images/banner.png'),
+                                  Image.asset('assets/images/banner2.png'),
+                                  Image.asset('assets/images/banner3.png'),
+                                ],
+                                options: CarouselOptions(
+                                  height: 200.0,
+                                  autoPlay: true,
+                                  enlargeCenterPage: true,
+                                  onPageChanged: (index, reason) {
+                                    model.changeIndex(index);
+                                  },
+                                ),
+                              );
+                            }),
+                            Consumer<HomeScreenViewmodel>(
+                                builder: (context, model, child) {
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [0, 1, 2].map((index) {
+                                  return Container(
+                                    width: model.currentIndex == index
+                                        ? 14.2
+                                        : 8.w,
+                                    height: 8.0,
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 10.0, horizontal: 2.0),
+                                    decoration: BoxDecoration(
+                                      borderRadius: model.currentIndex == index
+                                          ? BorderRadius.circular(21.r)
+                                          : BorderRadius.circular(50.r),
+                                      color: model.currentIndex == index
+                                          ? const Color(0xFF37ABC8)
+                                          : const Color.fromRGBO(0, 0, 0, 0.4),
+                                    ),
+                                  );
+                                }).toList(),
+                              );
+                            }),
+                            SizedBox(height: 39.h),
+                          ],
+                        ),
                       ),
                     ),
                     Positioned(

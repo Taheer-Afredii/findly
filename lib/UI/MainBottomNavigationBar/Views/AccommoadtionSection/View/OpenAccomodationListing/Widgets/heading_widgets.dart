@@ -24,7 +24,7 @@ class LocationWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Image.asset(
-            location,
+            locationIcon,
             height: 14.h,
             width: 10.27.w,
             fit: BoxFit.cover,

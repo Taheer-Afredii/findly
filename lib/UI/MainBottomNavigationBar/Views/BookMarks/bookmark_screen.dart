@@ -83,6 +83,7 @@ class BookMarkScreen extends StatelessWidget {
                                           ? BookmarkAccommodationWidget(
                                               index: index,
                                               model: model,
+                                              data: data,
                                             )
                                           : data.serviceType ==
                                                   ServiceType.marketplace

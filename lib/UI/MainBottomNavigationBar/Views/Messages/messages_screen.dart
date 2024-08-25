@@ -63,10 +63,11 @@ class MessagesScreen extends StatelessWidget {
                       child: SizedBox(
                         width: 1.sw,
                         child: ListView.builder(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 32.w, vertical: 18.h),
+                          padding: EdgeInsets.only(
+                              left: 32.w, top: 18.h, right: 32.w, bottom: 65.h),
                           itemCount: 100,
                           shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: EdgeInsets.only(bottom: 20.h),

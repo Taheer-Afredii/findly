@@ -21,11 +21,17 @@ class Categories {
 
 List<Categories> categories = [
   Categories(
+      text: "All",
+      image: allround,
+      height: 36.h,
+      width: 33.85.w,
+      isSelected: true),
+  Categories(
       text: "Communes",
       image: communes,
       height: 36.h,
       width: 33.85.w,
-      isSelected: true),
+      isSelected: false),
   Categories(
       text: "NSFAS",
       image: nsfas,
@@ -38,12 +44,12 @@ List<Categories> categories = [
       height: 33.h,
       width: 33.05.w,
       isSelected: false),
-  Categories(
-      text: "Flats",
-      image: flats,
-      height: 33.h,
-      width: 31.63.w,
-      isSelected: false),
+  // Categories(
+  //     text: "Flats",
+  //     image: flats,
+  //     height: 33.h,
+  //     width: 31.63.w,
+  //     isSelected: false),
 ];
 
 class AccommodationModel {

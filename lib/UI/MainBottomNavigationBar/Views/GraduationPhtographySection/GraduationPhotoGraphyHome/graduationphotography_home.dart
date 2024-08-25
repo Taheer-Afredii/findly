@@ -111,54 +111,117 @@ class TopRatedPhotoGraphy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 13.h),
-      height: 103.h,
+      height: 109.h,
       decoration: BoxDecoration(
         border: Border.all(
           color: const Color(0xFFC6C5C5),
         ),
         borderRadius: BorderRadius.circular(14.r),
       ),
-      padding: EdgeInsets.all(10.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-              borderRadius: BorderRadius.all(
-                Radius.circular(14.r),
+          Container(
+            height: 109.h,
+            width: 90.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(14.r),
+                bottomLeft: Radius.circular(14.r),
               ),
-              child: Image.asset(
-                model!.image!,
-                height: 81.h,
-                width: 81.w,
-              )),
-          SizedBox(width: 8.w),
+              image: DecorationImage(
+                image: AssetImage(model!.image!),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              workSans16Text(text: model!.name!),
+              Padding(
+                padding: EdgeInsets.only(left: 12.w),
+                child: workSans16Text(
+                    text: model!.name!, fontWeight: FontWeight.w600),
+              ),
               SizedBox(height: 5.h),
-              workSansText(text: model!.price!, color: textColor),
+              Padding(
+                padding: EdgeInsets.only(left: 12.w),
+                child: Row(
+                  children: [
+                    Image.asset(locationIcon, height: 14.h, width: 13.w),
+                    SizedBox(width: 4.w),
+                    workSansText(
+                        text: model!.location!,
+                        fontSize: 12.17.sp,
+                        fontWeight: FontWeight.w500,
+                        color: textColor),
+                  ],
+                ),
+              ),
+              SizedBox(height: 5.h),
               model!.isRated ?? false
-                  ? workSansText(
-                      text: "Not rated yet",
-                      fontSize: 12.17.sp,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF363030))
-                  : Row(
-                      children: [
-                        Image.asset(
-                          starfilled,
-                          height: 12.17.h,
-                          width: 13.19.w,
-                        ),
-                        SizedBox(width: 4.w),
-                        workSansText(
+                  ? Padding(
+                      padding: EdgeInsets.only(left: 10.w),
+                      child: Row(
+                        children: [
+                          Image.asset(star2, height: 13.h, width: 15.w),
+                          SizedBox(width: 4.w),
+                          RichText(
+                              text: TextSpan(
                             text: model!.rating!,
-                            fontSize: 12.17.sp,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xFF363030)),
-                      ],
+                            style: workSansTextStyle(
+                                color: textColor,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500),
+                            children: [
+                              TextSpan(
+                                text: " (67)",
+                                style: workSansTextStyle(
+                                    color: textColor,
+                                    fontSize: 11.sp,
+                                    fontWeight: FontWeight.w300),
+                              )
+                            ],
+                          ))
+                        ],
+                      ),
+                    )
+                  : Padding(
+                      padding: EdgeInsets.only(left: 16.w),
+                      child: workSansText(
+                          text: "Not rated yet",
+                          color: textColor,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400),
                     ),
+              Padding(
+                padding: EdgeInsets.only(top: 5.h, left: 16.w),
+                child: RichText(
+                    text: TextSpan(
+                  text: "From ",
+                  style: workSansTextStyle(
+                      color: textColor,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w400),
+                  children: [
+                    TextSpan(
+                      text: model!.price!,
+                      style: workSansTextStyle(
+                          color: textColor,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    TextSpan(
+                      text: " /Session",
+                      style: workSansTextStyle(
+                          color: textColor,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400),
+                    )
+                  ],
+                )),
+              ),
             ],
           ),
           const Spacer(),
@@ -166,7 +229,7 @@ class TopRatedPhotoGraphy extends StatelessWidget {
             onTap: onBookMarkTap,
             child: !isBookMarked
                 ? Padding(
-                    padding: EdgeInsets.only(top: 8.h, right: 3.w),
+                    padding: EdgeInsets.only(top: 15.h, right: 20.w),
                     child: Image.asset(
                       blackheart,
                       width: 17.w,
@@ -175,7 +238,7 @@ class TopRatedPhotoGraphy extends StatelessWidget {
                     ),
                   )
                 : Padding(
-                    padding: EdgeInsets.only(top: 6.h, right: 3.w),
+                    padding: EdgeInsets.only(top: 15.h, right: 20.w),
                     child: Icon(
                       Icons.favorite,
                       color: redColor,
