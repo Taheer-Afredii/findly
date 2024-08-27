@@ -2,13 +2,11 @@ import 'dart:developer';
 
 import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
-import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommoadtionFilter/accommodation_filter_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommodationHome/accomodation_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommodationHome/widgets/accommodation_listview.dart';
-import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/MapScreen/map_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Home/widgets/home_category_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -174,10 +172,10 @@ class AccomodationScreen extends StatelessWidget {
           );
         }),
       ),
-      floatingActionButton: MapButton(onTap: () {
-        Get.to(const MapScreen());
-      }),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: MapButton(onTap: () {
+      //   Get.to(const MapScreen());
+      // }),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

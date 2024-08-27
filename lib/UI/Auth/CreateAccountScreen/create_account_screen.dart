@@ -107,7 +107,7 @@ class CreateAccountScreen extends StatelessWidget {
                             ),
                             SizedBox(height: 10.h),
                             PasswordField(
-                                hintText: "Enter Your Confirm Password",
+                                hintText: "Confirm Your Password",
                                 controller: confirmPasswordController),
                             SizedBox(height: 8.h),
                             Row(

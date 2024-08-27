@@ -64,6 +64,65 @@ class CustomDropDown extends StatelessWidget {
   }
 }
 
+class CustomDropDown2<T> extends StatelessWidget {
+  const CustomDropDown2({
+    super.key,
+    required this.hinttext,
+    this.value,
+    required this.onChanged,
+    required this.items,
+    required this.itemBuilder,
+  });
+
+  final String hinttext;
+  final T? value;
+  final List<T> items;
+  final Function(T?) onChanged;
+  final Widget Function(T) itemBuilder;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonFormField<T>(
+      value: value,
+      style: workSansTextStyle(
+          color: textColor, fontSize: 14.sp, fontWeight: FontWeight.normal),
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Color(0xFFE6E6E6),
+          ),
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Color(0xFFE6E6E6),
+          ),
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Color(0XFFE6E6E6),
+          ),
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+      ),
+      icon: const Icon(Icons.keyboard_arrow_down_rounded),
+      hint: workSansText2(
+          text: hinttext,
+          fontSize: 14.sp,
+          fontWeight: FontWeight.normal,
+          color: blackColor.withOpacity(0.2)),
+      items: items.map((T value) {
+        return DropdownMenuItem<T>(
+          value: value,
+          child: itemBuilder(value),
+        );
+      }).toList(),
+      onChanged: onChanged,
+    );
+  }
+}
+
 class GraduationphotographyHomeCustomDropDown extends StatelessWidget {
   const GraduationphotographyHomeCustomDropDown(
       {super.key,

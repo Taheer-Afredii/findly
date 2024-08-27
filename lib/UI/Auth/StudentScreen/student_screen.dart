@@ -58,7 +58,7 @@ class StudentScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 18.h),
                       workSansText(
-                          text: "Chosse Your Campus",
+                          text: "Choose Your Campus",
                           color: const Color(0xFF1E1E1E),
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w500),

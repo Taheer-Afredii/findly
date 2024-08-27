@@ -222,7 +222,8 @@ class HomeScreen extends StatelessWidget {
                                     HomeButton(
                                       height: 62.h,
                                       onTap: () {
-                                        Share.share("Invite friend");
+                                        Share.share(
+                                            "Unlock endless connections for uni life on the Findly app");
                                       },
                                       buttonColor: const Color(0xFF00AA88)
                                           .withOpacity(0.15),
@@ -234,7 +235,8 @@ class HomeScreen extends StatelessWidget {
                                     HomeButton(
                                       height: 62.h,
                                       onTap: () {
-                                        Share.share("Refer a LandLord");
+                                        Share.share(
+                                            "Find tenants for your accommodation on the Findly app");
                                       },
                                       buttonColor: const Color(0xFFFF2A7F)
                                           .withOpacity(0.15),
@@ -251,9 +253,25 @@ class HomeScreen extends StatelessWidget {
                                 builder: (context, model, child) {
                               return CarouselSlider(
                                 items: [
-                                  Image.asset('assets/images/banner.png'),
-                                  Image.asset('assets/images/banner2.png'),
-                                  Image.asset('assets/images/banner3.png'),
+                                  BannerImageWidget(
+                                    padding: 20.h,
+                                    image: 'assets/images/banner.png',
+                                    text:
+                                        "Used Textbooks, Calculators, Laptops and much more on Campus Market",
+                                  ),
+                                  BannerImageWidget(
+                                    padding: 0.h,
+                                    image: 'assets/images/banner2.png',
+                                    text:
+                                        "Find the right photographer for your graduation day!",
+                                  ),
+                                  BannerImageWidget(
+                                    padding: 0.h,
+                                    textWidth: 195.w,
+                                    image: 'assets/images/banner3.png',
+                                    text:
+                                        "Find accommodation that suits your prefrences and budget",
+                                  ),
                                 ],
                                 options: CarouselOptions(
                                   height: 200.0,
@@ -306,6 +324,52 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class BannerImageWidget extends StatelessWidget {
+  const BannerImageWidget({
+    super.key,
+    required this.image,
+    required this.text,
+    required this.padding,
+    this.textWidth,
+  });
+  final String image;
+  final String text;
+  final double padding;
+  final double? textWidth;
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.centerLeft,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(12.r),
+          child: Image.asset(
+            image,
+            height: 154.h,
+            width: 337.w,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 20.w, top: padding),
+          child: SizedBox(
+            // color: blackColor,
+            width: textWidth ?? 200.w,
+            child: workSansText2(
+              maxLines: 4,
+              text: text,
+              color: whiteColor,
+              fontSize: 14.97.sp,
+              fontWeight: FontWeight.w600,
+              // height: 1.5,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

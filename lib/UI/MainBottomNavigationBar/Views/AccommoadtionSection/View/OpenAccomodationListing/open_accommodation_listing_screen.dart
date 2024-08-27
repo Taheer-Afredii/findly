@@ -11,7 +11,6 @@ import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../Models/accommodation_model.dart';
-import '../../../GraduationPhtographySection/PhotoGraphyReviewScreen/photography_reviewscreen.dart';
 import '../AccommodationHome/accomodation_viewmodel.dart';
 import 'Widgets/ammenities_footer_widget.dart';
 import 'Widgets/description_widgets.dart';
@@ -75,57 +74,34 @@ class OpenAccommodationListingScreen extends StatelessWidget {
                                 color: textColor,
                               ),
                             ),
-                            const SizedBox(height: 14),
+                            SizedBox(height: 14.h),
                             DescriptionHeadingWidget(
                                 accommodationModel: accommodationModel),
-                            const SizedBox(height: 13),
+                            SizedBox(height: 13.h),
                             const DescriptionContainer(),
-                            const SizedBox(height: 28),
+                            SizedBox(height: 20.h),
                             const Divider(color: Color(0XFFE9E8E8)),
-                            const SizedBox(height: 13),
-                            Consumer<AccomodationViewmodel>(
-                                builder: (context, model, child) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 25.w),
-                                child: Row(
-                                  children: [
-                                    ...List.generate(
-                                      model.ammenitiesLabels.length,
-                                      (index) {
-                                        return Expanded(
-                                            child: Padding(
-                                          padding: EdgeInsets.only(right: 9.w),
-                                          child: AppButton(
-                                            height: 44.h,
-                                            text: model.ammenitiesLabels[index],
-                                            textColor:
-                                                model.ammenitiesvalues[index]
-                                                    ? whiteColor
-                                                    : blackColor,
-                                            buttonColor:
-                                                model.ammenitiesvalues[index]
-                                                    ? const Color(0xFFFF0066)
-                                                    : const Color(0xFF666666)
-                                                        .withOpacity(0.1),
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w500,
-                                            borderRadius: 6.34.r,
-                                            onTap: () {
-                                              if (model.ammenitiesLabels[
-                                                      index] ==
-                                                  "Reviews") {
-                                                Get.to(() =>
-                                                    const PhotographyReviewscreen());
-                                              }
-                                            },
-                                          ),
-                                        ));
-                                      },
+                            SizedBox(height: 13.h),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 25.w),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: AppButton(
+                                      height: 44.h,
+                                      text: "Amenities",
+                                      textColor: whiteColor,
+                                      buttonColor: const Color(0xFFFF0066),
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      borderRadius: 6.34.r,
+                                      onTap: () {},
                                     ),
-                                  ],
-                                ),
-                              );
-                            }),
+                                  ),
+                                  Expanded(child: SizedBox(width: 1.sw)),
+                                ],
+                              ),
+                            ),
                             SizedBox(height: 13.h),
                             const Divider(color: Color(0XFFE9E8E8)),
                             // SizedBox(height: 17.h),

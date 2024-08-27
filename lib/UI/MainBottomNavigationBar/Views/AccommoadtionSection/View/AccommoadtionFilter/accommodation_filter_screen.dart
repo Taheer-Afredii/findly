@@ -125,7 +125,7 @@ class _AccommodationFilterScreenState extends State<AccommodationFilterScreen> {
                                 width: 283.w,
                                 values: model.anenitiesValues,
                                 labels: model.anenitiesLabels,
-                                title: "Anenities",
+                                title: "Amenities",
                                 onChanged: (index, value) {
                                   model.onAmenitiesChanged(index, value);
                                 },

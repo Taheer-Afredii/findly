@@ -1,5 +1,6 @@
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Payments/payment_home.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/AddPhotoGraphyGig/add_photographygig_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +13,6 @@ import '../../../../../../Core/Custom/app_button.dart';
 import '../../../../../../Core/Custom/custom_textfield.dart';
 import '../../../../../Auth/Widgets/custom_auth_appbar.dart';
 import '../../../../../Auth/Widgets/custom_dotted_border.dart';
-import '../../../MarketPlaceSection/MarketPlaceSubmitListing/marketplace_submitlisting.dart';
 
 class AddPhotgraphygigScreen extends StatelessWidget {
   AddPhotgraphygigScreen({super.key});
@@ -159,36 +159,59 @@ class AddPhotgraphygigScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   color: textColor),
                               SizedBox(height: 10.h),
-                              CustomDropDown(
-                                  hinttext: "Pretoria", onChanged: (val) {}),
-                              SizedBox(height: 18.h),
-                              Row(
-                                children: [
-                                  workSansText2(
-                                      text: "Business Number",
-                                      fontSize: 14.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: textColor),
-                                  GestureDetector(
-                                    onTap: () {},
-                                    child: workSansText2(
-                                        text: " Request Business Number",
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: textHighLight),
-                                  ),
+                              CustomDropDown2(
+                                items: const [
+                                  "Johanessburg",
+                                  "Pretoria",
+                                  "Durban",
+                                  "Cape Town",
+                                  "Bloemfontein",
+                                  "Port Elizabeth",
+                                  "Polokwane",
+                                  "Nelspruit",
+                                  "Kimberley",
+                                  "Stellenbosch",
                                 ],
+                                // value: "Available",
+                                itemBuilder: (String value) {
+                                  return workSansText2(
+                                      text: value,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.normal,
+                                      color: textColor);
+                                },
+                                onChanged: (val) {
+                                  print(val);
+                                },
+                                hinttext: "Select region",
                               ),
-                              SizedBox(height: 10.h),
-                              CustomTextField2(
-                                hintText: "P228",
-                                controller: businessController,
-                              ),
+                              // SizedBox(height: 18.h),
+                              // Row(
+                              //   children: [
+                              //     workSansText2(
+                              //         text: "Business Number",
+                              //         fontSize: 14.sp,
+                              //         fontWeight: FontWeight.w500,
+                              //         color: textColor),
+                              //     GestureDetector(
+                              //       onTap: () {},
+                              //       child: workSansText2(
+                              //           text: " Request Business Number",
+                              //           fontSize: 12.sp,
+                              //           fontWeight: FontWeight.w500,
+                              //           color: textHighLight),
+                              //     ),
+                              //   ],
+                              // ),
+                              // SizedBox(height: 10.h),
+                              // CustomTextField2(
+                              //   hintText: "P228",
+                              //   controller: businessController,
+                              // ),
                               SizedBox(height: 65.h),
                               AppButton(
                                 onTap: () {
-                                  Get.to(
-                                      () => const MarketplaceSubmitlisting());
+                                  Get.to(() => const PaymentHome());
                                 },
                                 text: "Publish",
                               ),

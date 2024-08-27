@@ -82,9 +82,25 @@ class AddAccomodationScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   color: textColor),
                               SizedBox(height: 10.h),
-                              CustomDropDown(
-                                onChanged: (val) {},
-                                hinttext: "NSFAS",
+                              CustomDropDown2(
+                                items: const [
+                                  "NSFAS",
+                                  "Communes",
+                                  "Apartments",
+                                  "Flats"
+                                ],
+                                // value: "Available",
+                                itemBuilder: (String value) {
+                                  return workSansText2(
+                                      text: value,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.normal,
+                                      color: textColor);
+                                },
+                                onChanged: (val) {
+                                  print(val);
+                                },
+                                hinttext: "select",
                               ),
                               SizedBox(height: 18.h),
                               workSansText2(
@@ -108,9 +124,24 @@ class AddAccomodationScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   color: textColor),
                               SizedBox(height: 10.h),
-                              CustomDropDown(
-                                onChanged: (val) {},
-                                hinttext: "Select",
+                              CustomDropDown2(
+                                items: const [
+                                  "Unisex",
+                                  "Female only",
+                                  "Male only",
+                                ],
+                                // value: "Available",
+                                itemBuilder: (String value) {
+                                  return workSansText2(
+                                      text: value,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.normal,
+                                      color: textColor);
+                                },
+                                onChanged: (val) {
+                                  print(val);
+                                },
+                                hinttext: "select",
                               ),
                               SizedBox(height: 18.h),
                               workSansText2(
@@ -126,30 +157,46 @@ class AddAccomodationScreen extends StatelessWidget {
                               ),
                               SizedBox(height: 20.h),
                               workSansText2(
-                                  text: "Anenities",
+                                  text: "Amenities",
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w500,
                                   color: textColor),
                               SizedBox(height: 16.h),
-                              CustomCheckBox(
-                                height: 13.h,
-                                width: 13.w,
-                                text: "Wifi",
-                                value: model.isWifiChecked,
-                                onChanged: (val) {
-                                  model.toggleWifiChecked();
-                                },
-                              ),
-                              SizedBox(height: 11.h),
-                              CustomCheckBox(
-                                height: 13.h,
-                                width: 13.w,
-                                text: "Transport",
-                                value: model.isTranportChecked,
-                                onChanged: (val) {
-                                  model.toggleTransportChecked();
-                                },
-                              ),
+
+                              ...List.generate(model.amenitiesLabels.length,
+                                  (index) {
+                                return Padding(
+                                  padding: EdgeInsets.only(bottom: 11.h),
+                                  child: CustomCheckBox(
+                                    height: 13.h,
+                                    width: 13.w,
+                                    text: model.amenitiesLabels[index],
+                                    value: model.amenitiesValues[index],
+                                    onChanged: (val) {
+                                      model.onAmenitiesChanged(index, val);
+                                    },
+                                  ),
+                                );
+                              }),
+                              // CustomCheckBox(
+                              //   height: 13.h,
+                              //   width: 13.w,
+                              //   text: "Wifi",
+                              //   value: model.isWifiChecked,
+                              //   onChanged: (val) {
+                              //     model.toggleWifiChecked();
+                              //   },
+                              // ),
+                              // SizedBox(height: 11.h),
+                              // CustomCheckBox(
+                              //   height: 13.h,
+                              //   width: 13.w,
+                              //   text: "Transport",
+                              //   value: model.isTranportChecked,
+                              //   onChanged: (val) {
+                              //     model.toggleTransportChecked();
+                              //   },
+                              // ),
                               SizedBox(height: 23.h),
                               workSansText2(
                                   text:
@@ -224,8 +271,26 @@ class AddAccomodationScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   color: textColor),
                               SizedBox(height: 10.h),
-                              CustomDropDown(
-                                onChanged: (val) {},
+                              CustomDropDown2(
+                                items: const [
+                                  "Single",
+                                  "Sharing",
+                                  "Cottage",
+                                  "Bachelor",
+                                  "Ensuite",
+                                  "Studio",
+                                ],
+                                // value: "Single",
+                                itemBuilder: (String value) {
+                                  return workSansText2(
+                                      text: value,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.normal,
+                                      color: textColor);
+                                },
+                                onChanged: (val) {
+                                  print(val);
+                                },
                                 hinttext: "Single",
                               ),
                               SizedBox(height: 18.h),
@@ -246,9 +311,23 @@ class AddAccomodationScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   color: textColor),
                               SizedBox(height: 10.h),
-                              CustomDropDown(
-                                onChanged: (val) {},
-                                hinttext: "Available",
+                              CustomDropDown2(
+                                items: const [
+                                  "Available",
+                                  "Unavailable",
+                                ],
+                                // value: "Available",
+                                itemBuilder: (String value) {
+                                  return workSansText2(
+                                      text: value,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.normal,
+                                      color: textColor);
+                                },
+                                onChanged: (val) {
+                                  print(val);
+                                },
+                                hinttext: "Availability",
                               ),
                               SizedBox(height: 70.h),
                               AppButton(

@@ -22,6 +22,7 @@ class DescriptionContainer extends StatelessWidget {
       ),
       child: workSansText2(
         text: text,
+        maxLines: 100,
         fontSize: 12.sp,
         color: blackColor.withOpacity(0.5),
         fontWeight: FontWeight.normal,

@@ -7,13 +7,53 @@ class AddaccommodationViewmodel extends ChangeNotifier {
   bool isWifiChecked = true;
   bool isTranportChecked = false;
 
-  void toggleWifiChecked() {
-    isWifiChecked = !isWifiChecked;
-    notifyListeners();
-  }
+  // void toggleWifiChecked() {
+  //   isWifiChecked = !isWifiChecked;
+  //   notifyListeners();
+  // }
 
-  void toggleTransportChecked() {
-    isTranportChecked = !isTranportChecked;
+  // void toggleTransportChecked() {
+  //   isTranportChecked = !isTranportChecked;
+  //   notifyListeners();
+  // }
+
+  List<bool> amenitiesValues = [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ];
+  List<String> amenitiesLabels = [
+    "Wifi",
+    "Transport",
+    "Swimming pool",
+    "Back-up power",
+    "CCTV",
+    "Parking",
+    "Security",
+    "Electric fence",
+    "Entertainment area",
+    "Furnished",
+    "Washing machine",
+    "Cleaning service",
+    "Garden",
+    "Air conditioning",
+  ];
+
+  void onAmenitiesChanged(int index, bool? value) {
+    for (int i = 0; i < amenitiesValues.length; i++) {
+      amenitiesValues[i] = i == index ? value ?? false : false;
+    }
     notifyListeners();
   }
 
