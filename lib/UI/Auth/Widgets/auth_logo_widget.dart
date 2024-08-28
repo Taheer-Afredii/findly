@@ -9,8 +9,9 @@ import '../../../Core/Constant/colors.dart';
 class AuthLogoWidget extends StatelessWidget {
   const AuthLogoWidget({
     super.key,
+    this.isFrombottomSheet,
   });
-
+  final bool? isFrombottomSheet;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +22,11 @@ class AuthLogoWidget extends StatelessWidget {
           GestureDetector(
             onTap: () {
               // Navigator.pop(context);
-              Get.offAll(const SplashScreen(), transition: Transition.fadeIn);
+              if (isFrombottomSheet ?? false) {
+                Get.back();
+              } else {
+                Get.offAll(const SplashScreen(), transition: Transition.fadeIn);
+              }
             },
             child: Icon(
               Icons.arrow_back,

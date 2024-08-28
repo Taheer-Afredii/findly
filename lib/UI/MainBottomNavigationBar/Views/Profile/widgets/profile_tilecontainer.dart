@@ -89,6 +89,7 @@ class ProfileTileContainer2 extends StatelessWidget {
     required this.onTap,
     this.iconheight,
     this.iconwidth,
+    this.bottomPadding,
   });
   final String icon;
   final String text;
@@ -96,12 +97,13 @@ class ProfileTileContainer2 extends StatelessWidget {
   final VoidCallback onTap;
   final double? iconheight;
   final double? iconwidth;
+  final double? bottomPadding;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
+        padding: EdgeInsets.only(top: 10.h, bottom: bottomPadding ?? 10.h),
         child: Container(
           height: 56.h,
           padding: EdgeInsets.only(right: 14.w),

@@ -3,10 +3,12 @@ import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
+import 'package:findly/UI/Auth/logInScreen/log_in_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/MarketPlaceHome/Widgets/marketplace_categories.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/MarketPlaceHome/marketplacehome_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/MarketPlaceSearchResult/marketplace_searchresult.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/SellItem/marketplace_sellitem.dart';
+import 'package:findly/UI/MainBottomNavigationBar/bottomshett_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
@@ -25,8 +27,8 @@ class MarketPlaceHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-          Consumer<MarketplacehomeViewmodel>(builder: (context, model, child) {
+      body: Consumer2<MarketplacehomeViewmodel, BottomshettViewmodel>(
+          builder: (context, model, bottomModel, child) {
         return MarketPlaceContainer(
             child: Stack(
           children: [
@@ -172,7 +174,14 @@ class MarketPlaceHome extends StatelessWidget {
                                         isBookmarked:
                                             model.isBookmarkedList[index],
                                         onBookMarkTap: () {
-                                          model.toggleBookmark(index);
+                                          if (bottomModel
+                                                  .currentUser.userName !=
+                                              null) {
+                                            model.toggleBookmark(index);
+                                          } else {
+                                            Get.to(LogInScreen(
+                                                isFrombottomSheet: true));
+                                          }
                                         },
                                         model: topItems[index]);
                                   }),

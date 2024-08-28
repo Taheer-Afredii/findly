@@ -12,8 +12,9 @@ import '../../../../Auth/Widgets/custom_auth_appbar.dart';
 class ProfileScreenImageWidget extends StatelessWidget {
   const ProfileScreenImageWidget({
     super.key,
+    this.image,
   });
-
+  final String? image;
   @override
   Widget build(BuildContext context) {
     return Consumer<ProfileViewmodel>(builder: (context, model, child) {
@@ -47,7 +48,10 @@ class ProfileScreenImageWidget extends StatelessWidget {
                       ? DecorationImage(
                           image: FileImage(File(model.myProfilePic!)),
                           fit: BoxFit.cover)
-                      : null,
+                      : image != null
+                          ? DecorationImage(
+                              image: FileImage(File(image!)), fit: BoxFit.cover)
+                          : null,
                 ),
               ),
             ),

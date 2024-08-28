@@ -2,13 +2,17 @@ import 'package:findly/Core/Constant/assets_constant.dart';
 import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
+import 'package:findly/UI/MainBottomNavigationBar/main_bottom_navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../Core/app_routes.dart';
+import 'package:get/route_manager.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
+
+  checLoginuserAndRoute() async {
+    Get.offAll(() => const MainBottomNavigationbar());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class SplashScreen extends StatelessWidget {
                 const Spacer(),
                 GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, AppRoutes.login);
+                      Get.offAll(() => const MainBottomNavigationbar());
                     },
                     child: const CustomButton()),
                 // GestureDetector(

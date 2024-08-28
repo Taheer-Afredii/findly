@@ -19,6 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.hintWeight,
     this.radius,
     this.prefixicon,
+    this.validator,
   });
 
   final String hintText;
@@ -30,10 +31,12 @@ class CustomTextField extends StatelessWidget {
   final FontWeight? hintWeight;
   final double? radius;
   final String? prefixicon;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
       controller: controller,
       // textAlign: TextAlign.center,s
       // maxLines: 10 ,
@@ -99,6 +102,7 @@ class CustomTextField2 extends StatelessWidget {
     this.onSuffixIconTap,
     this.maxLines,
     this.suffixSize,
+    this.validator,
   });
 
   final String hintText;
@@ -117,11 +121,13 @@ class CustomTextField2 extends StatelessWidget {
   final VoidCallback? onSuffixIconTap;
   final int? maxLines;
   final double? suffixSize;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      validator: validator,
       // textAlign: TextAlign.center,s
       maxLines: maxLines ?? 1,
       obscureText: isObscureText ?? false,
@@ -156,6 +162,18 @@ class CustomTextField2 extends StatelessWidget {
           fontWeight: hintWeight ?? FontWeight.w400,
         ),
         enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Color(0xFFE6E6E6),
+          ),
+          borderRadius: BorderRadius.circular(radius ?? 10.r),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Color(0xFFE6E6E6),
+          ),
+          borderRadius: BorderRadius.circular(radius ?? 10.r),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Color(0xFFE6E6E6),
           ),
@@ -270,6 +288,14 @@ class SearchTextField extends StatelessWidget {
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(radius ?? 10.r),
         ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(radius ?? 10.r),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(radius ?? 10.r),
+        ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(radius ?? 10.r),
@@ -290,6 +316,7 @@ class PasswordField extends StatelessWidget {
     this.hintColor,
     this.hintWeight,
     this.radius,
+    this.validator,
   });
 
   final String hintText;
@@ -300,10 +327,12 @@ class PasswordField extends StatelessWidget {
   final Color? hintColor;
   final FontWeight? hintWeight;
   final double? radius;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(builder: (context, model, child) {
       return TextFormField(
+        validator: validator,
         controller: controller,
         obscureText: !model.isPasswordVisible,
         style: workSansTextStyle(
@@ -343,6 +372,18 @@ class PasswordField extends StatelessWidget {
             fontWeight: hintWeight ?? FontWeight.w500,
           ),
           enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: primaryColor,
+            ),
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: primaryColor,
+            ),
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
             borderSide: const BorderSide(
               color: primaryColor,
             ),

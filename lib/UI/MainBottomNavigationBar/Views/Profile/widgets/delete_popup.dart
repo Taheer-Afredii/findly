@@ -65,7 +65,8 @@ class DeletePopup extends StatelessWidget {
                             height: 48.h,
                             buttonColor: primaryColor,
                             onTap: () {
-                              Get.offAll(() => LogInScreen());
+                              Get.offAll(
+                                  () => LogInScreen(isFrombottomSheet: false));
                             },
                             text: "Delete"))
                   ],

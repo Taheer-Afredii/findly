@@ -3,3 +3,9 @@ enum ServiceType {
   marketplace,
   photography,
 }
+
+enum UserType {
+  student,
+  agent,
+  photographer,
+}

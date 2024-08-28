@@ -1,8 +1,10 @@
 import 'package:findly/Core/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
+import 'package:findly/UI/Auth/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Core/Constant/assets_constant.dart';
 import '../../../Core/Constant/colors.dart';
@@ -40,45 +42,48 @@ class ChooseRoleScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Column(
-                        children: [
-                          workSansText(
-                            text: "Choose Your Role",
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            color: blackColor,
-                          ),
-                          SizedBox(height: 29.h),
-                          AppButton(
-                            onTap: () {
-                              Navigator.pushNamed(context, AppRoutes.student);
-                            },
-                            text: "Student",
-                            height: 62.h,
-                          ),
-                          SizedBox(height: 15.h),
-                          AppButton(
-                            buttonColor: secondaryColor,
-                            textColor: whiteColor,
-                            onTap: () {
-                              Navigator.pushNamed(context, AppRoutes.agent);
-                            },
-                            text: "Agent",
-                            height: 62.h,
-                          ),
-                          SizedBox(height: 15.h),
-                          AppButton(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, AppRoutes.photographer);
-                            },
-                            buttonColor: primaryColor,
-                            textColor: whiteColor,
-                            text: "Photographer",
-                            height: 62.h,
-                          ),
-                        ],
-                      ),
+                      child: Consumer<AuthProvider>(
+                          builder: (context, model, child) {
+                        return Column(
+                          children: [
+                            workSansText(
+                              text: "Choose Your Role",
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                              color: blackColor,
+                            ),
+                            SizedBox(height: 29.h),
+                            AppButton(
+                              onTap: () {
+                                Navigator.pushNamed(context, AppRoutes.student);
+                              },
+                              text: "Student",
+                              height: 62.h,
+                            ),
+                            SizedBox(height: 15.h),
+                            AppButton(
+                              buttonColor: secondaryColor,
+                              textColor: whiteColor,
+                              onTap: () {
+                                Navigator.pushNamed(context, AppRoutes.agent);
+                              },
+                              text: "Agent",
+                              height: 62.h,
+                            ),
+                            SizedBox(height: 15.h),
+                            AppButton(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, AppRoutes.photographer);
+                              },
+                              buttonColor: primaryColor,
+                              textColor: whiteColor,
+                              text: "Photographer",
+                              height: 62.h,
+                            ),
+                          ],
+                        );
+                      }),
                     ),
                   ],
                 ),

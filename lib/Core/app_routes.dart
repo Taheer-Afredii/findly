@@ -26,7 +26,7 @@ class AppRoutes {
   static Map<String, WidgetBuilder> getRoutes() {
     return {
       splash: (context) => const SplashScreen(),
-      login: (context) => LogInScreen(),
+      login: (context) => LogInScreen(isFrombottomSheet: false),
       createAccount: (context) => CreateAccountScreen(),
       chooseRole: (context) => const ChooseRoleScreen(),
       student: (context) => StudentScreen(),

@@ -1,3 +1,5 @@
+import 'package:findly/UI/Auth/logInScreen/log_in_screen.dart';
+import 'package:findly/UI/MainBottomNavigationBar/bottomshett_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
@@ -10,8 +12,9 @@ import '../../Notificatons/notifications.dart';
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
     super.key,
+    required this.model,
   });
-
+  final BottomshettViewmodel model;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,7 +35,11 @@ class HomeAppBar extends StatelessWidget {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              Get.to(() => const Notifications());
+              if (model.currentUser.userName != null) {
+                Get.to(() => const Notifications());
+              } else {
+                Get.to(() => LogInScreen(isFrombottomSheet: true));
+              }
             },
             child: Image.asset(
               notification,

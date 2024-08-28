@@ -1,5 +1,6 @@
 import 'package:findly/Core/Constant/colors.dart';
 import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/UI/Auth/logInScreen/log_in_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/bottomshett_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,7 +35,10 @@ class _MainBottomNavigationbarState extends State<MainBottomNavigationbar> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<BottomshettViewmodel>().onItemTapped(0);
+      BottomshettViewmodel model =
+          Provider.of<BottomshettViewmodel>(context, listen: false);
+      model.init();
+      model.onItemTapped(0);
     });
   }
 
@@ -141,7 +145,18 @@ class _MainBottomNavigationbarState extends State<MainBottomNavigationbar> {
                   color: blackColor.withOpacity(0.5),
                 ),
                 onTap: (int index) {
-                  model.onItemTapped(index);
+                  BottomshettViewmodel model =
+                      Provider.of<BottomshettViewmodel>(context, listen: false);
+                  if (index != 0 && model.currentUser.userName == null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              LogInScreen(isFrombottomSheet: true)),
+                    );
+                  } else {
+                    model.onItemTapped(index);
+                  }
                 },
                 type: BottomNavigationBarType.fixed,
               ),
