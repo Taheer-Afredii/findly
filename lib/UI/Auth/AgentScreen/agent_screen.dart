@@ -52,29 +52,29 @@ class AgentScreen extends StatelessWidget {
                           controller: usernamecontroller,
                         ),
                         SizedBox(height: 18.h),
-                        Row(
-                          children: [
-                            workSansText(
-                                text: "Agent Number",
-                                color: const Color(0xFF1E1E1E),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500),
-                            GestureDetector(
-                              onTap: () {},
-                              child: workSansText(
-                                  text: " Request Agent number",
-                                  color: textHighLight,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10.h),
-                        CustomTextField2(
-                          hintText: "Enter Agent Name",
-                          controller: agentNumberController,
-                        ),
-                        SizedBox(height: 18.h),
+                        // Row(
+                        //   children: [
+                        //     workSansText(
+                        //         text: "Agent Number",
+                        //         color: const Color(0xFF1E1E1E),
+                        //         fontSize: 14.sp,
+                        //         fontWeight: FontWeight.w500),
+                        //     GestureDetector(
+                        //       onTap: () {},
+                        //       child: workSansText(
+                        //           text: " Request Agent number",
+                        //           color: textHighLight,
+                        //           fontSize: 14.sp,
+                        //           fontWeight: FontWeight.w500),
+                        //     ),
+                        //   ],
+                        // ),
+                        // SizedBox(height: 10.h),
+                        // CustomTextField2(
+                        //   hintText: "Enter Agent Name",
+                        //   controller: agentNumberController,
+                        // ),
+                        // SizedBox(height: 18.h),
                         workSansText(
                           text: "Upload Profile Photo",
                           fontSize: 14.sp,
@@ -93,7 +93,7 @@ class AgentScreen extends StatelessWidget {
                             context.read<AuthProvider>().setAgentProfile();
                           },
                         ),
-                        SizedBox(height: 196.h),
+                        SizedBox(height: 178.h),
                         BackNextButton(
                           onNextTap: () {
                             Get.offAll(() => const MainBottomNavigationbar());

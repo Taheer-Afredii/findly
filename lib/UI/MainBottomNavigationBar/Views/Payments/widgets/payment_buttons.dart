@@ -7,15 +7,19 @@ class PaymentBackButton extends StatelessWidget {
   const PaymentBackButton({
     super.key,
     required this.onTap,
+    this.text,
+    this.width,
   });
   final VoidCallback onTap;
+  final String? text;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 56.h,
-        width: 1.sw,
+        width: width ?? 1.sw,
         margin: EdgeInsets.symmetric(horizontal: 12.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
@@ -30,7 +34,7 @@ class PaymentBackButton extends StatelessWidget {
         ),
         child: Center(
           child: workSansText(
-              text: "Back",
+              text: text ?? "Back",
               color: whiteColor,
               fontSize: 16.sp,
               fontWeight: FontWeight.bold),
@@ -44,9 +48,11 @@ class PaymentContinueButton extends StatelessWidget {
   const PaymentContinueButton({
     super.key,
     required this.onTap,
+    this.text,
   });
 
   final VoidCallback onTap;
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +77,7 @@ class PaymentContinueButton extends StatelessWidget {
         ),
         child: Center(
           child: workSansText(
-              text: "Continue",
+              text: text ?? "Continue",
               color: whiteColor,
               fontSize: 16.sp,
               fontWeight: FontWeight.bold),

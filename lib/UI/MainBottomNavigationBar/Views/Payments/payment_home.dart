@@ -35,7 +35,7 @@ class PaymentHome extends StatelessWidget {
                 color: const Color(0xFF0C4A9A),
                 fontWeight: FontWeight.w700),
             SizedBox(height: 47.h),
-            const PriceContainer(),
+            const PriceContainer(text: "R299"),
             SizedBox(height: 26.h),
             PaymentContinueButton(
               onTap: () {
@@ -44,7 +44,9 @@ class PaymentHome extends StatelessWidget {
             ),
             SizedBox(height: 15.h),
             PaymentBackButton(
-              onTap: () {},
+              onTap: () {
+                Get.back();
+              },
             ),
           ],
         ),

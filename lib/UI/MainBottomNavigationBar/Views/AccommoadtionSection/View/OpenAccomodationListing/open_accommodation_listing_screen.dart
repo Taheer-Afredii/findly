@@ -150,16 +150,16 @@ class OpenAccommodationListingScreen extends StatelessWidget {
                                 color: textColor,
                               ),
                             ),
-                            SizedBox(height: 8.h),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 25.w),
-                              child: workSansText(
-                                text: "Agent Number: 2368",
-                                fontWeight: FontWeight.normal,
-                                fontSize: 14.sp,
-                                color: textColor,
-                              ),
-                            ),
+                            // SizedBox(height: 8.h),
+                            // Padding(
+                            //   padding: EdgeInsets.symmetric(horizontal: 25.w),
+                            //   child: workSansText(
+                            //     text: "Agent Number: 2368",
+                            //     fontWeight: FontWeight.normal,
+                            //     fontSize: 14.sp,
+                            //     color: textColor,
+                            //   ),
+                            // ),
                             SizedBox(height: 20.h),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 25.w),

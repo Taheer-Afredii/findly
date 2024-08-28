@@ -87,11 +87,11 @@ class _PhotographerDetailsState extends State<PhotographerDetails> {
                       SizedBox(height: 20.h),
                       const ShareAndPriceRow(),
                       SizedBox(height: 12.h),
-                      workSansText(
-                        text: "Business Number: P228",
-                        fontSize: 14.sp,
-                        color: const Color(0xFF0A0909),
-                      ),
+                      // workSansText(
+                      //   text: "Business Number: P228",
+                      //   fontSize: 14.sp,
+                      //   color: const Color(0xFF0A0909),
+                      // ),
                       SizedBox(height: 14.h),
                       workSansText(
                           text: "About",
