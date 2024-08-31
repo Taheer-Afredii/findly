@@ -1,6 +1,6 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/colors.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/colors.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/custom_textfield.dart';
 import 'package:findly/Core/app_routes.dart';

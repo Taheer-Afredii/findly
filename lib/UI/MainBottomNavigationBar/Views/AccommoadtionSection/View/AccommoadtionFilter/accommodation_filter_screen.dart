@@ -6,7 +6,7 @@ import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:stepper_list_view/stepper_list_view.dart';
 
-import '../../../../../../Core/Constant/colors.dart';
+import '../../../../../../Constant/colors.dart';
 import '../../../../../../Core/Custom/app_button.dart';
 import '../../../../../Auth/Widgets/custom_auth_appbar.dart';
 import 'accommodation_filter_viewmodel.dart';

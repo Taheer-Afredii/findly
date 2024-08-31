@@ -1,6 +1,6 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/colors.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/colors.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/main_bottom_navigationbar.dart';
 import 'package:flutter/material.dart';

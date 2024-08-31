@@ -1,4 +1,4 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AmmenitiesWidgetModel {

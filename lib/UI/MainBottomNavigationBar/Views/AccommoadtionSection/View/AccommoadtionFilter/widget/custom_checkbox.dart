@@ -1,8 +1,8 @@
-import 'package:findly/Core/Constant/colors.dart';
+import 'package:findly/Constant/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../../Core/Constant/text_constant.dart';
+import '../../../../../../../Constant/text_constant.dart';
 
 class FilterCustomCheckbox extends StatefulWidget {
   final bool value;

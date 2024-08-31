@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 
-import '../../../../../Core/Constant/assets_constant.dart';
-import '../../../../../Core/Constant/colors.dart';
-import '../../../../../Core/Constant/text_constant.dart';
+import '../../../../../Constant/assets_constant.dart';
+import '../../../../../Constant/colors.dart';
+import '../../../../../Constant/text_constant.dart';
 import '../../Notificatons/notifications.dart';
 
 class HomeAppBar extends StatelessWidget {

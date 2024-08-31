@@ -1,6 +1,6 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/enum.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/enum.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Models/listing_model.dart';
@@ -18,7 +18,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../Core/Constant/colors.dart';
+import '../../../../../../Constant/colors.dart';
 import '../../../Home/widgets/home_search_field.dart';
 
 class MyListingScreen extends StatelessWidget {

@@ -1,12 +1,12 @@
-import 'package:findly/Core/Constant/enum.dart';
+import 'package:findly/Constant/enum.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/Auth/StudentScreen/widgets/back_next_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Core/Constant/colors.dart';
-import '../../../Core/Constant/text_constant.dart';
+import '../../../Constant/colors.dart';
+import '../../../Constant/text_constant.dart';
 import '../../../Core/Custom/custom_textfield.dart';
 import '../Widgets/custom_auth_appbar.dart';
 import '../Widgets/custom_dotted_border.dart';

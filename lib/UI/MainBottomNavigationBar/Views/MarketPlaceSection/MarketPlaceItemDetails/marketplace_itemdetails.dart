@@ -2,9 +2,9 @@
 
 import 'dart:async';
 
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/enum.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/enum.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Chats/chat_screen.dart';
@@ -16,7 +16,7 @@ import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../../../../Core/Constant/colors.dart';
+import '../../../../../Constant/colors.dart';
 import '../../../../../Core/Custom/app_button.dart';
 import '../MarketPlaceHome/marketplacehome_viewmodel.dart';
 

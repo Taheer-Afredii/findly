@@ -1,5 +1,5 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/enum.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/enum.dart';
 
 class ListingModel {
   String? title;

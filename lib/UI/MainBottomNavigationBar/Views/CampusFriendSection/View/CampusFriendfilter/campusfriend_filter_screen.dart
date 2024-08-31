@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:stepper_list_view/stepper_list_view.dart';
 
-import '../../../../../../Core/Constant/colors.dart';
+import '../../../../../../Constant/colors.dart';
 import '../../../../../../Core/Custom/app_button.dart';
 import '../../../AccommoadtionSection/View/AccommoadtionFilter/widget/selection_container.dart';
 import 'Widget/custom_ageslider_container.dart';

@@ -1,10 +1,10 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/widgets/accommodation_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../../Core/Constant/colors.dart';
-import '../../../../../../../Core/Constant/text_constant.dart';
+import '../../../../../../../Constant/colors.dart';
+import '../../../../../../../Constant/text_constant.dart';
 
 class AccommodationListing extends StatelessWidget {
   const AccommodationListing({

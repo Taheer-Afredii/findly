@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/colors.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/colors.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
 import 'package:findly/Models/toprated_photographer_model.dart';
@@ -14,7 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../Core/Constant/text_constant.dart';
+import '../../../../../Constant/text_constant.dart';
 
 class GraduationphotographyHome extends StatelessWidget {
   GraduationphotographyHome({super.key});

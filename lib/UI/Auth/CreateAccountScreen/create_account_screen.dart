@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Core/Constant/colors.dart';
-import '../../../Core/Constant/text_constant.dart';
+import '../../../Constant/colors.dart';
+import '../../../Constant/text_constant.dart';
 import '../../../Core/Custom/app_button.dart';
 import '../../../Core/Custom/custom_textfield.dart';
 import '../Widgets/auth_logo_widget.dart';

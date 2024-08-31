@@ -1,5 +1,5 @@
-import 'package:findly/Core/Constant/colors.dart';
-import 'package:findly/Core/Constant/enum.dart';
+import 'package:findly/Constant/colors.dart';
+import 'package:findly/Constant/enum.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
 import 'package:findly/Core/Custom/custom_textfield.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Core/Constant/text_constant.dart';
+import '../../../Constant/text_constant.dart';
 import '../Widgets/custom_auth_appbar.dart';
 
 class StudentScreen extends StatelessWidget {

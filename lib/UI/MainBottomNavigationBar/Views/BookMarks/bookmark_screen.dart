@@ -1,4 +1,4 @@
-import 'package:findly/Core/Constant/enum.dart';
+import 'package:findly/Constant/enum.dart';
 import 'package:findly/Models/bookmark_model.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/BookMarks/bookmark_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/BookMarks/widget/bookmark_accommodation_widget.dart';
@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../Core/Constant/text_constant.dart';
+import '../../../../Constant/text_constant.dart';
 import '../../../../Core/Custom/container_widget.dart';
 import '../../../Auth/Widgets/custom_auth_appbar.dart';
 

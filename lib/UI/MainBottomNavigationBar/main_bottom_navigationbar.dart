@@ -1,5 +1,5 @@
-import 'package:findly/Core/Constant/colors.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/colors.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/UI/Auth/logInScreen/log_in_screen.dart';
 import 'package:findly/UI/MainBottomNavigationBar/bottomshett_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../Core/Constant/assets_constant.dart';
+import '../../Constant/assets_constant.dart';
 import 'Views/BookMarks/bookmark_screen.dart';
 import 'Views/Home/home_screen.dart';
 import 'Views/Messages/messages_screen.dart';

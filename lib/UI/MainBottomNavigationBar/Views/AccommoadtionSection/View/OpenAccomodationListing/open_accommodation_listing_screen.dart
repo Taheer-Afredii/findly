@@ -1,6 +1,6 @@
-import 'package:findly/Core/Constant/colors.dart';
-import 'package:findly/Core/Constant/enum.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/colors.dart';
+import 'package:findly/Constant/enum.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Models/ammenities_model.dart';

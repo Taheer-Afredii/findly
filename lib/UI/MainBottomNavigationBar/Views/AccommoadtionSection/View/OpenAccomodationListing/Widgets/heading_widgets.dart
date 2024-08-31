@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../../../../../../Core/Constant/assets_constant.dart';
-import '../../../../../../../Core/Constant/colors.dart';
-import '../../../../../../../Core/Constant/text_constant.dart';
+import '../../../../../../../Constant/assets_constant.dart';
+import '../../../../../../../Constant/colors.dart';
+import '../../../../../../../Constant/text_constant.dart';
 import '../../../../../../../Models/accommodation_model.dart';
 import '../../../../../../Auth/Widgets/custom_auth_appbar.dart';
 

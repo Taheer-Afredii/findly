@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../Core/Constant/text_constant.dart';
+import '../../../../../Constant/text_constant.dart';
 import '../../../../../Core/Custom/container_widget.dart';
 import '../../../../Auth/Widgets/custom_auth_appbar.dart';
 import '../MarketPlaceHome/Widgets/marketplace_topitem_gridview.dart';

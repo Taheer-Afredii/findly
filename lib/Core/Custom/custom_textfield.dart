@@ -1,11 +1,11 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../UI/Auth/auth_provider.dart';
-import '../Constant/colors.dart';
+import '../../Constant/colors.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({

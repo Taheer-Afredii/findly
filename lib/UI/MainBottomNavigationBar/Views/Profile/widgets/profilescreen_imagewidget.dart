@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../Core/Constant/colors.dart';
+import '../../../../../Constant/colors.dart';
 import '../../../../Auth/Widgets/custom_auth_appbar.dart';
 
 class ProfileScreenImageWidget extends StatelessWidget {

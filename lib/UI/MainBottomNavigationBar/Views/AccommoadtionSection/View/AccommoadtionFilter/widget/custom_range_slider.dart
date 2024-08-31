@@ -1,4 +1,4 @@
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

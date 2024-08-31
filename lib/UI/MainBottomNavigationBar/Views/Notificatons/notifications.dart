@@ -1,11 +1,11 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../Core/Constant/colors.dart';
+import '../../../../Constant/colors.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});

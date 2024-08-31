@@ -1,12 +1,12 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../Core/Constant/colors.dart';
-import '../../../../../Core/Constant/text_constant.dart';
+import '../../../../../Constant/colors.dart';
+import '../../../../../Constant/text_constant.dart';
 import '../../Home/home_screen_viewmodel.dart';
 
 class AccomondationListview extends StatelessWidget {

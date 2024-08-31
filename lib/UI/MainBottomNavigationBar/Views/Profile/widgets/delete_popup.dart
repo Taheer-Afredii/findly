@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../../Core/Constant/colors.dart';
-import '../../../../../Core/Constant/text_constant.dart';
+import '../../../../../Constant/colors.dart';
+import '../../../../../Constant/text_constant.dart';
 import '../../../../../Core/Custom/app_button.dart';
 
 class DeletePopup extends StatelessWidget {

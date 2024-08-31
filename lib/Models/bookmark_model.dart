@@ -1,6 +1,6 @@
-import 'package:findly/Core/Constant/enum.dart';
+import 'package:findly/Constant/enum.dart';
 
-import '../Core/Constant/assets_constant.dart';
+import '../Constant/assets_constant.dart';
 
 class BookMarkModel {
   String? title;

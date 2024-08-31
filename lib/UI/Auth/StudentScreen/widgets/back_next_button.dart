@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../Core/Constant/colors.dart';
+import '../../../../Constant/colors.dart';
 import '../../../../Core/Custom/app_button.dart';
 
 class BackNextButton extends StatelessWidget {

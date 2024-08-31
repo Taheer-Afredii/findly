@@ -1,4 +1,4 @@
-import 'package:findly/Core/Constant/assets_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/MarketPlaceHome/Widgets/marketplace_topitem_gridview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

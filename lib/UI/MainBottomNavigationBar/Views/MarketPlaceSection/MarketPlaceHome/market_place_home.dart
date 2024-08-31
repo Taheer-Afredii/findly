@@ -1,5 +1,5 @@
-import 'package:findly/Core/Constant/colors.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/colors.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
@@ -14,7 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../Core/Constant/assets_constant.dart';
+import '../../../../../Constant/assets_constant.dart';
 import '../../../../../Core/Custom/app_button.dart';
 import '../../Home/widgets/home_search_field.dart';
 import '../MarketPlaceItemDetails/marketplace_itemdetails.dart';

@@ -1,5 +1,5 @@
-import 'package:findly/Core/Constant/colors.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/colors.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Models/messages_model.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Chats/chat_screen.dart';

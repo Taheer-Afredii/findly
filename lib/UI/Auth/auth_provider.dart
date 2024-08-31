@@ -3,7 +3,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:findly/Core/Constant/enum.dart';
+import 'package:findly/Constant/enum.dart';
 import 'package:findly/Core/Custom/pick_image.dart';
 import 'package:findly/Models/user_model.dart';
 import 'package:findly/UI/MainBottomNavigationBar/main_bottom_navigationbar.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/CampusFriendSection/View/CampusFriendProfile/campusfriend_profile_screen.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../Core/Constant/colors.dart';
+import '../../../../../../Constant/colors.dart';
 import '../../../../../../Core/Custom/container_widget.dart';
 import '../../../AccommoadtionSection/View/AccommodationHome/widgets/filter_button.dart';
 import 'Widgets/category.dart';

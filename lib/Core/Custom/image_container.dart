@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../Constant/assets_constant.dart';
+import '../../Constant/assets_constant.dart';
 
 class ImageContainer extends StatelessWidget {
   const ImageContainer({super.key, this.height, this.width, this.image});

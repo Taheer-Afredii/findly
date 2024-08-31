@@ -1,6 +1,6 @@
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:findly/Core/Constant/assets_constant.dart';
-import 'package:findly/Core/Constant/enum.dart';
+import 'package:findly/Constant/assets_constant.dart';
+import 'package:findly/Constant/enum.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Models/accommodation_model.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';

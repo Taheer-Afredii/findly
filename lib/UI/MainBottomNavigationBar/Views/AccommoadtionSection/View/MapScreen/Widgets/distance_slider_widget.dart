@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../../Core/Constant/colors.dart';
-import '../../../../../../../Core/Constant/text_constant.dart';
+import '../../../../../../../Constant/colors.dart';
+import '../../../../../../../Constant/text_constant.dart';
 import 'map_backbutton_maprangecontainer.dart';
 
 class DistanceSliderWidget extends StatelessWidget {

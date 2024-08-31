@@ -1,4 +1,4 @@
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/Auth/auth_provider.dart';
@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Core/Constant/assets_constant.dart';
-import '../../../Core/Constant/colors.dart';
+import '../../../Constant/assets_constant.dart';
+import '../../../Constant/colors.dart';
 import '../../../Core/app_routes.dart';
 
 class ChooseRoleScreen extends StatelessWidget {

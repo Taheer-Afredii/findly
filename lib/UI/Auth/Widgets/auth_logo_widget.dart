@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../Core/Constant/assets_constant.dart';
-import '../../../Core/Constant/colors.dart';
+import '../../../Constant/assets_constant.dart';
+import '../../../Constant/colors.dart';
 
 class AuthLogoWidget extends StatelessWidget {
   const AuthLogoWidget({

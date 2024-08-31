@@ -1,10 +1,10 @@
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Gallery/gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 
-import '../../../../../../../Core/Constant/colors.dart';
+import '../../../../../../../Constant/colors.dart';
 import '../../../../../../../Models/accommodation_model.dart';
 
 class ImageContainerWidget extends StatelessWidget {

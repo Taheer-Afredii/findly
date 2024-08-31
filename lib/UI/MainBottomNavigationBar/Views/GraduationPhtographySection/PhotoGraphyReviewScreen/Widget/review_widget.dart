@@ -4,8 +4,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 
-import '../../../../../../Core/Constant/colors.dart';
-import '../../../../../../Core/Constant/text_constant.dart';
+import '../../../../../../Constant/colors.dart';
+import '../../../../../../Constant/text_constant.dart';
 import '../../../../../../Core/Custom/custom_textfield.dart';
 import '../../../MarketPlaceSection/MarketPlaceSubmitListing/marketplace_submitlisting.dart';
 

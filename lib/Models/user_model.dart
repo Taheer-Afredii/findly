@@ -1,4 +1,4 @@
-import 'package:findly/Core/Constant/enum.dart';
+import 'package:findly/Constant/enum.dart';
 
 class UserModel {
   String? firstName;

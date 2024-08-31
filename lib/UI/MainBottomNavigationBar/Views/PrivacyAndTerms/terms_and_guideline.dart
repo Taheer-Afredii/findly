@@ -1,10 +1,10 @@
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/UI/Auth/Widgets/custom_auth_appbar.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/PrivacyAndTerms/privacy_and_terms.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../Core/Constant/colors.dart';
-import '../../../../Core/Constant/text_constant.dart';
+import '../../../../Constant/colors.dart';
 import '../../../../Core/Custom/container_widget.dart';
 
 class TermsAndGuideline extends StatelessWidget {

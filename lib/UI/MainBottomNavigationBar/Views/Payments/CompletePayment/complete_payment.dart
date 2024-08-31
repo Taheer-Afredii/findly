@@ -1,5 +1,5 @@
-import 'package:findly/Core/Constant/colors.dart';
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/colors.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Payments/CompletePayment/widgets/complete_payment_price_container.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Payments/CompletePayment/widgets/successful_payment_popup.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Payments/CompletePayment/widgets/terms_and_guidelinetext_widget.dart';

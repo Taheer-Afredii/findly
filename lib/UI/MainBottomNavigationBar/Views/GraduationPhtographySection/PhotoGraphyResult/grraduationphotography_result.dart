@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../Core/Constant/text_constant.dart';
+import '../../../../../Constant/text_constant.dart';
 import '../../../../../Core/Custom/container_widget.dart';
 import '../../../../../Core/Custom/custom_drop_down.dart';
 import '../../../../Auth/Widgets/custom_auth_appbar.dart';

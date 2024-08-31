@@ -1,10 +1,10 @@
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../Core/Constant/assets_constant.dart';
-import '../../../../../../Core/Constant/colors.dart';
+import '../../../../../../Constant/assets_constant.dart';
+import '../../../../../../Constant/colors.dart';
 import 'Widget/campusfriend_profileimage_widget.dart';
 
 class CampusfriendProfileScreen extends StatelessWidget {

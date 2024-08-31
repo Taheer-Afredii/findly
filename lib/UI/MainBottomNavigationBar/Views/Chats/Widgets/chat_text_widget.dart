@@ -2,9 +2,9 @@ import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../Core/Constant/assets_constant.dart';
-import '../../../../../Core/Constant/colors.dart';
-import '../../../../../Core/Constant/text_constant.dart';
+import '../../../../../Constant/assets_constant.dart';
+import '../../../../../Constant/colors.dart';
+import '../../../../../Constant/text_constant.dart';
 import '../../../../Auth/Widgets/custom_auth_appbar.dart';
 
 class ChatScreenWidget extends StatelessWidget {

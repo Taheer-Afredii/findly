@@ -1,4 +1,4 @@
-import 'package:findly/Core/Constant/text_constant.dart';
+import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../Core/Constant/colors.dart';
+import '../../../../../Constant/colors.dart';
 import '../../../../../Core/Custom/custom_textfield.dart';
 import '../../../../Auth/Widgets/custom_dotted_border.dart';
 
