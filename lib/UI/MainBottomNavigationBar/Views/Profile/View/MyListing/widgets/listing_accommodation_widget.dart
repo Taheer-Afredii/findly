@@ -3,6 +3,7 @@ import 'package:findly/Constant/colors.dart';
 import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/image_container.dart';
+import 'package:findly/Models/AccommodationModels/get_user_accommodation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,12 +13,15 @@ class ListingAccommodationWidget extends StatelessWidget {
     required this.index,
     this.onDelete,
     this.onEdit,
+    required this.data,
   });
   final int index;
   final VoidCallback? onDelete;
   final VoidCallback? onEdit;
+  final GetuserAccommodation data;
   @override
   Widget build(BuildContext context) {
+    print(data.images?.first);
     return Container(
       // height: 120.h,
       padding: EdgeInsets.only(right: 8.w, bottom: 8.h, top: 12.w, left: 8.w),
@@ -31,9 +35,10 @@ class ListingAccommodationWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ImageContainer(
+          NetworkImageContainer(
             height: 92.h,
             width: 85.w,
+            image: data.images?.first,
           ),
           SizedBox(width: 4.h),
           Column(
@@ -77,7 +82,7 @@ class ListingAccommodationWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 5.w),
                 child: workSansText(
-                    text: "From R5000/Month",
+                    text: "From R${data.price}/Month",
                     fontWeight: FontWeight.w500,
                     fontSize: 12.sp,
                     color: blackColor),
@@ -86,8 +91,10 @@ class ListingAccommodationWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 5.w),
                 child: workSansText(
-                    text: "Available",
-                    color: const Color(0xFF12B347),
+                    text: data.availability ?? "",
+                    color: data.availability == "Available"
+                        ? const Color(0xFF12B347)
+                        : secondaryColor,
                     fontSize: 10.56.sp),
               ),
               SizedBox(height: 3.h),

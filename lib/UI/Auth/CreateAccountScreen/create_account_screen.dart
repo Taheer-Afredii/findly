@@ -85,14 +85,14 @@ class CreateAccountScreen extends StatelessWidget {
                                 CustomTextField(
                                   controller: model.emailController,
                                   hintText: "Enter Your Email",
-                                  // validator: (value) {
-                                  //   if (value!.isEmpty) {
-                                  //     return "Email is required";
-                                  //   } else if (!value.contains("@")) {
-                                  //     return "Invalid Email";
-                                  //   }
-                                  //   return null;
-                                  // },
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return "Email is required";
+                                    } else if (!value.contains("@")) {
+                                      return "Invalid Email";
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 SizedBox(height: 15.h),
                                 workSansText(
@@ -108,8 +108,10 @@ class CreateAccountScreen extends StatelessWidget {
                                   validator: (value) {
                                     if (value!.isEmpty) {
                                       return "Password is required";
-                                    } else if (value.length < 6) {
-                                      return "Password must be at least 6 characters";
+                                    } else if (value.length < 8) {
+                                      return "Password must be at least 8 characters";
+                                    } else if (!model.validatePassword(value)) {
+                                      return "Password must contain at least one uppercase letter, one lowercase letter, and one digit";
                                     }
                                     return null;
                                   },

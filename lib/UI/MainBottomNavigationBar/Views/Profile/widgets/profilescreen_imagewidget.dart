@@ -46,11 +46,18 @@ class ProfileScreenImageWidget extends StatelessWidget {
                   shape: BoxShape.circle,
                   image: model.myProfilePic != null
                       ? DecorationImage(
+                          onError: (exception, stackTrace) {
+                            log("Error: $exception");
+                          },
                           image: FileImage(File(model.myProfilePic!)),
                           fit: BoxFit.cover)
                       : image != null
                           ? DecorationImage(
-                              image: FileImage(File(image!)), fit: BoxFit.cover)
+                              onError: (exception, stackTrace) {
+                                log("Error: $exception");
+                              },
+                              image: FileImage(File(image!)),
+                              fit: BoxFit.cover)
                           : null,
                 ),
               ),

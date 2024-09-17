@@ -35,7 +35,7 @@ class HomeAppBar extends StatelessWidget {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              if (model.currentUser.userName != null) {
+              if (model.email != null) {
                 Get.to(() => const Notifications());
               } else {
                 Get.to(() => LogInScreen(isFrombottomSheet: true));

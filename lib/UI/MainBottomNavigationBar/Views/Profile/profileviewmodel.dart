@@ -5,27 +5,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../Core/Custom/pick_image.dart';
 
 class ProfileViewmodel extends ChangeNotifier {
-  bool isCurrentPasswordVisible = false;
-  bool isPasswordVisible = false;
-  bool isConfirmPasswordVisible = false;
   bool isWifiChecked = true;
   bool isTranportChecked = false;
 
   double rating = 4.8;
-  void toggleCurrentPasswordVisibility() {
-    isCurrentPasswordVisible = !isCurrentPasswordVisible;
-    notifyListeners();
-  }
-
-  void togglePasswordVisibility() {
-    isPasswordVisible = !isPasswordVisible;
-    notifyListeners();
-  }
-
-  void toggleConfirmPasswordVisibility() {
-    isConfirmPasswordVisible = !isConfirmPasswordVisible;
-    notifyListeners();
-  }
 
   void setRating(double value) {
     rating = value;
@@ -74,6 +57,7 @@ class ProfileViewmodel extends ChangeNotifier {
   logOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove("username");
+    prefs.remove("email");
     prefs.remove("password");
     prefs.remove("isguest");
   }

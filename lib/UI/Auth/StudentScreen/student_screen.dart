@@ -1,5 +1,4 @@
 import 'package:findly/Constant/colors.dart';
-import 'package:findly/Constant/enum.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
 import 'package:findly/Core/Custom/custom_textfield.dart';
@@ -13,12 +12,24 @@ import 'package:provider/provider.dart';
 import '../../../Constant/text_constant.dart';
 import '../Widgets/custom_auth_appbar.dart';
 
-class StudentScreen extends StatelessWidget {
-  StudentScreen({super.key});
+class StudentScreen extends StatefulWidget {
+  const StudentScreen({super.key});
+
+  @override
+  State<StudentScreen> createState() => _StudentScreenState();
+}
+
+class _StudentScreenState extends State<StudentScreen> {
   final TextEditingController studentNumberController = TextEditingController();
+
   final TextEditingController studentNameController = TextEditingController();
+
   final TextEditingController studentCampusController = TextEditingController();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  String selectedCampus = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,9 +83,25 @@ class StudentScreen extends StatelessWidget {
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w500),
                           SizedBox(height: 10.h),
-                          CustomDropDown(
-                              hinttext: "Choose Your Campus",
-                              onChanged: (val) {}),
+                          CustomDropDown2(
+                            items: const [
+                              "Campus1",
+                              "Campus2",
+                              "Campus3",
+                            ],
+                            itemBuilder: (String value) {
+                              return workSansText2(
+                                  text: value,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.normal,
+                                  color: textColor);
+                            },
+                            onChanged: (val) {
+                              selectedCampus = val!;
+                              setState(() {});
+                            },
+                            hinttext: "Select Campus",
+                          ),
                           // CustomTextField2(
                           //   hintText: "Choose Your Campus",
                           //   controller: studentNumberController,
@@ -127,18 +154,22 @@ class StudentScreen extends StatelessWidget {
                             },
                           ),
                           SizedBox(height: 37.w),
-                          BackNextButton(
-                            onNextTap: () {
-                              // Get.offAll(() => const MainBottomNavigationbar());
-                              if (formKey.currentState!.validate()) {
-                                model.signUp(
-                                    model.studentProfile,
-                                    studentNameController.text,
-                                    UserType.student,
-                                    "Student");
-                              }
-                            },
-                          ),
+                          model.studentSignUpLoading == true
+                              ? const CircularProgressIndicator(
+                                  color: primaryColor)
+                              : BackNextButton(
+                                  onNextTap: () async {
+                                    // Get.offAll(() => const MainBottomNavigationbar());
+                                    if (formKey.currentState!.validate()) {
+                                      // print(" campus: $selectedCampus");
+                                      await model.createStudentAccount(
+                                          username: studentNameController.text,
+                                          isSocial: false,
+                                          studentCampus: selectedCampus,
+                                          studentNumber: "1234");
+                                    }
+                                  },
+                                ),
                           SizedBox(height: 72.h),
                         ],
                       ),

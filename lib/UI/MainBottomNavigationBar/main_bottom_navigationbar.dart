@@ -147,7 +147,7 @@ class _MainBottomNavigationbarState extends State<MainBottomNavigationbar> {
                 onTap: (int index) {
                   BottomshettViewmodel model =
                       Provider.of<BottomshettViewmodel>(context, listen: false);
-                  if (index != 0 && model.currentUser.userName == null) {
+                  if (index != 0 && model.email == null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(

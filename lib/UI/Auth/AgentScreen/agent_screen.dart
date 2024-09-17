@@ -1,4 +1,3 @@
-import 'package:findly/Constant/enum.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/Auth/StudentScreen/widgets/back_next_button.dart';
 import 'package:flutter/material.dart';
@@ -105,11 +104,10 @@ class AgentScreen extends StatelessWidget {
                             BackNextButton(
                               onNextTap: () {
                                 if (formKey.currentState!.validate()) {
-                                  model.signUp(
-                                      model.agentProfile,
-                                      usernamecontroller.text,
-                                      UserType.agent,
-                                      "Agent");
+                                  model.createAgentAccount(
+                                      username: usernamecontroller.text,
+                                      isSocial: false,
+                                      agentNumber: agentNumberController.text);
                                 }
                               },
                             ),

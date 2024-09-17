@@ -1,3 +1,4 @@
+import 'package:findly/Constant/enum.dart';
 import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
@@ -181,8 +182,8 @@ class MarketplaceSellitem extends StatelessWidget {
                               SizedBox(height: 62.h),
                               AppButton(
                                 onTap: () {
-                                  Get.to(
-                                      () => const MarketplaceSubmitlisting());
+                                  Get.to(() => const MarketplaceSubmitlisting(
+                                      type: ServiceType.marketplace));
                                 },
                                 text: "Publish",
                                 buttonColor: secondaryColor,

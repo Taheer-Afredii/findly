@@ -1,24 +1,57 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:findly/Core/Custom/api_enum.dart';
+import 'package:findly/Core/Custom/custom_snakbar.dart';
+import 'package:findly/Core/Custom/image_to_firebase.dart';
+import 'package:findly/Core/api_services.dart';
+import 'package:findly/Models/AccommodationModels/add_accommodation.dart';
+import 'package:findly/UI/MainBottomNavigationBar/main_bottom_navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AddaccommodationViewmodel extends ChangeNotifier {
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController refController = TextEditingController();
+  final TextEditingController aboutController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+  ApiService apiService = ApiService();
   List<String> addAccommodationPhotos = [];
   bool isWifiChecked = true;
   bool isTranportChecked = false;
 
-  // void toggleWifiChecked() {
-  //   isWifiChecked = !isWifiChecked;
-  //   notifyListeners();
-  // }
+  //Drop downs values
+  String? selectedCategory;
+  String? selectedTenantType;
+  String? selectedRoomType;
+  String? selectedAvailability;
 
-  // void toggleTransportChecked() {
-  //   isTranportChecked = !isTranportChecked;
-  //   notifyListeners();
-  // }
+  //function to set the selected value
+  void setCategory(String value) {
+    selectedCategory = value;
+    notifyListeners();
+  }
+
+  void setTenantType(String value) {
+    selectedTenantType = value;
+    notifyListeners();
+  }
+
+  void setRoomType(String value) {
+    selectedRoomType = value;
+    notifyListeners();
+  }
+
+  void setAvailability(String value) {
+    selectedAvailability = value;
+    notifyListeners();
+  }
 
   List<bool> amenitiesValues = [
-    true,
+    false,
     false,
     false,
     false,
@@ -51,10 +84,21 @@ class AddaccommodationViewmodel extends ChangeNotifier {
   ];
 
   void onAmenitiesChanged(int index, bool? value) {
-    for (int i = 0; i < amenitiesValues.length; i++) {
-      amenitiesValues[i] = i == index ? value ?? false : false;
-    }
+    amenitiesValues[index] = value ?? false;
+
     notifyListeners();
+    getSelectedLabels();
+  }
+
+  List<String> getSelectedLabels() {
+    List<String> selectedLabels = [];
+    for (int i = 0; i < amenitiesValues.length; i++) {
+      if (amenitiesValues[i]) {
+        selectedLabels.add(amenitiesLabels[i]);
+      }
+    }
+    print(selectedLabels);
+    return selectedLabels;
   }
 
   void setAddAccommodationPhotos() async {
@@ -94,4 +138,109 @@ class AddaccommodationViewmodel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  //send Accommodation data to the server
+  bool loading = false;
+  addAccommodation() async {
+    loading = true;
+    notifyListeners();
+    List<String> images = [];
+    for (int i = 0; i < addAccommodationPhotos.length; i++) {
+      String imageUrl = await imageToFirebaseStorage(
+          imagePath: addAccommodationPhotos[i],
+          collectionPath: "AccommodationImages/");
+      images.add(imageUrl);
+    }
+    try {
+      const addAccommodationApi2 =
+          'https://findly-4bb460d4013e.herokuapp.com/api/accommondation';
+      log("1");
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('token');
+      log("2 $token");
+      AddAccommodationModel data = AddAccommodationModel(
+        title: titleController.text,
+        reference: refController.text,
+        category: selectedCategory,
+        lat: 40.7128,
+        long: -74.0060,
+        tenantType: selectedTenantType,
+        description: aboutController.text,
+        amenities: getSelectedLabels(),
+        images: images,
+        roomTypes: selectedRoomType,
+        price: int.parse(priceController.text),
+        availability: selectedAvailability,
+      );
+
+      log('Request Body: ${jsonEncode(data)}');
+      log("3");
+      var response = await apiService.request2(
+        header: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        endPoint: Uri.parse(addAccommodationApi2),
+        type: RequestType.post,
+        body: data,
+      );
+      log("4");
+
+      if (response.statusCode == 201) {
+        // Check for 201 Created status
+        final responseJson = jsonDecode(response.body);
+        log('Response: $responseJson');
+        kGetSnakBar(text: "Accommodation added successfully", title: "Success");
+
+        clearAllData();
+        loading = false;
+        notifyListeners();
+        await Get.offAll(const MainBottomNavigationbar());
+      } else {
+        final jsonResponse = jsonDecode(response.body);
+        final errorMessage = jsonResponse['error'];
+        log('Error: $errorMessage');
+        log('Error status code: ${response.statusCode}');
+        kGetSnakBar(text: errorMessage, title: "Error");
+        loading = false;
+        notifyListeners();
+      }
+    } catch (e) {
+      loading = false;
+      notifyListeners();
+      log("error in add accommodation $e");
+    }
+  }
+
+  clearAllData() {
+    titleController.clear();
+    refController.clear();
+    aboutController.clear();
+    locationController.clear();
+    priceController.clear();
+    selectedCategory = null;
+    selectedTenantType = null;
+    selectedRoomType = null;
+    selectedAvailability = null;
+    addAccommodationPhotos = [];
+    amenitiesValues = [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ];
+    notifyListeners();
+  }
+
+  //test function
 }

@@ -174,9 +174,7 @@ class MarketPlaceHome extends StatelessWidget {
                                         isBookmarked:
                                             model.isBookmarkedList[index],
                                         onBookMarkTap: () {
-                                          if (bottomModel
-                                                  .currentUser.userName !=
-                                              null) {
+                                          if (bottomModel.email != null) {
                                             model.toggleBookmark(index);
                                           } else {
                                             Get.to(LogInScreen(

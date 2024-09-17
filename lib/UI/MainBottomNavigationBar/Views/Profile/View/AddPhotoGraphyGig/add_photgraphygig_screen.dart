@@ -15,11 +15,7 @@ import '../../../../../Auth/Widgets/custom_auth_appbar.dart';
 import '../../../../../Auth/Widgets/custom_dotted_border.dart';
 
 class AddPhotgraphygigScreen extends StatelessWidget {
-  AddPhotgraphygigScreen({super.key});
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController priceController = TextEditingController();
-  final TextEditingController businessController = TextEditingController();
+  const AddPhotgraphygigScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +56,7 @@ class AddPhotgraphygigScreen extends StatelessWidget {
                               SizedBox(height: 10.h),
                               CustomTextField2(
                                 hintText: "Enter Name",
-                                controller: firstNameController,
+                                controller: model.firstNameController,
                               ),
                               SizedBox(height: 18.h),
                               workSansText2(
@@ -71,7 +67,7 @@ class AddPhotgraphygigScreen extends StatelessWidget {
                               SizedBox(height: 10.h),
                               CustomTextField2(
                                 maxLines: 5,
-                                controller: descriptionController,
+                                controller: model.descriptionController,
                                 hintText: "Description",
                               ),
                               SizedBox(height: 18.h),
@@ -150,7 +146,8 @@ class AddPhotgraphygigScreen extends StatelessWidget {
                               SizedBox(height: 10.h),
                               CustomTextField2(
                                 hintText: "From: R",
-                                controller: priceController,
+                                controller: model.priceController,
+                                keyboardType: TextInputType.number,
                               ),
                               SizedBox(height: 18.h),
                               workSansText2(
@@ -181,7 +178,7 @@ class AddPhotgraphygigScreen extends StatelessWidget {
                                       color: textColor);
                                 },
                                 onChanged: (val) {
-                                  print(val);
+                                  model.selectRegion(val!);
                                 },
                                 hinttext: "Select region",
                               ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "576998934978",
+    "project_id": "findly-c7614",
+    "storage_bucket": "findly-c7614.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576998934978:android:a50d15e3b78385d144ee5b",
+        "android_client_info": {
+          "package_name": "com.findly.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576998934978-87n7keho2empdh68c1f7ukbe3ra8npac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWSLjZiLROPG44D34vDGOWEDPBlecidn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "576998934978-87n7keho2empdh68c1f7ukbe3ra8npac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

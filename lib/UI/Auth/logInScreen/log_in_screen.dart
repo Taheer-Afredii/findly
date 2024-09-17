@@ -2,9 +2,10 @@ import 'package:findly/Constant/assets_constant.dart';
 import 'package:findly/Constant/colors.dart';
 import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
+import 'package:findly/Core/Custom/circular_progress.dart';
 import 'package:findly/Core/Custom/custom_textfield.dart';
 import 'package:findly/Core/app_routes.dart';
-import 'package:findly/UI/Auth/auth_provider.dart';
+import 'package:findly/UI/Auth/logInScreen/login_viewmodel.dart';
 import 'package:findly/UI/Auth/logInScreen/reset_password_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,8 +49,8 @@ class LogInScreen extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 38.w) +
                       EdgeInsets.only(top: 31.h),
-                  child:
-                      Consumer<AuthProvider>(builder: (context, model, child) {
+                  child: Consumer<LoginViewmodel>(
+                      builder: (context, model, child) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -91,14 +92,15 @@ class LogInScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 43.h),
-                        model.signInLoading
-                            ? const CircularProgressIndicator()
+                        model.loading
+                            ? const KCircularProgress(color: secondaryColor)
                             : AppButton(
                                 buttonColor: secondaryColor,
                                 textColor: whiteColor,
-                                onTap: () {
-                                  model.signIn(usernamecontroller.text,
-                                      passwordController.text);
+                                onTap: () async {
+                                  await model.login(
+                                      email: usernamecontroller.text,
+                                      password: passwordController.text);
                                 },
                                 text: "Sign in"),
                         SizedBox(height: 17.h),

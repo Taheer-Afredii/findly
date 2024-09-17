@@ -94,11 +94,9 @@ class PhotoGrapherScreen extends StatelessWidget {
                             BackNextButton(
                               onNextTap: () {
                                 if (formKey.currentState!.validate()) {
-                                  model.signUp(
-                                      model.photographerProfile,
-                                      usernamecontroller.text,
-                                      UserType.photographer,
-                                      "Photographer");
+                                  model.createPhotographerAccount(
+                                      username: usernamecontroller.text,
+                                      isSocial: false);
                                 }
                               },
                             ),

@@ -3,6 +3,7 @@ import 'package:findly/Constant/colors.dart';
 import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/image_container.dart';
+import 'package:findly/Models/GigModels/gig_user_gigs_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,10 +13,12 @@ class ListingPhotographerWidget extends StatelessWidget {
     required this.index,
     this.onDelete,
     this.onEdit,
+    required this.data,
   });
   final int index;
   final VoidCallback? onDelete;
   final VoidCallback? onEdit;
+  final GetUserGigsModel data;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,10 +34,10 @@ class ListingPhotographerWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ImageContainer(
+          NetworkImageContainer(
             height: 95.h,
             width: 85.w,
-            image: hostelimage3,
+            image: data.portfolio?.first,
           ),
           SizedBox(width: 4.h),
           Column(
@@ -50,7 +53,7 @@ class ListingPhotographerWidget extends StatelessWidget {
                       SizedBox(
                         width: 155.w,
                         child: workSansText(
-                          text: "TDE Photography",
+                          text: data.name ?? "",
                           fontWeight: FontWeight.w500,
                           fontSize: 12.sp,
                           color: blackColor,
@@ -82,7 +85,7 @@ class ListingPhotographerWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 5.w),
                 child: workSansText(
-                    text: "From R900",
+                    text: "From R${data.price}",
                     fontWeight: FontWeight.w500,
                     fontSize: 12.sp,
                     color: blackColor),
@@ -101,7 +104,7 @@ class ListingPhotographerWidget extends StatelessWidget {
                     SizedBox(
                       width: 155.w,
                       child: workSansText(
-                        text: "Johnnesburg",
+                        text: data.regions ?? "",
                         fontWeight: FontWeight.w500,
                         fontSize: 12.sp,
                         color: blackColor,

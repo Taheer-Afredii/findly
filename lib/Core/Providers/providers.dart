@@ -1,5 +1,6 @@
 import 'package:findly/UI/Auth/StudentScreen/student_viewmodel.dart';
 import 'package:findly/UI/Auth/auth_provider.dart';
+import 'package:findly/UI/Auth/logInScreen/login_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommoadtionFilter/accommodation_filter_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommodationHome/accomodation_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/MapScreen/map_screen_viewmodel.dart';
@@ -14,7 +15,11 @@ import 'package:findly/UI/MainBottomNavigationBar/Views/MarketPlaceSection/SellI
 import 'package:findly/UI/MainBottomNavigationBar/Views/Messages/messages_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/AddAccommodation/addaccommodation_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/AddPhotoGraphyGig/add_photographygig_viewmodel.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/EditAccommadtion/edit_accommodation_viewmodel.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/EditGig/edit_gig_screen_viewmodel.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/GigListing/gig_listing_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/MyListing/my_listing_viewmodel.dart';
+import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/View/PersonalInformation/personal_informaation_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/Profile/profileviewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/bottomshett_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -40,4 +45,9 @@ List<SingleChildWidget> providerList = [
   ChangeNotifierProvider(create: (_) => AddaccommodationViewmodel()),
   ChangeNotifierProvider(create: (_) => AddPhotographygigViewmodel()),
   ChangeNotifierProvider(create: (_) => MyListingViewmodel()),
+  ChangeNotifierProvider(create: (_) => LoginViewmodel()),
+  ChangeNotifierProvider(create: (_) => PersonalInformaationViewmodel()),
+  ChangeNotifierProvider(create: (_) => EditAccommodationViewmodel()),
+  ChangeNotifierProvider(create: (_) => GigListingViewmodel()),
+  ChangeNotifierProvider(create: (_) => EditGigScreenViewmodel()),
 ];

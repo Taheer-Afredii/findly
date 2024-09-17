@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../UI/Auth/auth_provider.dart';
 import '../../Constant/colors.dart';
+import '../../UI/Auth/auth_provider.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.hintText,
     required this.controller,
-    this.height,
-    this.width,
+    // this.height,
+    // this.width,
     this.padding,
     this.hintColor,
     this.hintWeight,
@@ -24,8 +24,8 @@ class CustomTextField extends StatelessWidget {
 
   final String hintText;
   final TextEditingController controller;
-  final double? height;
-  final double? width;
+  // final double? height;
+  // final double? width;
   final double? padding;
   final Color? hintColor;
   final FontWeight? hintWeight;
@@ -103,6 +103,7 @@ class CustomTextField2 extends StatelessWidget {
     this.maxLines,
     this.suffixSize,
     this.validator,
+    this.keyboardType,
   });
 
   final String hintText;
@@ -122,12 +123,14 @@ class CustomTextField2 extends StatelessWidget {
   final int? maxLines;
   final double? suffixSize;
   final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       validator: validator,
+      keyboardType: keyboardType,
       // textAlign: TextAlign.center,s
       maxLines: maxLines ?? 1,
       obscureText: isObscureText ?? false,
@@ -341,6 +344,7 @@ class PasswordField extends StatelessWidget {
           fontWeight: hintWeight ?? FontWeight.w500,
         ),
         decoration: InputDecoration(
+          errorMaxLines: 2,
           hintText: hintText,
           fillColor: whiteColor,
           filled: true,

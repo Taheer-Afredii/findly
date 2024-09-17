@@ -7,11 +7,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
-  checLoginuserAndRoute() async {
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  onSplashDone() async {
     Get.offAll(() => const MainBottomNavigationbar());
+    // BottomshettViewmodel model =
+    //     Provider.of<BottomshettViewmodel>(context, listen: false);
+    // model.init();
   }
 
   @override
@@ -41,7 +49,7 @@ class SplashScreen extends StatelessWidget {
                 const Spacer(),
                 GestureDetector(
                     onTap: () {
-                      Get.offAll(() => const MainBottomNavigationbar());
+                      onSplashDone();
                     },
                     child: const CustomButton()),
                 // GestureDetector(

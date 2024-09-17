@@ -72,6 +72,7 @@ class CustomDropDown2<T> extends StatelessWidget {
     required this.onChanged,
     required this.items,
     required this.itemBuilder,
+    this.validator,
   });
 
   final String hinttext;
@@ -79,11 +80,13 @@ class CustomDropDown2<T> extends StatelessWidget {
   final List<T> items;
   final Function(T?) onChanged;
   final Widget Function(T) itemBuilder;
+  final String? Function(T?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<T>(
       value: value,
+      validator: validator,
       style: workSansTextStyle(
           color: textColor, fontSize: 14.sp, fontWeight: FontWeight.normal),
       decoration: InputDecoration(

@@ -95,8 +95,7 @@ class HomeScreen extends StatelessWidget {
                                       width: 44.w,
                                       textWidth: 91.w,
                                       onTap: () {
-                                        if (model.currentUser.userName !=
-                                            null) {
+                                        if (model.email != null) {
                                           Get.to(() => AccomodationScreen());
                                         } else {
                                           Get.to(LogInScreen(
@@ -111,8 +110,7 @@ class HomeScreen extends StatelessWidget {
                                       width: 36.w,
                                       textWidth: 91.w,
                                       onTap: () {
-                                        if (model.currentUser.userName !=
-                                            null) {
+                                        if (model.email != null) {
                                           Get.to(() =>
                                               GraduationphotographyHome());
                                         } else {
@@ -142,8 +140,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        if (model.currentUser.userName !=
-                                            null) {
+                                        if (model.email != null) {
                                           Get.to(() => AccomodationScreen());
                                         } else {
                                           Get.to(LogInScreen(
@@ -178,8 +175,7 @@ class HomeScreen extends StatelessWidget {
                                             : "Unavailable";
                                         return GestureDetector(
                                           onTap: () {
-                                            if (model.currentUser.userName !=
-                                                null) {
+                                            if (model.email != null) {
                                               Get.to(() =>
                                                   OpenAccommodationListingScreen(
                                                     index: index,
@@ -203,8 +199,7 @@ class HomeScreen extends StatelessWidget {
                                             isBookmarked: homemodel
                                                 .isBookmarkedList[index],
                                             onBookMarkTap: () {
-                                              if (model.currentUser.userName !=
-                                                  null) {
+                                              if (model.email != null) {
                                                 homemodel.toggleBookmark(index);
                                               } else {
                                                 Get.to(LogInScreen(
