@@ -1,4 +1,4 @@
-import 'package:findly/Constant/enum.dart';
+import 'package:findly/Core/Custom/circular_progress.dart';
 import 'package:findly/UI/Auth/Widgets/custom_dotted_border.dart';
 import 'package:findly/UI/Auth/auth_provider.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,8 @@ import '../StudentScreen/widgets/back_next_button.dart';
 import '../Widgets/custom_auth_appbar.dart';
 
 class PhotoGrapherScreen extends StatelessWidget {
-  PhotoGrapherScreen({super.key});
+  PhotoGrapherScreen({super.key, this.isSocialLogin = false});
+  final bool isSocialLogin;
   final TextEditingController usernamecontroller = TextEditingController();
   final TextEditingController numberController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -91,15 +92,17 @@ class PhotoGrapherScreen extends StatelessWidget {
                               },
                             ),
                             SizedBox(height: 280.w),
-                            BackNextButton(
-                              onNextTap: () {
-                                if (formKey.currentState!.validate()) {
-                                  model.createPhotographerAccount(
-                                      username: usernamecontroller.text,
-                                      isSocial: false);
-                                }
-                              },
-                            ),
+                            model.photographerSignUpLoading
+                                ? const KCircularProgress()
+                                : BackNextButton(
+                                    onNextTap: () {
+                                      if (formKey.currentState!.validate()) {
+                                        model.createPhotographerAccount(
+                                            username: usernamecontroller.text,
+                                            isSocial: isSocialLogin);
+                                      }
+                                    },
+                                  ),
                           ],
                         ),
                       ))

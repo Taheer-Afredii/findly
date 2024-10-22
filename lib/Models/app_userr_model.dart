@@ -26,12 +26,10 @@ class StudentModel {
   });
 
   Map<String, dynamic> toJson() {
-    return {
+    final Map<String, dynamic> data = {
       "firstName": firstName,
       "lastName": lastName,
       "email": email,
-      "password": password,
-      "confirmpassword": confirmPassword,
       "username": username,
       "imageUrl": imageUrl,
       "role": role,
@@ -39,6 +37,16 @@ class StudentModel {
       "studentCampus": studentCampus,
       "studentNumber": studentNumber,
     };
+
+    if (password != null) {
+      data["password"] = password;
+    }
+
+    if (confirmPassword != null) {
+      data["confirmpassword"] = confirmPassword;
+    }
+
+    return data;
   }
 
   factory StudentModel.fromJson(Map<String, dynamic> json) {
@@ -84,18 +92,26 @@ class AgentModel {
   });
 
   Map<String, dynamic> toJson() {
-    return {
+    final Map<String, dynamic> data = {
       "firstName": firstName,
       "lastName": lastName,
       "email": email,
-      "password": password,
-      "confirmpassword": confirmPassword,
       "username": username,
       "imageUrl": imageUrl,
       "role": role,
       "signUp": signUp,
       "agentNumber": agentNumber,
     };
+
+    if (password != null) {
+      data["password"] = password;
+    }
+
+    if (confirmPassword != null) {
+      data["confirmpassword"] = confirmPassword;
+    }
+
+    return data;
   }
 
   factory AgentModel.fromJson(Map<String, dynamic> json) {
@@ -136,19 +152,26 @@ class PhotographerModel {
     this.role,
     this.signUp,
   });
-
   Map<String, dynamic> toJson() {
-    return {
+    final Map<String, dynamic> data = {
       "firstName": firstName,
       "lastName": lastName,
       "email": email,
-      "password": password,
-      "confirmpassword": confirmPassword,
       "username": username,
       "imageUrl": imageUrl,
       "role": role,
       "signUp": signUp,
     };
+
+    if (password != null) {
+      data["password"] = password;
+    }
+
+    if (confirmPassword != null) {
+      data["confirmpassword"] = confirmPassword;
+    }
+
+    return data;
   }
 
   factory PhotographerModel.fromJson(Map<String, dynamic> json) {

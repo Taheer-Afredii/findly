@@ -209,8 +209,8 @@ class EditGigScreen extends StatelessWidget {
                               model.loading
                                   ? const KCircularProgress()
                                   : AppButton(
-                                      onTap: () {
-                                        model.editGig(
+                                      onTap: () async {
+                                        await model.editGig(
                                             gigData: data,
                                             onSuccess: () {
                                               Provider.of<GigListingViewmodel>(

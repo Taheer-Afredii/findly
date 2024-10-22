@@ -56,10 +56,12 @@ class ProfileViewmodel extends ChangeNotifier {
 
   logOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
     prefs.remove("username");
     prefs.remove("email");
     prefs.remove("password");
     prefs.remove("isguest");
+    prefs.remove("token");
   }
 
   clearData() {

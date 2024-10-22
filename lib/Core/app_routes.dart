@@ -29,7 +29,7 @@ class AppRoutes {
       login: (context) => LogInScreen(isFrombottomSheet: false),
       createAccount: (context) => CreateAccountScreen(),
       chooseRole: (context) => const ChooseRoleScreen(),
-      student: (context) => StudentScreen(),
+      student: (context) => const StudentScreen(),
       agent: (context) => AgentScreen(),
       photographer: (context) => PhotoGrapherScreen(),
       mainBottomNavigationbar: (context) => const MainBottomNavigationbar(),

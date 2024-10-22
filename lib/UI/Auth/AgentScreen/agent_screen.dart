@@ -1,3 +1,4 @@
+import 'package:findly/Core/Custom/circular_progress.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/UI/Auth/StudentScreen/widgets/back_next_button.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,8 @@ import '../Widgets/custom_dotted_border.dart';
 import '../auth_provider.dart';
 
 class AgentScreen extends StatelessWidget {
-  AgentScreen({super.key});
+  AgentScreen({super.key, this.isSocialLogin = false});
+  final bool isSocialLogin;
   final TextEditingController usernamecontroller = TextEditingController();
   final TextEditingController agentNumberController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -101,16 +103,19 @@ class AgentScreen extends StatelessWidget {
                               },
                             ),
                             SizedBox(height: 178.h),
-                            BackNextButton(
-                              onNextTap: () {
-                                if (formKey.currentState!.validate()) {
-                                  model.createAgentAccount(
-                                      username: usernamecontroller.text,
-                                      isSocial: false,
-                                      agentNumber: agentNumberController.text);
-                                }
-                              },
-                            ),
+                            model.agentSignUpLoading
+                                ? const KCircularProgress()
+                                : BackNextButton(
+                                    onNextTap: () {
+                                      if (formKey.currentState!.validate()) {
+                                        model.createAgentAccount(
+                                            username: usernamecontroller.text,
+                                            isSocial: isSocialLogin,
+                                            agentNumber:
+                                                agentNumberController.text);
+                                      }
+                                    },
+                                  ),
                           ],
                         ),
                       ))

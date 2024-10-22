@@ -13,7 +13,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LoginViewmodel extends ChangeNotifier {
   ApiService apiService = ApiService();
   bool loading = false;
-  login({required String email, required String password}) async {
+  login({
+    required String email,
+    required String password,
+  }) async {
     try {
       loading = true;
       notifyListeners();
@@ -52,4 +55,6 @@ class LoginViewmodel extends ChangeNotifier {
       print('Exception: $e');
     }
   }
+
+  //**************** Social Login ***************/
 }

@@ -5,6 +5,7 @@ import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/circular_progress.dart';
 import 'package:findly/Core/Custom/custom_textfield.dart';
 import 'package:findly/Core/app_routes.dart';
+import 'package:findly/UI/Auth/auth_provider.dart';
 import 'package:findly/UI/Auth/logInScreen/login_viewmodel.dart';
 import 'package:findly/UI/Auth/logInScreen/reset_password_popup.dart';
 import 'package:flutter/material.dart';
@@ -141,25 +142,31 @@ class LogInScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 30.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SocialButton(
-                              onTap: () {},
-                              image: google,
-                            ),
-                            SizedBox(width: 12.w),
-                            SocialButton(
-                              onTap: () {},
-                              image: facebook,
-                            ),
-                            SizedBox(width: 12.w),
-                            SocialButton(
-                              onTap: () {},
-                              image: apple,
-                            ),
-                          ],
-                        ),
+                        Consumer<AuthProvider>(builder: (context, auth, child) {
+                          return auth.isGoogleSignInLoading
+                              ? const KCircularProgress()
+                              : Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SocialButton(
+                                      onTap: () async {
+                                        await auth.googleLogin();
+                                      },
+                                      image: google,
+                                    ),
+                                    SizedBox(width: 12.w),
+                                    SocialButton(
+                                      onTap: () {},
+                                      image: facebook,
+                                    ),
+                                    SizedBox(width: 12.w),
+                                    SocialButton(
+                                      onTap: () {},
+                                      image: apple,
+                                    ),
+                                  ],
+                                );
+                        }),
                         SizedBox(height: 30.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

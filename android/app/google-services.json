@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "576998934978-0je823prqctk0e7eupmf2574ss8pqouv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.findly.app",
+            "certificate_hash": "7f5ae5e121cb01a8e57bbe6bb0086cd158e0abaa"
+          }
+        },
+        {
           "client_id": "576998934978-87n7keho2empdh68c1f7ukbe3ra8npac.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "576998934978-87n7keho2empdh68c1f7ukbe3ra8npac.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "576998934978-0tci5q61soqd5hsvqjl23llqt46pchad.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.findly"
+              }
             }
           ]
         }

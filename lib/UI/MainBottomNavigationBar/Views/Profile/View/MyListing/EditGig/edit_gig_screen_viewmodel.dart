@@ -111,13 +111,18 @@ class EditGigScreenViewmodel extends ChangeNotifier {
         type: RequestType.patch,
         body: data,
       );
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         // Check for 201 Created status
         final responseJson = jsonDecode(response.body);
         log('Response: $responseJson');
         clearAllData();
+
         loading = false;
         notifyListeners();
+        kGetSnakBar(
+          text: "Gig Updated Successfully",
+          title: "Gig Updated",
+        );
         Get.offAll(() => const MainBottomNavigationbar());
         onSuccess();
       } else {

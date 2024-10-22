@@ -1,17 +1,24 @@
 import 'package:findly/Constant/text_constant.dart';
 import 'package:findly/Core/Custom/app_button.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
+import 'package:findly/UI/Auth/AgentScreen/agent_screen.dart';
+import 'package:findly/UI/Auth/PhotoGrapherScreen/photographer_screen.dart';
+import 'package:findly/UI/Auth/StudentScreen/student_screen.dart';
 import 'package:findly/UI/Auth/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Constant/assets_constant.dart';
 import '../../../Constant/colors.dart';
-import '../../../Core/app_routes.dart';
 
 class ChooseRoleScreen extends StatelessWidget {
-  const ChooseRoleScreen({super.key});
+  const ChooseRoleScreen(
+      {super.key, this.isSocialLogin = false, this.googleUser});
+  final bool isSocialLogin;
+  final GoogleSignInAccount? googleUser;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +62,8 @@ class ChooseRoleScreen extends StatelessWidget {
                             SizedBox(height: 29.h),
                             AppButton(
                               onTap: () {
-                                Navigator.pushNamed(context, AppRoutes.student);
+                                Get.to(() => StudentScreen(
+                                    isSocialLogin: isSocialLogin));
                               },
                               text: "Student",
                               height: 62.h,
@@ -65,7 +73,8 @@ class ChooseRoleScreen extends StatelessWidget {
                               buttonColor: secondaryColor,
                               textColor: whiteColor,
                               onTap: () {
-                                Navigator.pushNamed(context, AppRoutes.agent);
+                                Get.to(() =>
+                                    AgentScreen(isSocialLogin: isSocialLogin));
                               },
                               text: "Agent",
                               height: 62.h,
@@ -73,8 +82,8 @@ class ChooseRoleScreen extends StatelessWidget {
                             SizedBox(height: 15.h),
                             AppButton(
                               onTap: () {
-                                Navigator.pushNamed(
-                                    context, AppRoutes.photographer);
+                                Get.to(() => PhotoGrapherScreen(
+                                    isSocialLogin: isSocialLogin));
                               },
                               buttonColor: primaryColor,
                               textColor: whiteColor,

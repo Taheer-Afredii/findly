@@ -1,4 +1,5 @@
 import 'package:findly/Constant/colors.dart';
+import 'package:findly/Core/Custom/circular_progress.dart';
 import 'package:findly/Core/Custom/container_widget.dart';
 import 'package:findly/Core/Custom/custom_drop_down.dart';
 import 'package:findly/Core/Custom/custom_textfield.dart';
@@ -13,7 +14,8 @@ import '../../../Constant/text_constant.dart';
 import '../Widgets/custom_auth_appbar.dart';
 
 class StudentScreen extends StatefulWidget {
-  const StudentScreen({super.key});
+  const StudentScreen({super.key, this.isSocialLogin = false});
+  final bool isSocialLogin;
 
   @override
   State<StudentScreen> createState() => _StudentScreenState();
@@ -155,8 +157,7 @@ class _StudentScreenState extends State<StudentScreen> {
                           ),
                           SizedBox(height: 37.w),
                           model.studentSignUpLoading == true
-                              ? const CircularProgressIndicator(
-                                  color: primaryColor)
+                              ? const KCircularProgress()
                               : BackNextButton(
                                   onNextTap: () async {
                                     // Get.offAll(() => const MainBottomNavigationbar());
@@ -164,7 +165,7 @@ class _StudentScreenState extends State<StudentScreen> {
                                       // print(" campus: $selectedCampus");
                                       await model.createStudentAccount(
                                           username: studentNameController.text,
-                                          isSocial: false,
+                                          isSocial: widget.isSocialLogin,
                                           studentCampus: selectedCampus,
                                           studentNumber: "1234");
                                     }

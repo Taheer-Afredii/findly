@@ -21,7 +21,8 @@ class BottomshettViewmodel extends ChangeNotifier {
   }
 
   init() async {
-    email = await getEmail();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    email = prefs.getString('email');
     await getuserData();
     await getGuest();
     await getAllScreenData();
@@ -103,19 +104,22 @@ class BottomshettViewmodel extends ChangeNotifier {
         } else {
           final jsonResponse = jsonDecode(response.body);
           final errorMessage = jsonResponse['error'];
+
           // kGetSnakBar(text: errorMessage, title: "Error");
           log('Error in bottom sheet: $errorMessage');
           log('Error stuscode: ${response.statusCode}');
-          await prefs.clear().then((value) async {
-            email = null;
-            notifyListeners();
-            email = await getEmail();
-            notifyListeners();
-          });
+          await prefs.clear();
+          email = null;
+          notifyListeners();
+          email = await getEmail();
+          notifyListeners();
+
           userLoading = false;
           notifyListeners();
         }
       } else {
+        await prefs.clear();
+        email = null;
         userLoading = false;
         notifyListeners();
         log('Token is null');

@@ -13,10 +13,15 @@ import 'package:findly/Core/api_services.dart';
 import 'package:findly/Models/app_userr_model.dart';
 import 'package:findly/Models/user_model.dart';
 import 'package:findly/Models/user_response_model.dart';
+import 'package:findly/UI/MainBottomNavigationBar/bottomshett_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/main_bottom_navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'ChooseRoleScreen/choose_role_screen.dart';
 
 class AuthProvider extends ChangeNotifier {
   ApiService apiService = ApiService();
@@ -70,6 +75,11 @@ class AuthProvider extends ChangeNotifier {
   }
 
   //***************************** CREATE ACCOUNT *********************/
+  setUserData(UserData userData) {
+    Provider.of<BottomshettViewmodel>(Get.context!, listen: false).user =
+        userData;
+    notifyListeners();
+  }
 
   bool studentSignUpLoading = false;
   bool photographerSignUpLoading = false;
@@ -83,22 +93,37 @@ class AuthProvider extends ChangeNotifier {
   }) async {
     agentSignUpLoading = true;
     notifyListeners();
+
     String image = agentProfile != null
         ? await imageToFirebaseStorage(imagePath: agentProfile!)
         : "";
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    AgentModel agentData = AgentModel(
-      email: emailController.text,
-      firstName: firsNameController.text,
-      lastName: lastNameController.text,
-      password: passwordController.text,
-      confirmPassword: confirmPasswordController.text,
-      username: username,
-      imageUrl: image,
-      role: "Agent",
-      signUp: isSocial ? "Social" : "Email",
-      agentNumber: agentNumber,
-    );
+    AgentModel agentData = isSocial
+        ? AgentModel(
+            email: googleUser!.email,
+            firstName: googleUserFirstName,
+            lastName: googleUserLastName,
+            // password: passwordController.text,
+            // confirmPassword: confirmPasswordController.text,
+            username: username,
+            imageUrl: image != "" ? image : googleUser!.photoUrl,
+            role: "Agent",
+            signUp: "Social",
+            agentNumber: "1234",
+          )
+        : AgentModel(
+            email: emailController.text,
+            firstName: firsNameController.text,
+            lastName: lastNameController.text,
+            password: passwordController.text,
+            confirmPassword: confirmPasswordController.text,
+            username: username,
+            imageUrl: image,
+            role: "Agent",
+            signUp: "Email",
+            agentNumber: "1234",
+          );
 
     try {
       var response = await apiService.request(
@@ -116,9 +141,14 @@ class AuthProvider extends ChangeNotifier {
         print('Email: ${user.email}');
         prefs.setString('username', username);
         prefs.setString("email", emailController.text);
-        clearDate();
+        isSocial
+            ? null
+            : await tempLogin(
+                email: agentData.email!, password: agentData.confirmPassword!);
+        await clearDate();
         agentSignUpLoading = false;
         notifyListeners();
+        await Get.offAll(const MainBottomNavigationbar());
       } else {
         final jsonResponse = jsonDecode(response.body);
         final errorMessage = jsonResponse['error'];
@@ -144,23 +174,39 @@ class AuthProvider extends ChangeNotifier {
   }) async {
     studentSignUpLoading = true;
     notifyListeners();
+
     String image = studentProfile != null
         ? await imageToFirebaseStorage(imagePath: studentProfile!)
         : "";
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    StudentModel studentData = StudentModel(
-      email: emailController.text,
-      firstName: firsNameController.text,
-      lastName: lastNameController.text,
-      password: passwordController.text,
-      confirmPassword: confirmPasswordController.text,
-      username: username,
-      imageUrl: image,
-      role: "Student",
-      signUp: isSocial ? "Social" : "Email",
-      studentCampus: studentCampus,
-      studentNumber: studentNumber,
-    );
+    StudentModel studentData = isSocial
+        ? StudentModel(
+            email: googleUser!.email,
+            firstName: googleUserFirstName,
+            lastName: googleUserLastName,
+            // password: passwordController.text,
+            // confirmPassword: confirmPasswordController.text,
+            username: username,
+            imageUrl: image != "" ? image : googleUser!.photoUrl,
+            role: "Student",
+            signUp: "Social",
+            studentCampus: studentCampus,
+            studentNumber: studentNumber,
+          )
+        : StudentModel(
+            email: emailController.text,
+            firstName: firsNameController.text,
+            lastName: lastNameController.text,
+            password: passwordController.text,
+            confirmPassword: confirmPasswordController.text,
+            username: username,
+            imageUrl: image,
+            role: "Student",
+            signUp: isSocial ? "Social" : "Email",
+            studentCampus: studentCampus,
+            studentNumber: studentNumber,
+          );
 
     try {
       var response = await apiService.request(
@@ -178,12 +224,16 @@ class AuthProvider extends ChangeNotifier {
         print('User ID: ${user.id}');
         print('First Name: ${user.firstName}');
         print('Email: ${user.email}');
-
-        clearDate();
+        isSocial
+            ? null
+            : await tempLogin(
+                email: studentData.email!,
+                password: studentData.confirmPassword!);
+        await clearDate();
 
         studentSignUpLoading = false;
         notifyListeners();
-        Get.offAll(const MainBottomNavigationbar());
+        await Get.offAll(const MainBottomNavigationbar());
       } else {
         studentSignUpLoading = false;
         notifyListeners();
@@ -211,21 +261,35 @@ class AuthProvider extends ChangeNotifier {
   }) async {
     photographerSignUpLoading = true;
     notifyListeners();
-    String image = agentProfile != null
-        ? await imageToFirebaseStorage(imagePath: agentProfile!)
+
+    String image = photographerProfile != null
+        ? await imageToFirebaseStorage(imagePath: photographerProfile!)
         : "";
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    PhotographerModel photographerData = PhotographerModel(
-      email: emailController.text,
-      firstName: firsNameController.text,
-      lastName: lastNameController.text,
-      password: passwordController.text,
-      confirmPassword: confirmPasswordController.text,
-      username: username,
-      imageUrl: image,
-      role: "Photographer",
-      signUp: isSocial ? "Social" : "Email",
-    );
+    PhotographerModel photographerData = isSocial
+        ? PhotographerModel(
+            email: googleUser!.email,
+            firstName: googleUserFirstName,
+            lastName: googleUserLastName,
+            // password: passwordController.text,
+            // confirmPassword: confirmPasswordController.text,
+            username: username,
+            imageUrl: image != "" ? image : googleUser!.photoUrl,
+            role: "Photographer",
+            signUp: "Social",
+          )
+        : PhotographerModel(
+            email: emailController.text,
+            firstName: firsNameController.text,
+            lastName: lastNameController.text,
+            password: passwordController.text,
+            confirmPassword: confirmPasswordController.text,
+            username: username,
+            imageUrl: image,
+            role: "Photographer",
+            signUp: isSocial ? "Social" : "Email",
+          );
 
     try {
       var response = await apiService.request(
@@ -244,10 +308,15 @@ class AuthProvider extends ChangeNotifier {
         print('First Name: ${user.firstName}');
         print('Email: ${user.email}');
         // Handle the dataclearDate
-        clearDate();
+        isSocial
+            ? null
+            : await tempLogin(
+                email: photographerData.email!,
+                password: photographerData.confirmPassword!);
+        await clearDate();
         photographerSignUpLoading = false;
         notifyListeners();
-        Get.offAll(const MainBottomNavigationbar());
+        await Get.offAll(const MainBottomNavigationbar());
       } else {
         photographerSignUpLoading = false;
         notifyListeners();
@@ -264,62 +333,56 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  //******************* Login through Social **********************************/
+  bool isGoogleSignInLoading = false;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+  GoogleSignInAccount? googleUser;
+  String googleUserFirstName = "";
+  String googleUserLastName = "";
+  googleLogin() async {
+    try {
+      isGoogleSignInLoading = true;
+      notifyListeners();
+
+      await googleSignIn.signOut();
+
+      googleUser = await googleSignIn.signIn();
+      if (googleUser == null) {
+        // The user canceled the sign-in
+        isGoogleSignInLoading = false;
+        notifyListeners();
+        return;
+      }
+      List<String> nameParts = googleUser!.displayName!.split(' ');
+
+      // Extract first name and last name
+      googleUserFirstName = nameParts.isNotEmpty ? nameParts[0] : '';
+      googleUserLastName =
+          nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '';
+      isGoogleSignInLoading = false;
+      notifyListeners();
+      Get.to(() => const ChooseRoleScreen(isSocialLogin: true));
+    } catch (e) {
+      isGoogleSignInLoading = false;
+      notifyListeners();
+      kGetSnakBar(text: "Something went wrong", title: "Error");
+      print('Exception: $e');
+    }
+    // final GoogleSignInAuthentication googleAuth =
+    //     await googleUser.authentication;
+
+    // final credential = GoogleAuthProvider.credential(
+    //   accessToken: googleAuth.accessToken,
+    //   idToken: googleAuth.idToken,
+    // );
+  }
+
   //******************* End Account Creation **********************************/
 
   setAsGuest() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setBool("isguest", true);
-  }
-
-  // signUp(String? image, String userName, UserType userType, String role) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   if (image != null) {
-  //     userModel.image = image;
-  //     notifyListeners();
-  //   }
-
-  //   userModel.email = emailController.text;
-  //   userModel.firstName = firsNameController.text;
-  //   userModel.lastName = lastNameController.text;
-  //   userModel.password = passwordController.text;
-  //   userModel.fullNaame = "${userModel.firstName} ${userModel.lastName}";
-  //   userModel.userName = userName;
-  //   userModel.role = role;
-  //   userModel.userType = userType;
-  //   prefs.setString('username', userName);
-  //   prefs.setString('password', userModel.password!);
-  //   prefs.setBool("isguest", false);
-  //   users.add(userModel);
-  //   await saveUsersToPrefs();
-  //   clearDate();
-  //   notifyListeners();
-
-  //   Get.offAll(const MainBottomNavigationbar());
-  // }
-
-  Future<void> saveUsersToPrefs() async {
-    final prefs = await SharedPreferences.getInstance();
-    final usersJson = jsonEncode(users.map((user) => user.toJson()).toList());
-    await prefs.setString('users', usersJson);
-  }
-
-  Future<List<UserModel>> loadUsers() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      final usersJson = prefs.getString('users');
-      if (usersJson != null) {
-        List<dynamic> usersList = jsonDecode(usersJson);
-        return usersList
-            .map((userJson) => UserModel.fromJson(userJson))
-            .toList();
-      }
-      return [];
-    } catch (e) {
-      log("Error: $e");
-      Get.snackbar('Error', e.toString());
-    }
-    return [];
   }
 
   clearDate() {
@@ -331,7 +394,92 @@ class AuthProvider extends ChangeNotifier {
     firsNameController.clear();
     lastNameController.clear();
     emailController.clear();
+    googleUserFirstName = "";
+    googleUserLastName = "";
+    googleUser = null;
 
     notifyListeners();
   }
+
+  //temp login to get access token
+
+  tempLogin({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      notifyListeners();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.clear();
+      var response = await apiService.request(
+        endPoint: userLoginUrl,
+        type: RequestType.post,
+        body: {
+          'email': email,
+          'password': password,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final responseJson = jsonDecode(response.body);
+        print('Response in temp login: $responseJson');
+        print(
+            'Response token in temp login: ${responseJson["data"]['accessToken']}');
+        prefs.setString('token', responseJson["data"]['accessToken']);
+        prefs.setString('email', email);
+      } else {
+        final jsonResponse = jsonDecode(response.body);
+        final errorMessage = jsonResponse['error'];
+        log('Error in temp: $errorMessage');
+        log('Error stuscode in temp: ${response.statusCode}');
+      }
+    } catch (e) {
+      notifyListeners();
+      print('Exception in temp: $e');
+    }
+  }
 }
+
+void logGoogleUserNames(String displayName) {
+  // Split the displayName by spaces
+  List<String> nameParts = displayName.split(' ');
+
+  // Extract first name and last name
+  String firstName = nameParts.isNotEmpty ? nameParts[0] : '';
+  String lastName = nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '';
+
+  // Log the first name and last name
+  log('Google User first name: $firstName');
+  log('Google User last name: $lastName');
+}
+
+
+
+
+
+
+
+
+ // Future<void> saveUsersToPrefs() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final usersJson = jsonEncode(users.map((user) => user.toJson()).toList());
+  //   await prefs.setString('users', usersJson);
+  // }
+
+  // Future<List<UserModel>> loadUsers() async {
+  //   try {
+  //     final prefs = await SharedPreferences.getInstance();
+  //     final usersJson = prefs.getString('users');
+  //     if (usersJson != null) {
+  //       List<dynamic> usersList = jsonDecode(usersJson);
+  //       return usersList
+  //           .map((userJson) => UserModel.fromJson(userJson))
+  //           .toList();
+  //     }
+  //     return [];
+  //   } catch (e) {
+  //     log("Error: $e");
+  //     Get.snackbar('Error', e.toString());
+  //   }
+  //   return [];
+  // }

@@ -1,6 +1,7 @@
 import 'package:findly/UI/Auth/StudentScreen/student_viewmodel.dart';
 import 'package:findly/UI/Auth/auth_provider.dart';
 import 'package:findly/UI/Auth/logInScreen/login_viewmodel.dart';
+import 'package:findly/UI/Auth/social_auth_provider.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommoadtionFilter/accommodation_filter_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/AccommodationHome/accomodation_viewmodel.dart';
 import 'package:findly/UI/MainBottomNavigationBar/Views/AccommoadtionSection/View/MapScreen/map_screen_viewmodel.dart';
@@ -27,6 +28,7 @@ import 'package:provider/single_child_widget.dart';
 
 List<SingleChildWidget> providerList = [
   ChangeNotifierProvider(create: (_) => AuthProvider()),
+  ChangeNotifierProvider(create: (_) => SocialAuthProvider()),
   ChangeNotifierProvider(create: (_) => StudentViewmodel()),
   ChangeNotifierProvider(create: (_) => HomeScreenViewmodel()),
   ChangeNotifierProvider(create: (_) => ProfileViewmodel()),
